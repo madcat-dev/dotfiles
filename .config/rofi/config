@@ -12,4 +12,3 @@ rofi.terminal: kitty
 rofi.hide-scrollbar: true
 ! Scrollbar width
 rofi.scrollbar-width: 0
-
