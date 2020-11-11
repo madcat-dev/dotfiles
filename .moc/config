@@ -1,0 +1,12 @@
+# Sound driver - OSS, ALSA, JACK, SNDIO (on OpenBSD) or null (only for
+# debugging).  You can enter more than one driver as a colon-separated
+# list.  The first working driver will be used.
+SoundDriver = PULSEAUDIO:JACK:ALSA:OSS
+
+# Theme file to use.  This can be absolute path or relative to
+# /usr/share/moc/themes/ (depends on installation prefix) or
+# ~/.moc/themes/ .
+Theme = transparent-background
+
+UseRCC = yes
+UseRCCForFilesystem = yes

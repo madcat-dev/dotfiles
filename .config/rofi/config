@@ -1,0 +1,15 @@
+
+! Theme
+rofi.theme: nord.rasi
+
+! Enabled modi
+rofi.modi: window,run,drun,ssh
+
+! Terminal to use
+rofi.terminal: kitty
+
+! Hide scroll-bar
+rofi.hide-scrollbar: true
+! Scrollbar width
+rofi.scrollbar-width: 0
+
