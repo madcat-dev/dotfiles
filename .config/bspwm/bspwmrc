@@ -62,6 +62,7 @@ xsettingsd &
 ## Light screen locker, use with xflock4
 pkill light-locker
 light-locker &
+pamac-tray &
 
 /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1 &
 
@@ -81,6 +82,8 @@ blueman-applet &
 ~/.fehbg
 
 ## Polybar panel
+export MONITOR=$(xrandr | grep " connected " | awk '{print $1}')
+
 pkill polybar
 polybar layouts &
 polybar top &
