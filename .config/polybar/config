@@ -85,7 +85,7 @@ offset-x = 18.75%
 
 modules-left = mocp
 modules-center = xwindow
-modules-right = pulseaudio xkeyboard date powermenu
+modules-right = pulseaudio pulsemixer xkeyboard date powermenu
 
 
 [bar/tray]
@@ -190,6 +190,16 @@ format-foreground = ${xrdb:nord_orange:#ebcb8b}
 exec = echo ""
 tail = false
 click-left = ~/.config/polybar/power.sh
+
+
+[module/pulsemixer]
+type = custom/script
+format = <label>
+format-foreground = ${xrdb:nord_frost3:#ebcb8b}
+exec = echo ""
+tail = false
+click-left = kitty -e pulsemixer
+
 
 [module/mocp]
 type = custom/script

@@ -3,7 +3,7 @@
 #
 
 # Include default config
-[[ -f ~/.config/shell/zshrc ]] && source ~/.config/shell/zshrc
+source ~/.shell/zshrc
 
 export EDITOR=/usr/bin/vim
 export QT_QPA_PLATFORMTHEME="qt5ct"
