@@ -19,6 +19,9 @@ THEMES=(
 UTILS=(
     "zsh"
     "exfat-utils"
+    "xorg-xrandr"
+    "xorg-xev"
+    "xautomation"
 
     "w3m" "mc" "htop" "gtop" "curl" "wget" "git" "tig" "tmux"
     "p7zip" "unrar"
