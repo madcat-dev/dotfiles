@@ -198,7 +198,7 @@ format = <label>
 format-foreground = ${xrdb:nord_frost3:#ebcb8b}
 exec = echo ""
 tail = false
-click-left = kitty -e pulsemixer
+click-left = urxvt -e pulsemixer
 
 
 [module/mocp]
@@ -209,4 +209,4 @@ format-foreground = ${xrdb:nord_frost0:#ebcb8b}
 exec = echo "$(mocp --info | grep '^State:' | sed 's/^State://g'):$(mocp --info | grep '^Title:' | sed 's/^Title://g')"
 tail = true
 interval = 2.5
-click-left = kitty -e mocp
+click-left = urxvt -e mocp

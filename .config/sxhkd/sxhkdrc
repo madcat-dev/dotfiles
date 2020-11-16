@@ -124,6 +124,13 @@ super + {Left,Down,Up,Right}
 
 ############### Keyboard Function Keys ###############
 
+# Copy and paste (use 'xautomation' package)
+super + c
+    xte "keyup c" "keyup Super_L" "keydown Control_L" "key Insert" "keyup Control_L" "keydown Super_L"
+
+super + v
+    xte "keyup v" "keyup Super_L" "keydown Shift_L" "key Insert" "keyup Shift_L" "keydown Super_L"
+
 # Volume:
 XF86Audio{RaiseVolume,LowerVolume,Mute}
     amixer {-q set Master 5%+, -q set Master 5%-, set Master toggle}
@@ -132,9 +139,15 @@ XF86Audio{RaiseVolume,LowerVolume,Mute}
 XF86Audio{Next,Prev,Play,Stop}
 	mocp --{next,previous,toggle-pause,stop}
 
-# Copy and paste (use 'xautomation' package)
-super + c
-    xte "keyup c" "keyup Super_L" "keydown Control_L" "key Insert" "keyup Control_L" "keydown Super_L"
+# Take a screenshot
+Print
+    scrot 'scrot_%Y-%m-%d-%S_$wx$h.png' -e 'mv $f ~/Desktop/'
 
-super + v
-    xte "keyup v" "keyup Super_L" "keydown Shift_L" "key Insert" "keyup Shift_L" "keydown Super_L"
+# Take a screenshot, use the currently focused window
+alt + Print
+    scrot -u 'scrot_%Y-%m-%d-%S_$wx$h.png' -e 'mv $f ~/Desktop/'
+
+# Take a screenshot with interactively choose a window or rectangle
+shift + Print
+    scrot -s 'scrot_%Y-%m-%d-%S_$wx$h.png' -e 'mv $f ~/Desktop/'
+
