@@ -80,7 +80,7 @@ modules-right = empty
 
 [bar/top]
 inherit = bar/default
-width = 65%
+width = 70%
 offset-x = 18.75%
 
 modules-left = mocp
@@ -90,8 +90,8 @@ modules-right = pulseaudio pulsemixer xkeyboard date powermenu
 
 [bar/tray]
 inherit = bar/default
-width = 15%
-offset-x = 85%
+width = 10%
+offset-x = 90%
 
 modules-left = empty
 modules-center = empty
