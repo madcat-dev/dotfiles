@@ -205,6 +205,7 @@ click-left = urxvt -e pulsemixer
 type = custom/script
 label = %output:0:50:...%
 format = <label>
+format-prefix = ""
 format-foreground = ${xrdb:nord_frost0:#ebcb8b}
 exec = echo "$(mocp --info | grep '^State:' | sed 's/^State://g'):$(mocp --info | grep '^Title:' | sed 's/^Title://g')"
 tail = true

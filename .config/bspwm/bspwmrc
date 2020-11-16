@@ -27,11 +27,14 @@ bspc config normal_border_color "#2f343f"
 ## window rules ##
 ##################
 
-bspc rule -a Viewnior state=floating follow=on
-bspc rule -a feh state=floating follow=on
-bspc rule -a mpv state=floating follow=on
+bspc rule -a feh state=floating follow=on center=on
+bspc rule -a mpv state=floating follow=on center=on
 bspc rule -a URxvt state=floating follow=on
-bspc rule -a Telegram-desktop state=floating follow=on
+bspc rule -a Gnome-calculator state=floating follow=on center=on
+bspc rule -a TelegramDesktop state=floating follow=on center=on
+
+# don't manage conky
+bspc rule -a Conky state=floating manage=off
 
 ###############
 ## autostart ##
