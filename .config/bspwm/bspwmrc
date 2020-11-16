@@ -1,0 +1,88 @@
+#! /bin/sh
+
+###################
+## configuration ##
+###################
+
+bspc monitor -d 1 2 3 4 5 6 7 8 9 10
+
+bspc config border_width        0
+bspc config border_radius       0
+
+bspc config window_gap          16
+bspc config split_ratio         0.52
+bspc config borderless_monocle  true
+bspc config gapless_monocle     true
+
+bspc config top_padding         46
+bspc config bottom_padding      0
+bspc config right_padding       0
+bspc config left_padding        0
+
+## color settings
+bspc config focused_border_color "#d8dee8"
+bspc config normal_border_color "#2f343f"
+
+##################
+## window rules ##
+##################
+
+bspc rule -a Gimp desktop='^8' state=floating follow=on
+bspc rule -a Chromium desktop='^2'
+bspc rule -a mplayer2 state=floating
+bspc rule -a Kupfer.py focus=on
+bspc rule -a Screenkey manage=off
+
+###############
+## autostart ##
+###############
+
+## Keyboard ##
+# keybind daemon
+pkill sxhkd
+sxhkd &
+
+# keyboard layouts
+setxkbmap -model pc105 -layout us,ru -option grp:win_space_toggle
+
+# Enable keyboard leds
+[ -x /usr/bin/g810-led ] && g810-led -p .kbled/profile
+
+# Enable numlock
+numlockx on
+
+
+## reload the xsettingsd, a minimal x settings daemon
+pkill xsettingsd
+xsettingsd &
+
+## Light screen locker, use with xflock4
+pkill light-locker
+light-locker &
+
+/usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1 &
+
+
+## Music player
+mocp --server > /dev/null 2>&1
+
+
+## Applets ##
+# network applet
+nm-applet &
+xfce4-power-manager &
+
+
+## set the wallpaper
+~/.fehbg
+
+## Polybar panel
+pkill polybar
+polybar layouts &
+polybar top &
+polybar tray &
+
+## Reload compoze manager
+pkill picom
+picom -f --experimental-backends &
+

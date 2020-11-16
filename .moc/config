@@ -8,5 +8,6 @@ SoundDriver = PULSEAUDIO:JACK:ALSA:OSS
 # ~/.moc/themes/ .
 Theme = transparent-background
 
-UseRCC = yes
-UseRCCForFilesystem = yes
+Fastdir1 = "/home/madcat/Music"
+Fastdir2 = "/run/user/1000/gvfs/smb-share:server=nas326,share=music"
+

@@ -1,6 +1,6 @@
 
 ! Theme
-rofi.theme: nord.rasi
+rofi.theme: main.rasi
 
 ! Enabled modi
 rofi.modi: window,run,drun,ssh

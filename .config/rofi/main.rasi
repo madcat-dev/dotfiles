@@ -1,0 +1,68 @@
+configuration {
+	modi: "window,run,ssh,drun";
+	font: "Iosevka Fixed Curly Medium 12";
+	show-icons: false;
+	terminal: "kitty";
+	hide-scrollbar: true;
+	scrollbar-width: 0;
+	theme: "main.rasi";
+	color-normal: "#2f343f, #d8dee8, #2f343f, #2f343f, #bf616a";
+	color-urgent: "#2f343f, #ebcb8b, #2f343f, #2f343f, #ebcb8b";
+	color-active: "#2f343f, #b48ead, #2f343f, #2f343f, #93e5cc";
+	color-window: "#2f343f, #2f343f, #2f343f";
+	display-window: "win:";
+	display-run: "run:";
+	display-ssh: "ssh:";
+	display-drun: "drun:";
+}
+
+* {
+    background-color: #2E3440;
+    background-selected: #3B4252;
+    foreground: #ECEFF4;
+    foreground-selected: #88C0D0;
+    foreground-prompt: #EBCB8B;
+
+    lines:   12;
+}
+
+window {
+    width: 30%;
+    padding: 16;
+}
+
+mainbox {
+    children: [inputbar, listview];
+}
+
+listview {
+    columns: 1;
+}
+
+element {
+    padding: 12 20;
+    orientation: vertical;
+    text-color: @foreground;
+}
+
+element selected {
+    background-color: @background-selected;
+    text-color: @foreground-selected;
+}
+
+inputbar {
+  background-color: @background;
+  children: [prompt, entry];
+}
+
+prompt {
+  enabled: true;
+  font: "Ubuntu Condensed 10";
+  padding: 12 0 0 12;
+  text-color: @foreground-prompt;
+}
+
+entry {
+  padding: 12;
+  text-color: @foreground-prompt;
+}
