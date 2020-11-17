@@ -24,9 +24,8 @@ case $1 in
 packages)
     case $2 in
     install)
-        echo -e "\033[32m-- Install packages from list --\033[0m"
-
         source inc/packages
+        echo -e "\033[32m-- Install packages from list --\033[0m"
 
         echo -e "Fonts:\n    ${FONTS[*]}"
         echo -e "Themes:\n    ${THEMES[*]}"
@@ -38,9 +37,8 @@ packages)
         ;;
 
     remove)
-        echo -e "\033[33m-- Remove packages from list --\033[0m"
-
         source inc/rmpackages
+        echo -e "\033[33m-- Remove packages from list --\033[0m"
 
         if [ ! ${REMOVE[*]} ]; then
             echo -e "Not packages in remove list"
@@ -59,21 +57,18 @@ packages)
     ;;
 
 clone)
-    echo -e "\033[32m-- Copy configs to ${STORAGE} repository --\033[0m"
-
     source inc/configs
+    echo -e "\033[32m-- Copy configs to ${STORAGE} repository --\033[0m"
 
     mkdir -p "${STORAGE}" > /dev/null 2>&1
     lscopy "${LIST[*]}" "${HOME}" "${STORAGE}"
     ;;
 
 deploy)
+    source inc/configs
     echo -e "\033[32m-- Copy configs from '${STORAGE}' repository --\033[0m"
 
-    source inc/configs
-
-    mkdir -p "${HOME}/tmp" > /dev/null 2>&1
-    lscopy "${LIST[*]}" "${STORAGE}" "${HOME}/tmp"
+    lscopy "${LIST[*]}" "${STORAGE}" "${HOME}"
     ;;
 
 purge)
