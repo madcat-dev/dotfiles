@@ -1,0 +1,17 @@
+configuration {
+	modi: "window,run,ssh,drun";
+	font: "Iosevka Fixed Curly Medium 12";
+	show-icons: false;
+	terminal: "kitty";
+	hide-scrollbar: true;
+	scrollbar-width: 0;
+	theme: "nord.rasi";
+	color-normal: "#2f343f, #d8dee8, #2f343f, #2f343f, #bf616a";
+	color-urgent: "#2f343f, #ebcb8b, #2f343f, #2f343f, #ebcb8b";
+	color-active: "#2f343f, #b48ead, #2f343f, #2f343f, #93e5cc";
+	color-window: "#2f343f, #2f343f, #2f343f";
+	display-window: "win:";
+	display-run: "run:";
+	display-ssh: "ssh:";
+	display-drun: "drun:";
+}

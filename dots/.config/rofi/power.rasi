@@ -1,0 +1,44 @@
+configuration {
+    show-icons: true;
+    font: "Iosevka Fixed Curly Medium 16";
+}
+
+* {
+    background-color: #2E3440;
+    text-color: #ECEFF4;
+
+    background-selected: #3B4252;
+    text-selected: #88C0D0;
+
+    lines: 4;
+}
+
+window {
+    width: 15%;
+    padding: 16;
+}
+
+mainbox {
+    children: [
+        listview
+    ];
+}
+
+listview {
+    columns: 1;
+}
+
+element {
+    padding: 12;
+}
+
+element-icon {
+    size: 24px;
+    margin: 0 8 0 0;
+}
+
+element selected {
+    background-color: @background-selected;
+    text-color: @text-selected;
+}
+
