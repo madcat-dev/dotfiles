@@ -8,10 +8,14 @@ lscopy() {
         srce="${2}/${item}"
         dest="${3}/$(dirname $item)"
 
-        echo -e " -  copy: ${srce} to ${dest}"
+        if [ -e ${srce} ]; then
+            echo -e " -  copy: ${srce} to ${dest}"
 
-        mkdir -p "${dest}" > /dev/null 2>&1
-        cp -rf "${srce}" "${dest}"
+            mkdir -p "${dest}" > /dev/null 2>&1
+            cp -rf "${srce}" "${dest}"
+        else
+            echo -e "\033[31m -  path '${srce}' not exists\033[0m"
+        fi
     done
 }
 
@@ -30,7 +34,7 @@ packages)
         echo -e "Media:\n    ${MEDIA[*]}"
         echo -e "WM:\n    ${WM[*]}"
 
-        #pamac install --as-deps ${FONTS[*]} ${THEMES[*]} ${UTILS[*]} ${MEDIA[*]} ${WM[*]}
+        pamac install --as-deps ${FONTS[*]} ${THEMES[*]} ${UTILS[*]} ${MEDIA[*]} ${WM[*]}
         ;;
 
     remove)
@@ -44,7 +48,7 @@ packages)
         fi
 
         echo -e "To remove:\n    ${REMOVE[*]}"
-        #pamac remove ${UNINSTALL[*]}
+        pamac remove ${UNINSTALL[*]}
         ;;
 
     *)
@@ -65,12 +69,18 @@ clone)
 
 deploy)
     echo -e "\033[32m-- Copy configs from '${STORAGE}' repository --\033[0m"
+
+    source inc/configs
+
+    mkdir -p "${HOME}/tmp" > /dev/null 2>&1
+    lscopy "${LIST[*]}" "${STORAGE}" "${HOME}/tmp"
     ;;
 
 purge)
     echo -e "\033[31m-- Purge ${STORAGE} directory --\033[0m"
     rm -rf ${STORAGE}
     ;;
+
 *)
     echo -e "Usage: manage {packages|clone|deploy|purge} [{install|remove}]"
     echo -e "\tpackages - install and remove all packages from list"
