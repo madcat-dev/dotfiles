@@ -15,6 +15,7 @@ lscopy() {
 
                 if [ $DIFF -eq 0 ]; then
                     echo -e " -  path ${srce} not modified"
+                    cp -xarf "${srce}" "${path}"
                 else
                     cp -xarf "${srce}" "${path}" && echo -e "\033[33m -  path ${srce} was modified\033[0m"
                 fi

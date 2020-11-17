@@ -33,6 +33,7 @@ bspc rule -a URxvt state=floating follow=on
 bspc rule -a Gnome-calculator state=floating follow=on center=on
 bspc rule -a TelegramDesktop state=floating follow=on
 bspc rule -a Transmission-gtk state=floating follow=on
+bspc rule -a Pamac-manager state=floating follow=on center=on
 
 # don't manage conky
 bspc rule -a Conky state=floating manage=off
