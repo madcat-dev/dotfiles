@@ -14,13 +14,13 @@ lscopy() {
                 DIFF=$((`date -r "${srce}" '+%s'` - `date -r "${dest}" '+%s'`))
 
                 if [ $DIFF -eq 0 ]; then
-                    echo -e " -  file ${srce} not modified"
+                    echo -e " -  path ${srce} not modified"
                 else
-                    cp -rf "${srce}" "${path}" && echo -e "\033[33m -  file ${srce} was modified\033[0m"
+                    cp -xarf "${srce}" "${path}" && echo -e "\033[33m -  path ${srce} was modified\033[0m"
                 fi
             else
                 mkdir -p "${path}" > /dev/null 2>&1
-                cp -rf "${srce}" "${path}" && echo -e "\033[32m -  copy: ${srce} to ${path}\033[0m"
+                cp -xarf "${srce}" "${path}" && echo -e "\033[32m -  copy: ${srce} to ${path}\033[0m"
             fi
         else
             echo -e "\033[31m -  path '${srce}' not exists\033[0m"
