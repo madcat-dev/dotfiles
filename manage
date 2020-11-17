@@ -23,7 +23,7 @@ lscopy() {
                 cp -xarf "${srce}" "${path}" && echo -e "\033[32m -  copy: ${srce} to ${path}\033[0m"
             fi
         else
-            echo -e "\033[31m -  path '${srce}' not exists\033[0m"
+            echo -e "\033[31m -  path ${srce} not exists\033[0m"
         fi
     done
 }
