@@ -1,3 +1,8 @@
+! -----------------------------------------------------------------------------
+! Rofi nord color cheme
+! https://www.nordtheme.com/
+! -----------------------------------------------------------------------------
+
 rofi.color-enabled: true
 rofi.color-window: #2f343f, #2f343f, #2f343f
 rofi.color-normal: #2f343f, #d8dee8, #2f343f, #2f343f, #bf616a

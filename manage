@@ -56,7 +56,7 @@ packages)
     esac
     ;;
 
-clone)
+backup)
     source inc/configs
     echo -e "\033[32m-- Copy configs to ${STORAGE} repository --\033[0m"
 
@@ -64,7 +64,7 @@ clone)
     lscopy "${LIST[*]}" "${HOME}" "${STORAGE}"
     ;;
 
-deploy)
+restore)
     source inc/configs
     echo -e "\033[32m-- Copy configs from '${STORAGE}' repository --\033[0m"
 
@@ -77,10 +77,10 @@ purge)
     ;;
 
 *)
-    echo -e "Usage: manage {packages|clone|deploy|purge} [{install|remove}]"
+    echo -e "Usage: manage {packages|backup|restore|purge} [{install|remove}]"
     echo -e "\tpackages - install and remove all packages from list"
-    echo -e "\tclone    - copy configs to '${STORAGE}' repository"
-    echo -e "\tdeploy   - copy configs from '${STORAGE}' repository"
+    echo -e "\tbackup   - backup user configs to '${STORAGE}' repository"
+    echo -e "\trestore  - restore user configs from '${STORAGE}' repository"
     echo -e "\tpurge    - clear repository configs"
     ;;
 esac
