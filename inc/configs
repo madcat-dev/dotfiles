@@ -31,17 +31,3 @@ LIST=(
 )
 
 
-lscopy() {
-    for item in ${LIST[*]}
-    do
-        srce="${1}/${item}"
-        dest="${2}/$(dirname $item)"
-
-        echo -e " -  copy: ${srce} to ${dest}"
-
-        mkdir -p "${dest}" > /dev/null 2>&1
-
-        cp -rf "${srce}" "${dest}"
-    done
-}
-

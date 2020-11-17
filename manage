@@ -2,6 +2,20 @@
 
 STORAGE="./dots"
 
+lscopy() {
+    for item in ${1}
+    do
+        srce="${2}/${item}"
+        dest="${3}/$(dirname $item)"
+
+        echo -e " -  copy: ${srce} to ${dest}"
+
+        mkdir -p "${dest}" > /dev/null 2>&1
+        cp -rf "${srce}" "${dest}"
+    done
+}
+
+
 case $1 in
 packages)
     case $2 in
@@ -15,20 +29,21 @@ packages)
         echo -e "Utils:\n    ${UTILS[*]}"
         echo -e "Media:\n    ${MEDIA[*]}"
         echo -e "WM:\n    ${WM[*]}"
+
         #pamac install --as-deps ${FONTS[*]} ${THEMES[*]} ${UTILS[*]} ${MEDIA[*]} ${WM[*]}
         ;;
 
     remove)
         echo -e "\033[33m-- Remove packages from list --\033[0m"
 
-        source inc/packages
+        source inc/rmpackages
 
-        if [ ! ${UNINSTALL[*]} ]; then
+        if [ ! ${REMOVE[*]} ]; then
             echo -e "Not packages in remove list"
             exit 0
         fi
 
-        echo -e "To remove:\n    ${UNINSTALL[*]}"
+        echo -e "To remove:\n    ${REMOVE[*]}"
         #pamac remove ${UNINSTALL[*]}
         ;;
 
@@ -40,15 +55,16 @@ packages)
     ;;
 
 clone)
-    echo -e "\033[32m-- Copy all local configs to ${STORAGE} --\033[0m"
+    echo -e "\033[32m-- Copy configs to ${STORAGE} repository --\033[0m"
 
     source inc/configs
 
     mkdir -p "${STORAGE}" > /dev/null 2>&1
-    lscopy "${HOME}" "${STORAGE}"
+    lscopy "${LIST[*]}" "${HOME}" "${STORAGE}"
     ;;
 
 deploy)
+    echo -e "\033[32m-- Copy configs from '${STORAGE}' repository --\033[0m"
     ;;
 
 purge)
@@ -58,8 +74,8 @@ purge)
 *)
     echo -e "Usage: manage {packages|clone|deploy|purge} [{install|remove}]"
     echo -e "\tpackages - install and remove all packages from list"
-    echo -e "\tclone    - copy all local configs to repository"
-    echo -e "\tdeploy   - copy repository configs to local"
+    echo -e "\tclone    - copy configs to '${STORAGE}' repository"
+    echo -e "\tdeploy   - copy configs from '${STORAGE}' repository"
     echo -e "\tpurge    - clear repository configs"
     ;;
 esac
