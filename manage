@@ -6,13 +6,22 @@ lscopy() {
     for item in ${1}
     do
         srce="${2}/${item}"
-        dest="${3}/$(dirname $item)"
+        dest="${3}/${item}"
+        path="${3}/$(dirname $item)"
 
         if [ -e ${srce} ]; then
-            echo -e " -  copy: ${srce} to ${dest}"
+            if [ -e ${dest} ]; then
+                DIFF=$((`date -r "${srce}" '+%s'` - `date -r "${dest}" '+%s'`))
 
-            mkdir -p "${dest}" > /dev/null 2>&1
-            cp -rf "${srce}" "${dest}"
+                if [ $DIFF -eq 0 ]; then
+                    echo -e " -  file ${srce} not modified"
+                else
+                    cp -rf "${srce}" "${path}" && echo -e "\033[33m -  file ${srce} was modified\033[0m"
+                fi
+            else
+                mkdir -p "${path}" > /dev/null 2>&1
+                cp -rf "${srce}" "${path}" && echo -e "\033[32m -  copy: ${srce} to ${path}\033[0m"
+            fi
         else
             echo -e "\033[31m -  path '${srce}' not exists\033[0m"
         fi
@@ -58,7 +67,7 @@ packages)
 
 backup)
     source inc/configs
-    echo -e "\033[32m-- Copy configs to ${STORAGE} repository --\033[0m"
+    echo -e "-- Copy configs to ${STORAGE} repository --"
 
     mkdir -p "${STORAGE}" > /dev/null 2>&1
     lscopy "${LIST[*]}" "${HOME}" "${STORAGE}"
@@ -66,7 +75,7 @@ backup)
 
 restore)
     source inc/configs
-    echo -e "\033[32m-- Copy configs from '${STORAGE}' repository --\033[0m"
+    echo -e "-- Copy configs from '${STORAGE}' repository --"
 
     lscopy "${LIST[*]}" "${STORAGE}" "${HOME}"
     ;;
