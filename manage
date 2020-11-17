@@ -78,6 +78,8 @@ backup)
 
     mkdir -p "${STORAGE}" > /dev/null 2>&1
     lscopy "${LIST}" "${HOME}" "${STORAGE}"
+
+    [ -d .git ] && git status
     ;;
 
 restore)
