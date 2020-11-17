@@ -49,13 +49,13 @@ packages)
         source inc/rmpackages
         echo -e "\033[33m-- Remove packages from list --\033[0m"
 
-        if [ ! ${REMOVE[*]} ]; then
+        if [ ! ${REMOVED_PKGS[*]} ]; then
             echo -e "Not packages in remove list"
             exit 0
         fi
 
-        echo -e "To remove:\n    ${REMOVE[*]}"
-        pamac remove ${UNINSTALL[*]}
+        echo -e "To remove:\n    ${REMOVED_PKGS[*]}"
+        pamac remove ${REMOVED_PKGS[*]}
         ;;
 
     *)
@@ -69,15 +69,27 @@ backup)
     source inc/configs
     echo -e "-- Copy configs to ${STORAGE} repository --"
 
+    LIST="${MAIN[*]}"
+
+    if [[ $2 = "all" ]]; then
+        LIST="${MAIN[*]} ${EXTRA[*]}"
+    fi
+
     mkdir -p "${STORAGE}" > /dev/null 2>&1
-    lscopy "${LIST[*]}" "${HOME}" "${STORAGE}"
+    lscopy "${LIST}" "${HOME}" "${STORAGE}"
     ;;
 
 restore)
     source inc/configs
     echo -e "-- Copy configs from '${STORAGE}' repository --"
 
-    lscopy "${LIST[*]}" "${STORAGE}" "${HOME}"
+    LIST="${MAIN[*]}"
+
+    if [[ $2 = "all" ]]; then
+        LIST="${MAIN[*]} ${EXTRA[*]}"
+    fi
+
+    lscopy "${LIST}" "${STORAGE}" "${HOME}"
     ;;
 
 purge)
@@ -86,7 +98,7 @@ purge)
     ;;
 
 *)
-    echo -e "Usage: manage {packages|backup|restore|purge} [{install|remove}]"
+    echo -e "Usage: manage {packages|backup|restore|purge} [{install|remove}] [all]"
     echo -e "\tpackages - install and remove all packages from list"
     echo -e "\tbackup   - backup user configs to '${STORAGE}' repository"
     echo -e "\trestore  - restore user configs from '${STORAGE}' repository"

@@ -1,5 +1,5 @@
 
-LIST=(
+MAIN=(
     ".config/bspwm"
     ".config/geany"
     ".config/gtk-3.0"
@@ -17,16 +17,19 @@ LIST=(
     ".local/share/gtksourceview-3.0"
     ".local/share/xfce4/terminal"
 
-    ".kbled"
     ".moc/config"
     ".shell"
     ".xrdb"
 
-    ".fehbg"
     ".fonts.conf"
     ".vimrc"
     ".Xresources"
     ".xsettingsd"
+)
+
+EXTRA=(
+    ".kbled"
+    ".fehbg"
     ".zshrc"
 )
 
