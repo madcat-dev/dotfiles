@@ -1,13 +1,33 @@
 #!/bin/sh
 
-source resources/packages
+case $1 in
+package)
+    source resources/packages
 
-echo -e "Fonts:\n\t${FONTS[*]}"
-echo -e "Themes:\n\t${THEMES[*]}"
-echo -e "Utils:\n\t${UTILS[*]}"
-echo -e "Media:\n\t${MEDIA[*]}"
-echo -e "WM:\n\t${WM[*]}"
+    echo -e "Fonts:\n\t${FONTS[*]}"
+    echo -e "Themes:\n\t${THEMES[*]}"
+    echo -e "Utils:\n\t${UTILS[*]}"
+    echo -e "Media:\n\t${MEDIA[*]}"
+    echo -e "WM:\n\t${WM[*]}"
+    echo -e ""
+    echo -e "To remove:\n\t${UNINSTALL[*]}"
+
+    exit 0
+    pamac install --as-deps ${FONTS[*]} ${THEMES[*]} ${UTILS[*]} ${MEDIA[*]} ${WM[*]}
+
+    pamac remove ${UNINSTALL[*]}
+    ;;
+clone)
+    ;;
+deploy)
+    ;;
+*)
+    echo -e "Usage: manage {package|clone|deploy}"
+    echo -e "\tpackage - install and remove all packages from list"
+    echo -e "\tclone   - copy all local configs to repository"
+    echo -e "\tdeploy  - copy repository config to local"
+    ;;
+esac
 
 
 exit 0
-pamac install --as-deps ${FONTS[*]} ${THEMES[*]} ${UTILS[*]} ${MEDIA[*]} ${WM[*]}

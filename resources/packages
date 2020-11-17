@@ -75,3 +75,6 @@ WM=(
     "bspwm"                 # Tiling window manager based on binary space partitioning
 )
 
+UNINSTALL=(
+)
+
