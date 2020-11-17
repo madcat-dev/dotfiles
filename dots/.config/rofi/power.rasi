@@ -5,9 +5,10 @@ configuration {
 
 * {
     background-color: #2E3440;
+    text-color: #ECEFF4;
+
     background-selected: #3B4252;
-    foreground: #ECEFF4;
-    foreground-selected: #88C0D0;
+    text-selected: #88C0D0;
 
     lines: 4;
 }
@@ -29,7 +30,6 @@ listview {
 
 element {
     padding: 12;
-    text-color: @foreground;
 }
 
 element-icon {
@@ -39,6 +39,6 @@ element-icon {
 
 element selected {
     background-color: @background-selected;
-    text-color: @foreground-selected;
+    text-color: @text-selected;
 }
 
