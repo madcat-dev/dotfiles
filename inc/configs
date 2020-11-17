@@ -1,0 +1,47 @@
+
+LIST=(
+    ".config/bspwm"
+    ".config/geany"
+    ".config/gtk-3.0"
+    ".config/kitty"
+    ".config/mc/ini"
+    ".config/mpv"
+    ".config/polybar"
+    ".config/ranger"
+    ".config/rofi"
+    ".config/sxhkd"
+
+    ".config/picom.conf"
+    ".config/pulsemixer.cfg"
+
+    ".local/share/gtksourceview-3.0"
+    ".local/share/xfce4/terminal"
+
+    ".kbled"
+    ".moc/config"
+    ".shell"
+    ".xrdb"
+
+    ".fehbg"
+    ".fonts.conf"
+    ".vimrc"
+    ".Xresources"
+    ".xsettingsd"
+    ".zshrc"
+)
+
+
+lscopy() {
+    for item in ${LIST[*]}
+    do
+        srce="${1}/${item}"
+        dest="${2}/$(dirname $item)"
+
+        echo -e " -  copy: ${srce} to ${dest}"
+
+        mkdir -p "${dest}" > /dev/null 2>&1
+
+        cp -rf "${srce}" "${dest}"
+    done
+}
+

@@ -1,31 +1,66 @@
 #!/bin/sh
 
+STORAGE="./dots"
+
 case $1 in
-package)
-    source resources/packages
+packages)
+    case $2 in
+    install)
+        echo -e "\033[32m-- Install packages from list --\033[0m"
 
-    echo -e "Fonts:\n\t${FONTS[*]}"
-    echo -e "Themes:\n\t${THEMES[*]}"
-    echo -e "Utils:\n\t${UTILS[*]}"
-    echo -e "Media:\n\t${MEDIA[*]}"
-    echo -e "WM:\n\t${WM[*]}"
-    echo -e ""
-    echo -e "To remove:\n\t${UNINSTALL[*]}"
+        source inc/packages
 
-    exit 0
-    pamac install --as-deps ${FONTS[*]} ${THEMES[*]} ${UTILS[*]} ${MEDIA[*]} ${WM[*]}
+        echo -e "Fonts:\n    ${FONTS[*]}"
+        echo -e "Themes:\n    ${THEMES[*]}"
+        echo -e "Utils:\n    ${UTILS[*]}"
+        echo -e "Media:\n    ${MEDIA[*]}"
+        echo -e "WM:\n    ${WM[*]}"
+        #pamac install --as-deps ${FONTS[*]} ${THEMES[*]} ${UTILS[*]} ${MEDIA[*]} ${WM[*]}
+        ;;
 
-    pamac remove ${UNINSTALL[*]}
+    remove)
+        echo -e "\033[33m-- Remove packages from list --\033[0m"
+
+        source inc/packages
+
+        if [ ! ${UNINSTALL[*]} ]; then
+            echo -e "Not packages in remove list"
+            exit 0
+        fi
+
+        echo -e "To remove:\n    ${UNINSTALL[*]}"
+        #pamac remove ${UNINSTALL[*]}
+        ;;
+
+    *)
+        echo -e "Usage: manage packages {install|remove}"
+        ;;
+
+    esac
     ;;
+
 clone)
+    echo -e "\033[32m-- Copy all local configs to ${STORAGE} --\033[0m"
+
+    source inc/configs
+
+    mkdir -p "${STORAGE}" > /dev/null 2>&1
+    lscopy "${HOME}" "${STORAGE}"
     ;;
+
 deploy)
     ;;
+
+purge)
+    echo -e "\033[31m-- Purge ${STORAGE} directory --\033[0m"
+    rm -rf ${STORAGE}
+    ;;
 *)
-    echo -e "Usage: manage {package|clone|deploy}"
-    echo -e "\tpackage - install and remove all packages from list"
-    echo -e "\tclone   - copy all local configs to repository"
-    echo -e "\tdeploy  - copy repository config to local"
+    echo -e "Usage: manage {packages|clone|deploy|purge} [{install|remove}]"
+    echo -e "\tpackages - install and remove all packages from list"
+    echo -e "\tclone    - copy all local configs to repository"
+    echo -e "\tdeploy   - copy repository configs to local"
+    echo -e "\tpurge    - clear repository configs"
     ;;
 esac
 
