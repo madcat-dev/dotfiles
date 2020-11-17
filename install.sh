@@ -1,5 +1,4 @@
-#!/bin/bash
-
+#!/bin/sh
 
 FONTS=(
     "terminus-font"
@@ -84,4 +83,6 @@ echo -e "Utils:\n\t${UTILS[*]}"
 echo -e "Media:\n\t${MEDIA[*]}"
 echo -e "WM:\n\t${WM[*]}"
 
+
+exit 0
 pamac install --as-deps ${FONTS[*]} ${THEMES[*]} ${UTILS[*]} ${MEDIA[*]} ${WM[*]}
