@@ -64,7 +64,6 @@ xsettingsd &
 ## Light screen locker, use with xflock4
 pkill light-locker
 light-locker &
-pamac-tray &
 
 /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1 &
 
@@ -74,10 +73,10 @@ mocp --server > /dev/null 2>&1
 
 
 ## Applets ##
-# network applet
 nm-applet &
 xfce4-power-manager &
 blueman-applet &
+pamac-tray &
 
 
 ## set the wallpaper
