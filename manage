@@ -62,10 +62,17 @@ install)
 
     swap)
         echo -e "\033[32m-- Install Systemd SWAP packages --\033[0m"
+
         sudo pacman -S systemd-swap
-        sudo cp etc/systemd/swap.conf /etc/systemd/
+        sudo cp -f ./etc/systemd/swap.conf /etc/systemd/
         sudo systemctl daemon-reload
+        sudo systemctl enable systemd-swap
         sudo systemctl restart systemd-swap
+        systemctl status systemd-swap
+        ;;
+    freetype)
+        echo -e "\033[32m-- Copy freetype config --\033[0m"
+        sudo cp ./etc/profile.d/freetype2.sh /etc/profile.d
         ;;
     *)
         echo -e "Usage: manage install {dev|base|swap}"
@@ -123,7 +130,7 @@ clean)
 
 *)
     echo -e "Usage: manage {install|remove|backup|restore|clean}"
-    echo -e "       manage install {dev|base|swap}"
+    echo -e "       manage install {dev|base|swap|freetype}"
     echo -e "       manage {backup|restore} [all]"
     ;;
 esac
