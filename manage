@@ -65,7 +65,8 @@ install)
 
         sudo pacman -S systemd-swap && \
             sudo cp -f ./etc/systemd/swap.conf /etc/systemd/ && \
-            sudo systemctl enable --now systemd-swap
+            sudo systemctl enable systemd-swap && \
+            sudo systemctl restart systemd-swap
 
         systemctl status systemd-swap
         ;;
