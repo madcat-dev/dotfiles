@@ -62,12 +62,12 @@ install)
 
     swap)
         echo -e "\033[32m-- Install Systemd SWAP packages --\033[0m"
+        sudo pacman -S systemd-swap
 
-        sudo pacman -S systemd-swap && \
-            sudo cp -f ./etc/systemd/swap.conf /etc/systemd/ && \
-            sudo systemctl enable systemd-swap && \
-            sudo systemctl restart systemd-swap
+        sudo mkdir -p /etc/systemd/swap.conf.d/
+        sudo bash -c 'echo -e "zswap_enabled=0\nzram_enabled=1\nswapfc_enabled=1" > /etc/systemd/swap.conf.d/myswap.conf'
 
+        sudo systemctl enable systemd-swap && sudo systemctl restart systemd-swap
         systemctl status systemd-swap
         ;;
 
