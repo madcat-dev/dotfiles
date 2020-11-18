@@ -29,41 +29,62 @@ lscopy() {
     done
 }
 
+install() {
+    LIST=${2}
+
+    if [ ! "${LIST}" ]; then
+        echo -e "Not packages in ${1} list"
+        return 1
+    fi
+
+    echo -e "\033[32m-- Install ${1} packages --\033[0m"
+    echo -e "Packages:\n\t${LIST}"
+
+    #pamac install ${LIST}
+}
+
 
 case $1 in
-packages)
+install)
+    source inc/packages
+
     case $2 in
-    install)
-        source inc/packages
-        echo -e "\033[32m-- Install packages from list --\033[0m"
-
-        echo -e "Fonts:\n    ${FONTS[*]}"
-        echo -e "Themes:\n    ${THEMES[*]}"
-        echo -e "Utils:\n    ${UTILS[*]}"
-        echo -e "Media:\n    ${MEDIA[*]}"
-        echo -e "WM:\n    ${WM[*]}"
-
-        pamac install --as-deps ${FONTS[*]} ${THEMES[*]} ${UTILS[*]} ${MEDIA[*]} ${WM[*]}
+    dev)
+        echo -e "\033[32m-- Install Base-devel packages --\033[0m"
+        sudo pacman -S base-devel
+        install "Devel" "${DEVEL[*]}"
         ;;
 
-    purge)
-        source inc/rmpackages
-        echo -e "\033[33m-- Remove packages from list --\033[0m"
-
-        if [ ! ${PURGE_PKGS[*]} ]; then
-            echo -e "Not packages in remove list"
-            exit 0
-        fi
-
-        echo -e "To remove:\n    ${PURGE_PKGS[*]}"
-        pamac remove ${PURGE_PKGS[*]}
+    base)
+        LIST="${DEPS[*]} ${FONTS[*]} ${THEMES[*]} ${UTILS[*]} ${MEDIA[*]} ${WM[*]}"
+        install "Base" "${LIST}"
         ;;
 
+    swap)
+        echo -e "\033[32m-- Install Systemd SWAP packages --\033[0m"
+        sudo pacman -S systemd-swap
+        sudo cp etc/systemd/swap.conf /etc/systemd/
+        sudo systemctl daemon-reload
+        sudo systemctl restart systemd-swap
+        ;;
     *)
-        echo -e "Usage: manage packages {install|purge}"
+        echo -e "Usage: manage install {dev|base|swap}"
         ;;
 
     esac
+    ;;
+
+remove)
+    source inc/rmpackages
+    echo -e "\033[33m-- Remove packages from list --\033[0m"
+
+    if [ ! ${PURGE_PKGS[*]} ]; then
+        echo -e "Not packages in remove list"
+        exit 0
+    fi
+
+    echo -e "To remove:\n    ${PURGE_PKGS[*]}"
+    pamac remove ${PURGE_PKGS[*]}
     ;;
 
 backup)
@@ -95,17 +116,15 @@ restore)
     lscopy "${LIST}" "${STORAGE}" "${HOME}"
     ;;
 
-purge)
-    echo -e "\033[31m-- Purge ${STORAGE} directory --\033[0m"
+clean)
+    echo -e "\033[31m-- Clean ${STORAGE} directory --\033[0m"
     rm -rf ${STORAGE}
     ;;
 
 *)
-    echo -e "Usage: manage {packages|backup|restore|purge} [{install|purge}] [all]"
-    echo -e "\tpackages - install and remove all packages from list"
-    echo -e "\tbackup   - backup user configs to '${STORAGE}' repository"
-    echo -e "\trestore  - restore user configs from '${STORAGE}' repository"
-    echo -e "\tpurge    - clear repository configs"
+    echo -e "Usage: manage {install|remove|backup|restore|clean}"
+    echo -e "       manage install {dev|base|swap}"
+    echo -e "       manage {backup|restore} [all]"
     ;;
 esac
 

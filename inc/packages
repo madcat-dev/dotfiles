@@ -7,6 +7,18 @@ PREINSTALLED=(
     "gparted"
 )
 
+DEPS=(
+)
+
+DEVEL=(
+    "ctags"
+    "clang"
+    "python-pip"
+
+    "gvim"
+    "geany"                 # Fast and lightweight IDE
+)
+
 FONTS=(
     "terminus-font"
     "ttf-font-awesome"
@@ -40,16 +52,6 @@ UTILS=(
     "transmission-gtk"
     "seahorse"              # NOME application for managing PGP keys
     "ranger"                # A simple, vim-like file manager
-)
-
-DEVEL=(
-    "base-devel"
-    "ctags"
-    "clang"
-    "python-pip"
-
-    "gvim"
-    "geany"                 # Fast and lightweight IDE
 )
 
 
