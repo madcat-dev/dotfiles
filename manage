@@ -46,21 +46,21 @@ packages)
         pamac install --as-deps ${FONTS[*]} ${THEMES[*]} ${UTILS[*]} ${MEDIA[*]} ${WM[*]}
         ;;
 
-    remove)
+    purge)
         source inc/rmpackages
         echo -e "\033[33m-- Remove packages from list --\033[0m"
 
-        if [ ! ${REMOVED_PKGS[*]} ]; then
+        if [ ! ${PURGE_PKGS[*]} ]; then
             echo -e "Not packages in remove list"
             exit 0
         fi
 
-        echo -e "To remove:\n    ${REMOVED_PKGS[*]}"
-        pamac remove ${REMOVED_PKGS[*]}
+        echo -e "To remove:\n    ${PURGE_PKGS[*]}"
+        pamac remove ${PURGE_PKGS[*]}
         ;;
 
     *)
-        echo -e "Usage: manage packages {install|remove}"
+        echo -e "Usage: manage packages {install|purge}"
         ;;
 
     esac
@@ -101,7 +101,7 @@ purge)
     ;;
 
 *)
-    echo -e "Usage: manage {packages|backup|restore|purge} [{install|remove}] [all]"
+    echo -e "Usage: manage {packages|backup|restore|purge} [{install|purge}] [all]"
     echo -e "\tpackages - install and remove all packages from list"
     echo -e "\tbackup   - backup user configs to '${STORAGE}' repository"
     echo -e "\trestore  - restore user configs from '${STORAGE}' repository"

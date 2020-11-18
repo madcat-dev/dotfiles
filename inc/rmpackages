@@ -1,5 +1,5 @@
 
-REMOVE=(
+PURGE_PKGS=(
     "midori"    # Lightweight web browser
     "parole"    # Modern media player based on the GStreamer framework
     "qpdfview"  # A tabbed PDF viewer using the poppler library
