@@ -40,7 +40,7 @@ install() {
     echo -e "\033[32m-- Install ${1} packages --\033[0m"
     echo -e "Packages:\n\t${LIST}"
 
-    #pamac install ${LIST}
+    pamac install ${LIST}
 }
 
 
