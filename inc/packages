@@ -1,3 +1,11 @@
+PREINSTALLED=(
+    "htop"  "wget" "git" "zsh" "curl"
+    "unrar" "p7zip"
+    "exfat-utils"
+    "imagemagick"           # An image viewing/manipulation program
+    "mousepad"              # Simple text editor for Xfce
+    "gparted"
+)
 
 FONTS=(
     "terminus-font"
@@ -15,30 +23,22 @@ THEMES=(
 )
 
 UTILS=(
-    "zsh"
-    "exfat-utils"
     "xorg-xrandr"
     "xorg-xev"
     "xautomation"
-
-    "w3m" "mc" "htop" "gtop" "curl" "wget" "git" "tig" "tmux"
-    "p7zip" "unrar"
-
+    "w3m" "mc" "gtop" "tig" "tmux"    
     "httpie"                # cURL for humans
-    "imagemagick"           # An image viewing/manipulation program
 
     "networkmanager-l2tp"   # L2TP support for NetworkManager
 
     "kitty"
     "rxvt-unicode"
 
-    "gparted"
     "gnome-calculator"      # GNOME Scientific calculator
     "firefox"
     "telegram-desktop"
     "transmission-gtk"
     "seahorse"              # NOME application for managing PGP keys
-    "mousepad"              # Simple text editor for Xfce
     "ranger"                # A simple, vim-like file manager
 )
 
