@@ -70,9 +70,22 @@ install)
         sudo systemctl restart systemd-swap
         systemctl status systemd-swap
         ;;
+
     freetype)
         echo -e "\033[32m-- Copy freetype config --\033[0m"
         sudo cp ./etc/profile.d/freetype2.sh /etc/profile.d
+        ;;
+
+    vim)
+        echo -e "\033[32m-- Install vim environment --\033[0m"
+        mkdir -p $HOME/.vim/bundle/
+        cp -f ./dots/.vimrc $HOME/
+
+        if [ ! -d $HOME/.vim/bundle/Vundle.vim ]; then
+            git clone https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/Vundle.vim
+        fi
+
+        vim -c VundleUpdate -c qa
         ;;
     *)
         echo -e "Usage: manage install {dev|base|swap}"
