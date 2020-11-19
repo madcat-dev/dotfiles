@@ -89,7 +89,7 @@ install)
         ;;
 
     *)
-        echo -e "Usage: manage install {dev|base|swap}"
+        echo -e "Usage: manage install {dev|base|swap|freetype|vim}"
         ;;
 
     esac
