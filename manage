@@ -2,32 +2,6 @@
 
 STORAGE="./dots"
 
-lscopy() {
-    for item in ${1}
-    do
-        srce="${2}/${item}"
-        dest="${3}/${item}"
-        path="${3}/$(dirname $item)"
-
-        if [ -e ${srce} ]; then
-            if [ -e ${dest} ]; then
-                DIFF=$((`date -r "${srce}" '+%s'` - `date -r "${dest}" '+%s'`))
-
-                if [ $DIFF -eq 0 ]; then
-                    echo -e " -  path ${srce} not modified"
-                    cp -xarf "${srce}" "${path}"
-                else
-                    cp -xarf "${srce}" "${path}" && echo -e "\033[33m -  path ${srce} was modified\033[0m"
-                fi
-            else
-                mkdir -p "${path}" > /dev/null 2>&1
-                cp -xarf "${srce}" "${path}" && echo -e "\033[32m -  copy: ${srce} to ${path}\033[0m"
-            fi
-        else
-            echo -e "\033[31m -  path ${srce} not exists\033[0m"
-        fi
-    done
-}
 
 install() {
     LIST=${2}
@@ -110,6 +84,8 @@ remove)
 
 backup)
     source inc/configs
+    source inc/utils.sh
+
     echo -e "-- Copy configs to ${STORAGE} repository --"
 
     LIST="${MAIN[*]}"
@@ -118,14 +94,16 @@ backup)
         LIST="${MAIN[*]} ${EXTRA[*]}"
     fi
 
-    mkdir -p "${STORAGE}" > /dev/null 2>&1
-    lscopy "${LIST}" "${HOME}" "${STORAGE}"
-
-    [ -d .git ] && git status
+    for item in ${LIST}
+    do
+        rcopy "${HOME}/${item}" "${STORAGE}/${item}"
+    done
     ;;
 
 restore)
     source inc/configs
+    source inc/utils.sh
+
     echo -e "-- Copy configs from '${STORAGE}' repository --"
 
     LIST="${MAIN[*]}"
@@ -134,7 +112,10 @@ restore)
         LIST="${MAIN[*]} ${EXTRA[*]}"
     fi
 
-    lscopy "${LIST}" "${STORAGE}" "${HOME}"
+    for item in ${LIST}
+    do
+        rcopy "${STORAGE}/${item}" "${HOME}/${item}"
+    done
     ;;
 
 clean)
