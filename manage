@@ -89,8 +89,6 @@ status)
 
 backup)
     source inc/configs
-    source inc/utils.sh
-
     echo -e "-- Copy configs to ${STORAGE} repository --"
 
     LIST="${MAIN[*]}"
@@ -101,14 +99,12 @@ backup)
 
     for item in ${LIST}
     do
-        rcopy "${HOME}/${item}" "${STORAGE}/${item}" ${3}
+        ./inc/rcopy.sh "${HOME}/${item}" "${STORAGE}/${item}" ${3}
     done
     ;;
 
 restore)
     source inc/configs
-    source inc/utils.sh
-
     echo -e "-- Copy configs from '${STORAGE}' repository --"
 
     LIST="${MAIN[*]}"
@@ -119,7 +115,7 @@ restore)
 
     for item in ${LIST}
     do
-        rcopy "${STORAGE}/${item}" "${HOME}/${item}"
+        ./inc/rcopy.sh "${STORAGE}/${item}" "${HOME}/${item}"
     done
     ;;
 
