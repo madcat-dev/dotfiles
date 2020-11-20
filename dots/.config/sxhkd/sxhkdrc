@@ -157,6 +157,9 @@ XF86Audio{RaiseVolume,LowerVolume,Mute}
 XF86Audio{Next,Prev,Play,Stop}
 	mocp --{next,previous,toggle-pause,stop}
 
+alt + {Home,End}
+	mocp --{next,previous}
+
 # Take a screenshot
 Print
     scrot 'scrot_%Y-%m-%d-%S_$wx$h.png' -e 'mv $f ~/Desktop/'
