@@ -26,7 +26,7 @@ rcopy() {
                 echo -e "\033[33m -  path ${2} was modified\033[0m"
 
                 if [[ ! $3 = "simular" ]]; then
-                    cp -xarf "${1}" "${2}" && echo -e "\tcopyed: ${2}"
+                    cp -xarf "${1}" "${2}" && echo -e "\t[+] ${2} is copied"
                 fi
             fi
         else
@@ -34,7 +34,7 @@ rcopy() {
 
             if [[ ! $3 = "simular" ]]; then
                 mkdir -p "$(dirname ${2})" > /dev/null 2>&1
-                cp -xarf "${1}" "${2}" && echo -e "\tcopyed: ${2}"
+                cp -xarf "${1}" "${2}" && echo -e "\t[+] ${2} is copied"
             fi
         fi
     fi
