@@ -82,6 +82,11 @@ remove)
     pamac remove ${PURGE_PKGS[*]}
     ;;
 
+status)
+    $0 backup all simular
+    exit 0
+    ;;
+
 backup)
     source inc/configs
     source inc/utils.sh
@@ -96,7 +101,7 @@ backup)
 
     for item in ${LIST}
     do
-        rcopy "${HOME}/${item}" "${STORAGE}/${item}"
+        rcopy "${HOME}/${item}" "${STORAGE}/${item}" ${3}
     done
     ;;
 
@@ -124,7 +129,7 @@ clean)
     ;;
 
 *)
-    echo -e "Usage: manage {install|remove|backup|restore|clean}"
+    echo -e "Usage: manage {install|remove|status|backup|restore|clean}"
     echo -e "       manage install {dev|base|swap|freetype|vim}"
     echo -e "       manage {backup|restore} [all]"
     ;;

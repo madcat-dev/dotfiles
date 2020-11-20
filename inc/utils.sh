@@ -13,22 +13,29 @@ rcopy() {
                 continue
             fi
 
-            rcopy "${1}/${item}" "${2}/${item}"
+            rcopy "${1}/${item}" "${2}/${item}" $3
         done
     else
         if [ -e "${2}" ]; then
-            DIFF=$((`date -r "${1}" '+%s'` - `date -r "${2}" '+%s'`))
+            md5src=($(md5sum ${1}))
+            md5dst=($(md5sum ${2}))
 
-            if [ $DIFF -eq 0 ]; then
+            if [ "$md5src[1]" = "$md5dst[1]" ]; then
                 echo -e " -  path ${2} not modified"
             else
-                cp -xarf "${1}" "${2}" && \
-                    echo -e "\033[33m -  path ${2} was modified\033[0m"
+                echo -e "\033[33m -  path ${2} was modified\033[0m"
+
+                if [[ ! $3 = "simular" ]]; then
+                    cp -xarf "${1}" "${2}" && echo -e "\tcopyed: ${2}"
+                fi
             fi
         else
-            mkdir -p "$(dirname ${2})" > /dev/null 2>&1
-            cp -xarf "${1}" "${2}" && \
-                echo -e "\033[32m -  copy: ${1} to ${2}\033[0m"
+            echo -e "\033[32m -  copy: ${1} to ${2}\033[0m"
+
+            if [[ ! $3 = "simular" ]]; then
+                mkdir -p "$(dirname ${2})" > /dev/null 2>&1
+                cp -xarf "${1}" "${2}" && echo -e "\tcopyed: ${2}"
+            fi
         fi
     fi
 }

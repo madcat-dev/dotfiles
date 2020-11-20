@@ -122,6 +122,15 @@ super + alt + shift + {h,j,k,l}
 super + {Left,Down,Up,Right}
 	bspc node -v {-20 0,0 20,0 -20,20 0}
 
+# resize window
+super + alt + {Left,Down,Up,Right}
+	{\
+        bspc node -z left 20 0    && bspc node -z right -20 0,\
+        bspc node -z bottom 0 -20 && bspc node -z top 0 20,   \
+        bspc node -z top 0 -20    && bspc node -z bottom 0 20,\
+        bspc node -z right 20 0   && bspc node -z left -20 0  \
+    }
+
 ############### Keyboard Function Keys ###############
 
 # Copy and paste (use 'xautomation' package)
