@@ -60,6 +60,7 @@ MEDIA=(
     "moc-pulse-svn"         # An ncurses console audio player with support for pulseaudio (SVN)
     "mpv"                   # Cross-platform media player
     "feh"                   # Fast and light imlib2-based image viewer
+    "scrot"                 # Simple command-line screenshot utility for X
     "evince"                # Document viewer (
                             #   PDF, Postscript, djvu, tiff, dvi, XPS, 
                             #   SyncTex support with gedit, 

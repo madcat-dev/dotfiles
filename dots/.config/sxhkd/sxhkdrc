@@ -149,5 +149,5 @@ alt + Print
 
 # Take a screenshot with interactively choose a window or rectangle
 shift + Print
-    scrot -s 'scrot_%Y-%m-%d-%S_$wx$h.png' -e 'mv $f ~/Desktop/'
+    sleep 1 && scrot -s 'scrot_%Y-%m-%d-%S_$wx$h.png' -e 'mv $f ~/Desktop/'
 
