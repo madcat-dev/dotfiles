@@ -39,6 +39,7 @@ UTILS=(
     "xorg-xev"
     "xautomation"
     "w3m" "mc" "gtop" "tig" "tmux"    
+    "grc"                   # Yet another colouriser for beautifying your logfiles or output of commands
     "httpie"                # cURL for humans
 
     "networkmanager-l2tp"   # L2TP support for NetworkManager
