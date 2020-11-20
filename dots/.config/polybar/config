@@ -71,17 +71,19 @@ cursor-scroll = ns-resize
 
 
 [bar/layouts]
+font-0 = Noto:style=Regular:size=12
 inherit = bar/default
-width = 17.5%
+width = 17%
 
 modules-left = bspwm
-modules-center = empty
-modules-right = empty
+foreground = #aad8dee9
+background = #00000000
+
 
 [bar/top]
 inherit = bar/default
 width = 70%
-offset-x = 18.75%
+offset-x = 17%
 
 modules-left = mocp
 modules-center = xwindow
@@ -90,16 +92,15 @@ modules-right = pulseaudio pulsemixer xkeyboard date powermenu
 
 [bar/tray]
 inherit = bar/default
-width = 10%
-offset-x = 90%
+width = 12%
+offset-x = 88%
 
-modules-left = empty
 modules-center = empty
-modules-right = empty
+background = #00000000
 
 tray-position = center
 tray-padding = 10
-tray-background = ${colors.background}
+tray-background = #00000000
 
 
 [module/empty]
@@ -125,8 +126,8 @@ label-indicator-foreground = ${colors.alert}
 type = internal/bspwm
 
 label-focused = %name%
-label-focused-background = ${colors.background-alt}
-label-focused-underline= ${colors.primary}
+label-focused-foreground = #4c566a
+label-focused-background = #00000000
 label-focused-padding = 2
 
 label-occupied = %name%
@@ -137,7 +138,7 @@ label-urgent-background = ${colors.alert}
 label-urgent-padding = 2
 
 label-empty = %name%
-label-empty-foreground = ${colors.foreground-alt}
+label-empty-foreground = #55d8dee9
 label-empty-padding = 2
 
 
