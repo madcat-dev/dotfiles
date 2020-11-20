@@ -33,7 +33,7 @@ else
 
         if [[ ! $3 = "simular" ]]; then
             mkdir -p "$(dirname ${2})" > /dev/null 2>&1
-            cp -xarf "${1}" "${2}" && echo -e "[*]\t ${2} is copied"
+            cp -xarf "${1}" "${2}" && echo -e "[+]\t ${2} is copied"
         fi
     fi
 fi

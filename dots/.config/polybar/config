@@ -71,19 +71,19 @@ cursor-scroll = ns-resize
 
 
 [bar/layouts]
-font-0 = Noto:style=Regular:size=12
+font-0 = Noto:style=Regular:size=10
 inherit = bar/default
-width = 17%
+width = 12%
 
 modules-left = bspwm
-foreground = #aad8dee9
+foreground = #d8dee9
 background = #00000000
 
 
 [bar/top]
 inherit = bar/default
-width = 70%
-offset-x = 17%
+width = 74%
+offset-x = 13%
 
 modules-left = mocp
 modules-center = xwindow
@@ -138,7 +138,7 @@ label-urgent-background = ${colors.alert}
 label-urgent-padding = 2
 
 label-empty = %name%
-label-empty-foreground = #55d8dee9
+label-empty-foreground = #b8bec9
 label-empty-padding = 2
 
 
