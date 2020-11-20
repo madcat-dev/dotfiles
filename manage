@@ -20,7 +20,7 @@ install() {
 
 case $1 in
 install)
-    source inc/packages
+    source inc/PACKAGES
 
     case $2 in
     dev)
@@ -70,16 +70,16 @@ install)
     ;;
 
 remove)
-    source inc/rmpackages
+    source inc/PACKAGES
     echo -e "\033[33m-- Remove packages from list --\033[0m"
 
-    if [ ! ${PURGE_PKGS[*]} ]; then
+    if [ ! ${REMOVE_PKGS[*]} ]; then
         echo -e "Not packages in remove list"
         exit 0
     fi
 
-    echo -e "To remove:\n    ${PURGE_PKGS[*]}"
-    pamac remove ${PURGE_PKGS[*]}
+    echo -e "To remove:\n    ${REMOVE_PKGS[*]}"
+    pamac remove ${REMOVE_PKGS[*]}
     ;;
 
 status)
@@ -88,7 +88,7 @@ status)
     ;;
 
 backup)
-    source inc/configs
+    source inc/CONFIGS
     echo -e "-- Copy configs to ${STORAGE} repository --"
 
     LIST="${MAIN[*]}"
@@ -104,7 +104,7 @@ backup)
     ;;
 
 restore)
-    source inc/configs
+    source inc/CONFIGS
     echo -e "-- Copy configs from '${STORAGE}' repository --"
 
     LIST="${MAIN[*]}"

@@ -1,3 +1,5 @@
+#!/bin/sh
+
 PREINSTALLED=(
     "htop"  "wget" "git" "zsh" "curl"
     "unrar" "p7zip"
@@ -77,4 +79,11 @@ WM=(
     "polybar"               # A fast and easy-to-use status bar
     "numlockx"              # Turns on the numlock key in X11
     "bspwm"                 # Tiling window manager based on binary space partitioning
+)
+
+
+REMOVE_PKGS=(
+    "midori"    # Lightweight web browser
+    "parole"    # Modern media player based on the GStreamer framework
+    "qpdfview"  # A tabbed PDF viewer using the poppler library
 )
