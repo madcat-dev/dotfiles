@@ -17,6 +17,11 @@ super + Escape
 # lock screen
 ctrl + alt + Delete
     xflock4
+
+# Change keyboard language
+super + space
+    {setxkbmap ru, setxkbmap us}
+
 #
 # bspwm hotkeys
 #

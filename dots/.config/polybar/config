@@ -151,7 +151,7 @@ date-alt = "%Y-%m-%d "
 time = "%H:%M"
 time-alt = "%H:%M:%S"
 
-format-underline = ${xrdb:nord_frost2:#0a6cf5}
+format-underline = ${xrdb:nord_aurora3:#a3be8c}
 label = %date%%time%
 
 
@@ -190,16 +190,18 @@ format = <label>
 format-foreground = ${xrdb:nord_orange:#ebcb8b}
 exec = echo ""
 tail = false
-click-left = ~/.config/polybar/power.sh
+click-left = ~/.config/polybar/power.sh &
 
 
 [module/pulsemixer]
 type = custom/script
 format = <label>
 format-foreground = ${xrdb:nord_frost3:#ebcb8b}
-exec = echo ""
+format-underline = ${xrdb:nord_frost2:#0a6cf5}
+exec = echo "PM"
 tail = false
-click-left = urxvt -e pulsemixer
+;click-left = urxvt -e pulsemixer
+click-left = ~/.config/polybar/pulsemixer.sh &
 
 
 [module/mocp]
@@ -207,8 +209,8 @@ type = custom/script
 label = %output:0:50:...%
 format = <label>
 format-prefix = ""
-format-foreground = ${xrdb:nord_frost0:#ebcb8b}
-exec = echo "$(mocp --info | grep '^State:' | sed 's/^State://g'):$(mocp --info | grep '^Title:' | sed 's/^Title://g')"
+format-foreground = ${xrdb:nord_frost1:#ebcb8b}
+exec = ~/.config/polybar/mocp.sh info
 tail = true
 interval = 2.5
-click-left = urxvt -e mocp
+click-left = ~/.config/polybar/mocp.sh &

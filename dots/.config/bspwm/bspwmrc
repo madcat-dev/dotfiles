@@ -48,7 +48,8 @@ pkill sxhkd
 sxhkd &
 
 # keyboard layouts
-setxkbmap -model pc105 -layout us,ru -option grp:win_space_toggle
+#setxkbmap -model pc105 -layout us,ru -option grp:win_space_toggle
+setxkbmap -model pc105 -layout us,ru
 
 # Enable keyboard leds
 [ -x /usr/bin/g810-led ] && g810-led -p .kbled/profile
@@ -64,7 +65,6 @@ xsettingsd &
 ## Light screen locker, use with xflock4
 pkill light-locker
 light-locker &
-
 /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1 &
 
 

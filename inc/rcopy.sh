@@ -16,8 +16,8 @@ if [ -d "${1}" ]; then
     done
 else
     if [ -e "${2}" ]; then
-        md5src=($(md5sum ${1}))
-        md5dst=($(md5sum ${2}))
+        md5src=( $(md5sum ${1}) )
+        md5dst=( $(md5sum ${2}) )
 
         if [ "$md5src[1]" = "$md5dst[1]" ]; then
             echo -e " -  path ${2} not modified"
