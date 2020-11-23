@@ -48,8 +48,7 @@ pkill sxhkd
 sxhkd &
 
 # keyboard layouts
-#setxkbmap -model pc105 -layout us,ru -option grp:win_space_toggle
-setxkbmap -model pc105 -layout us,ru
+setxkbmap -model pc105 -layout us,ru -option grp:win_space_toggle
 
 # Enable keyboard leds
 [ -x /usr/bin/g810-led ] && g810-led -p .kbled/profile
