@@ -81,6 +81,11 @@ WM=(
     "bspwm"                 # Tiling window manager based on binary space partitioning
 )
 
+EXTRA=(
+    "g810-led-git"          # Linux led controller for Logitech G213, G410, G413, 
+                            # G512, G513, G610, G810, G815, G910 and GPRO Keyboards
+)
+
 
 REMOVE_PKGS=(
     "midori"    # Lightweight web browser
