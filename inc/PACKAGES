@@ -69,6 +69,7 @@ MEDIA=(
                             #   comics books (cbr,cbz,cb7 and cbt)
                             # )
     "pulsemixer"            # CLI and curses mixer for pulseaudio
+    "python-mutagen"        # An audio metadata tag reader and writer (python library)
 )
 
 WM=(
