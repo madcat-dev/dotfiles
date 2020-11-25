@@ -19,6 +19,8 @@ DEVEL=(
 
     "gvim"
     "geany"                 # Fast and lightweight IDE
+    "docker"                # Pack, ship and run any application as a lightweight container
+    "docker-compose"        # Fast, isolated development environments using Docker
 )
 
 FONTS=(
