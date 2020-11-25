@@ -13,3 +13,6 @@ export GTK2_RC_FILES="$HOME/.gtkrc-2.0"
 alias mc='mc -d'
 alias mcedit='mcedit -d'
 
+# enable docker BuildKit backend
+export COMPOSE_DOCKER_CLI_BUILD=1
+export DOCKER_BUILDKIT=1
