@@ -93,6 +93,10 @@ Plugin 'VundleVim/Vundle.vim'
     " --- Solidity ---
     Plugin 'tomlion/vim-solidity'
 
+    " --- Dcoker ---
+    Plugin 'skanehira/docker.vim'
+    Plugin 'skanehira/docker-compose.vim'
+
     " --- Others ---
     Plugin 'tmhedberg/matchit'          " переход по тегам <> </>
     Plugin 'matze/vim-move'             " перемещение блоков <C-j> или <C-k>
@@ -214,7 +218,9 @@ set t_Co=256 " 256 colors
 let g:solarized_termcolors=256
 set background=dark
 set termguicolors
-colorscheme nord
+if !empty(glob("~/.vim/bundle/nord-vim/colors/nord.vim"))
+    colorscheme nord
+endif
 
 " Подсвечивать колонку, на которой находится курсор
 " set cursorcolumn
@@ -413,3 +419,28 @@ let g:airline_symbols.paste = 'ρ' " замена 'PASTE'
 let g:airline_symbols.spell = 's'
 let g:airline_symbols.notexists = '∉'
 let g:airline_symbols.dirty='~'
+
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" Docker and Docker-compose
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" open browser command, deafult is 'open'
+" see :h vert
+let g:docker_open_browser_cmd = 'open'
+
+" split temrinal windows, can use vert or tab, etc...
+let g:docker_terminal_open = 'bo'
+
+" open terminal way
+let g:docker_compose_open_terminal_way = 'top'
+
+" check plugin's version when plugin loading.
+" default is checking.
+" If you not want to check, please set 0 to this option.
+let g:docker_plugin_version_check = 0
+
+" this is registry auth info.
+
+" you can also read auth info from json file.
+" if you manage vimrc on GitHub, we recommend using json file.
+let s:docker_auth_file = expand('~/.docker/docker.vim.json')
+let g:docker_registry_auth = json_decode(join(readfile(s:docker_auth_file), "\n"))
