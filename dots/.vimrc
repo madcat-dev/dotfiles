@@ -214,9 +214,12 @@ set t_Co=256 " 256 colors
 let g:solarized_termcolors=256
 set background=dark
 set termguicolors
-if !empty(glob("~/.vim/bundle/nord-vim/colors/nord.vim"))
+
+try
     colorscheme nord
-endif
+catch /.*/
+    colorscheme default
+endtry
 
 " Подсвечивать колонку, на которой находится курсор
 " set cursorcolumn
