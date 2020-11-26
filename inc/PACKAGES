@@ -21,6 +21,7 @@ DEVEL=(
     "geany"                 # Fast and lightweight IDE
     "docker"                # Pack, ship and run any application as a lightweight container
     "docker-compose"        # Fast, isolated development environments using Docker
+    "dry-bin"               # dry is a terminal application to manage Docker containers and images
 )
 
 FONTS=(
