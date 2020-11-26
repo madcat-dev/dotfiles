@@ -14,6 +14,8 @@ export GOPATH=$HOME/.go
 
 export EDITOR=/usr/bin/vim
 
+export SSH_AUTH_SOCK="$XDG_RUNTIME_DIR/ssh-agent.socket"
+
 alias mc='mc -d'
 alias mcedit='mcedit -d'
 
