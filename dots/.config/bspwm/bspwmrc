@@ -52,8 +52,8 @@ setxkbmap -model pc105 -layout us,ru -option grp:win_space_toggle
 
 # Enable keyboard leds
 if [ -x /usr/bin/g810-led ]; then
-    [ $(hostname) = 'node' ] && g810-led -p .kbled/profile.g413
-    [ $(hostname) = 'madcat-i5' ] && g810-led -p .kbled/profile.g213
+    [ $(hostname) = 'node' ] && g810-led -p .kbled/profile.g213
+    [ $(hostname) = 'madcat-i5' ] && g810-led -p .kbled/profile.g413
 fi
 
 # Enable numlock
