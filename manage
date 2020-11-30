@@ -1,6 +1,9 @@
 #!/bin/sh
 
-STORAGE="./dots"
+BASE=$(dirname $0)
+STORAGE="${BASE}/dots"
+
+cd $BASE
 
 
 install() {
@@ -40,15 +43,7 @@ install)
 
     swap)
         echo -e "\033[32m-- Install Systemd SWAP packages --\033[0m"
-        sudo pacman -S systemd-swap
-
-        sudo mkdir -p /etc/systemd/swap.conf.d/
-        sudo /bin/sh -c 'echo -e "zswap_enabled=0\nzram_enabled=1\nswapfc_enabled=1" > /etc/systemd/swap.conf.d/myswap.conf'
-
-        sudo systemctl enable systemd-swap
-        sudo systemctl restart systemd-swap
-
-        systemctl status systemd-swap
+        ./installers/swap.sh
         ;;
 
     freetype)
@@ -58,14 +53,7 @@ install)
 
     vim)
         echo -e "\033[32m-- Install vim environment --\033[0m"
-        mkdir -p $HOME/.vim/bundle/
-        cp -f ./dots/.vimrc $HOME/
-
-        if [ ! -d $HOME/.vim/bundle/Vundle.vim ]; then
-            git clone https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/Vundle.vim
-        fi
-
-        vim +PluginInstall +qall
+        ./installers/vim.sh
         ;;
 
     *)

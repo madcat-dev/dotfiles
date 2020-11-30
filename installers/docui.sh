@@ -2,6 +2,9 @@
 
 VERSION=2.0.4
 
+BASE=$(dirname $0)
+BASE=$(dirname $BASE)
+
 if [ $1 ]; then
     VERSION=$1
 fi
