@@ -88,8 +88,8 @@ pamac-tray &
 export MONITOR=$(xrandr | grep " connected " | awk '{print $1}')
 
 pkill polybar
-polybar layouts &
 polybar top &
+polybar layouts &
 polybar tray &
 
 ## Reload compoze manager
