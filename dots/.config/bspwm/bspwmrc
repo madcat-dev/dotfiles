@@ -59,7 +59,6 @@ fi
 # Enable numlock
 numlockx on
 
-
 ## reload the xsettingsd, a minimal x settings daemon
 pkill xsettingsd
 xsettingsd &
@@ -69,17 +68,14 @@ pkill light-locker
 light-locker &
 /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1 &
 
-
 ## Music player
 mocp --server > /dev/null 2>&1
-
 
 ## Applets ##
 nm-applet &
 xfce4-power-manager &
 blueman-applet &
 pamac-tray &
-
 
 ## set the wallpaper
 ~/.fehbg
@@ -94,5 +90,5 @@ polybar tray &
 
 ## Reload compoze manager
 pkill picom
-picom -f --experimental-backends &
+picom &
 
