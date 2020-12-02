@@ -81,6 +81,7 @@ background = #00000000
 inherit = bar/default
 width = 74%
 offset-x = 13%
+background = #dd2E3440
 
 modules-left = mocp
 modules-center = xwindow
