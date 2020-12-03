@@ -21,15 +21,16 @@ MAIN=(
     ".moc/config"
     ".shell"
     ".xrdb"
+    ".kbled"
 
     ".fonts.conf"
     ".vimrc"
     ".Xresources"
+    ".xprofile"
     ".xsettingsd"
 )
 
 EXTRA=(
-    ".kbled"
     ".fehbg"
     ".zshrc"
 )

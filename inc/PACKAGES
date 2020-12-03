@@ -77,8 +77,7 @@ MEDIA=(
 
 WM=(
     "xsettingsd"            # Provides settings to X11 applications via the XSETTINGS specification
-    #"picom-ibhagwan-git"    # iBhagwan's compton|picom fork (X compositor) with dual_kawase blur and rounded corners
-    "picom-git"             # X compositor (fork of compton) (git-version)
+    "picom-ibhagwan-git"    # iBhagwan's compton|picom fork (X compositor) with dual_kawase blur and rounded corners
     "sxhkd"                 # Simple X hotkey daemon
     "rofi"                  # A window switcher, run dialog and dmenu replacement
     "polybar"               # A fast and easy-to-use status bar

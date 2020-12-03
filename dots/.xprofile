@@ -1,0 +1,26 @@
+#!/bin/bash
+#
+# ~/.xprofile
+#
+
+if [ -x /usr/bin/g810-led ]; then
+    [[ $(lsusb | grep "Gaming Keyboard G213") ]] && g810-led -p ~/.kbled/g213
+    [[ $(lsusb | grep "G413 Gaming Keyboard") ]] && g810-led -p ~/.kbled/g413
+fi
+
+numlockx on
+setxkbmap -model pc105 -layout us,ru -option grp:win_space_toggle
+
+sxhkd &
+xsettingsd &
+light-locker &
+/usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1 &
+
+## Music server
+mocp --server
+
+## set the wallpaper
+~/.fehbg
+
+# compoze manager
+LC_ALL=C picom -b

@@ -42,43 +42,11 @@ bspc rule -a Conky state=floating manage=off
 ## autostart ##
 ###############
 
-## Keyboard ##
-# keybind daemon
-pkill sxhkd
-sxhkd &
-
-# keyboard layouts
-setxkbmap -model pc105 -layout us,ru -option grp:win_space_toggle
-
-# Enable keyboard leds
-if [ -x /usr/bin/g810-led ]; then
-    [[ $(lsusb | grep "Gaming Keyboard G213") ]] && g810-led -p ~/.kbled/profile.g213
-    [[ $(lsusb | grep "Gaming Keyboard G413") ]] && g810-led -p ~/.kbled/profile.g413
-fi
-
-# Enable numlock
-numlockx on
-
-## reload the xsettingsd, a minimal x settings daemon
-pkill xsettingsd
-xsettingsd &
-
-## Light screen locker, use with xflock4
-pkill light-locker
-light-locker &
-/usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1 &
-
-## Music player
-mocp --server > /dev/null 2>&1
-
 ## Applets ##
 nm-applet &
 xfce4-power-manager &
 blueman-applet &
 pamac-tray &
-
-## set the wallpaper
-~/.fehbg
 
 ## Polybar panel
 export MONITOR=$(xrandr | grep " connected " | awk '{print $1}')
@@ -88,13 +56,3 @@ polybar top &
 polybar layouts &
 polybar tray &
 
-## Reload compoze manager
-pkill picom
-if [ -x /usr/local/bin/picom ]; then
-    /usr/local/bin/picom \
-        --experimental-backends \
-        --backend glx \
-        --blur-method dual_kawase &
-else
-    /usr/bin/picom &
-fi
