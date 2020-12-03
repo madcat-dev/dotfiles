@@ -56,6 +56,11 @@ install)
         ./installers/vim.sh
         ;;
 
+    picom)
+        echo -e "\033[32m-- Install iBhagwan's compton|picom fork --\033[0m"
+        ./installers/picom.sh
+        ;;
+
     *)
         echo -e "Usage: manage install {dev|base|swap|freetype|vim}"
         ;;

@@ -90,5 +90,11 @@ polybar tray &
 
 ## Reload compoze manager
 pkill picom
-picom &
-
+if [ -x /usr/local/bin/picom ]; then
+    /usr/local/bin/picom \
+        --experimental-backends \
+        --backend glx \
+        --blur-method dual_kawase &
+else
+    /usr/bin/picom &
+fi
