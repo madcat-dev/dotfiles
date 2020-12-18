@@ -35,8 +35,9 @@ FONTS=(
 )
 
 THEMES=(
-    "adapta-gtk-theme"
+    "fantome-gtk"
     "papirus-icon-theme"
+    "papirus-folders" # https://github.com/PapirusDevelopmentTeam/papirus-folders
 )
 
 UTILS=(
