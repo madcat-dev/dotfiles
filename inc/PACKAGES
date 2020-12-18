@@ -35,7 +35,8 @@ FONTS=(
 )
 
 THEMES=(
-    "adapta-gtk-theme"
+    #"adapta-gtk-theme"
+    "fantome-gtk"
     "papirus-icon-theme"
 )
 
