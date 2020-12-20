@@ -35,11 +35,6 @@ Plugin 'VundleVim/Vundle.vim'
     " с указанием пути к библиотеке libclang
     "let g:clang_library_path='/usr/lib/llvm-6.0/lib/libclang-6.0.so.1'
 
-
-    Plugin 'arcticicestudio/nord-vim'
-    let g:nord_cursor_line_number_background = 1
-
-
     Plugin 'xavierd/clang_complete'
     Plugin 'mh21/errormarker.vim'
     " формат строки с ошибкой для gcc и sdcc, это нужно для errormarker
@@ -77,7 +72,6 @@ Plugin 'VundleVim/Vundle.vim'
 
     " --- AirLine ---
     Plugin 'vim-airline/vim-airline'          " Lean & mean status/tabline for vim
-    Plugin 'vim-airline/vim-airline-themes'
 
     " --- Python ---
     Plugin 'python-mode/python-mode'    " Python mode (docs, refactor, lints, 
@@ -211,12 +205,13 @@ set novisualbell
 " COLOR
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 set t_Co=256 " 256 colors
-let g:solarized_termcolors=256
+"let g:solarized_termcolors=256
 set background=dark
-set termguicolors
+" закоментировать, если используются цвета терминала
+"set termguicolors
 
 try
-    colorscheme nord
+    colorscheme noctu
 catch /.*/
     colorscheme default
 endtry
@@ -392,7 +387,7 @@ let g:jedi#popup_select_first = 0   " disable first select from auto-complete
 " настройки Vim-Airline
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 set laststatus=2
-let g:airline_theme='nord'
+let g:airline_theme='base16'
 let g:airline_powerline_fonts = 1
 let g:airline#extensions#tabline#enabled = 1
 let g:airline#extensions#tabline#formatter = 'unique_tail'

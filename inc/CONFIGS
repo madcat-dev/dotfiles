@@ -25,6 +25,8 @@ MAIN=(
 
     ".fonts.conf"
     ".vimrc"
+    ".vim/colors"
+    ".vim/autoload/airline/themes"
     ".Xresources"
     ".xprofile"
     ".xsettingsd"

@@ -1,5 +1,5 @@
 
-#include ".xrdb/color/nord"
+#include ".xrdb/color/red"
 #include ".xrdb/rofi/nord"
 
 ! -----------------------------------------------------------------------------
