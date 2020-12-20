@@ -1,12 +1,12 @@
 
 * {
-    background-color: #2E3440;
+    background-color: #1E2430;
     text-color: #ECEFF4;
 
     background-selected: #3B4252;
-    text-selected: #88C0D0;
+    text-selected: #BF616A;
 
-    text-prompt: #EBCB8B;
+    text-prompt: #515D73;
 
     lines:   12;
 }

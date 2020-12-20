@@ -17,14 +17,14 @@
 ;==========================================================
 
 [colors]
-background = ${xrdb:nord_polar0:#222}
-background-alt = ${xrdb:nord_polar1:#222}
-foreground = ${xrdb:nord_snow1:#eee}
-foreground-alt = ${xrdb:nord_snow0:#eee}
-primary = ${xrdb:nord_green:#e3be8c}
-secondary = ${xrdb:nord_yellow:#ebcb8b}
-alert = ${xrdb:nord_orange:#d08770}
-error = ${xrdb:nord_red:#bf616a}
+background = #1F242F
+background-alt = #2F343F
+foreground = ${xrdb:color7:#eee}
+foreground-alt = ${xrdb:color15:#eee}
+primary = ${xrdb:color2:#e3be8c}
+secondary = ${xrdb:color3:#ebcb8b}
+alert = #d08770
+error = ${xrdb:color1:#bf616a}
 
 
 [settings]
@@ -48,7 +48,7 @@ fixed-center = false
 background = ${colors.background}
 foreground = ${colors.foreground}
 
-line-size = 3
+line-size = 2
 line-color = #bf616a
 
 padding-left = 2
@@ -115,7 +115,6 @@ type = internal/xkeyboard
 blacklist-0 = num lock
 
 label-layout = %layout%
-label-layout-underline = ${colors.secondary}
 label-indicator-foreground = ${colors.alert}
 
 
@@ -123,7 +122,7 @@ label-indicator-foreground = ${colors.alert}
 type = internal/bspwm
 
 label-focused = %name%
-label-focused-foreground = #4c566a
+label-focused-foreground = #BF616A
 label-focused-background = #00000000
 label-focused-padding = 2
 
@@ -135,7 +134,7 @@ label-urgent-background = ${colors.alert}
 label-urgent-padding = 2
 
 label-empty = %name%
-label-empty-foreground = #b8bec9
+label-empty-foreground = #84828A
 label-empty-padding = 2
 
 
@@ -147,8 +146,6 @@ date =
 date-alt = "%Y-%m-%d "
 time = "%H:%M"
 time-alt = "%H:%M:%S"
-
-format-underline = ${xrdb:nord_aurora3:#a3be8c}
 label = %date%%time%
 
 
@@ -193,8 +190,7 @@ click-left = ~/.config/polybar/power.sh &
 [module/pulsemixer]
 type = custom/script
 format = <label>
-format-foreground = ${xrdb:nord_frost3:#ebcb8b}
-format-underline = ${xrdb:nord_frost2:#0a6cf5}
+format-foreground = ${xrdb:color2:#ebcb8b}
 exec = echo "PM"
 tail = false
 ;click-left = urxvt -e pulsemixer
