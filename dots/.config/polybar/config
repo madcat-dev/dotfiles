@@ -157,7 +157,7 @@ label-volume = VOL %percentage%%
 label-volume-foreground = ${root.foreground}
 
 label-muted = 🔇 muted
-label-muted-foreground = ${xrdb:nord_frost3:#4c566a}
+label-muted-foreground = ${xrdb:color9:#4c566a}
 
 bar-volume-width = 10
 bar-volume-foreground-0 = #a3be8c
@@ -181,7 +181,7 @@ bar-volume-empty-foreground = ${colors.foreground-alt}
 [module/powermenu]
 type = custom/script
 format = <label>
-format-foreground = ${xrdb:nord_orange:#ebcb8b}
+format-foreground = ${xrdb:color1:#ebcb8b}
 exec = echo ""
 tail = false
 click-left = ~/.config/polybar/power.sh &
@@ -190,7 +190,7 @@ click-left = ~/.config/polybar/power.sh &
 [module/pulsemixer]
 type = custom/script
 format = <label>
-format-foreground = ${xrdb:color2:#ebcb8b}
+format-foreground = ${xrdb:color1:#ebcb8b}
 exec = echo "PM"
 tail = false
 ;click-left = urxvt -e pulsemixer
@@ -202,7 +202,7 @@ type = custom/script
 label = %output:0:50:...%
 format = <label>
 format-prefix = ""
-format-foreground = ${xrdb:nord_snow0:#d8dee9}
+format-foreground = ${xrdb:color7:#d8dee9}
 exec = ~/.config/polybar/mocp.sh info
 tail = true
 interval = 2.5
