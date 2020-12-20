@@ -31,7 +31,7 @@ hi SpellRare           ctermfg=11    ctermbg=NONE  cterm=underline
 hi SpellLocal          ctermfg=13    ctermbg=NONE  cterm=underline
 hi NonText             ctermfg=8
 hi LineNr              ctermfg=8     ctermbg=NONE
-hi CursorLineNr        ctermfg=11    ctermbg=0
+hi CursorLineNr        ctermfg=9     ctermbg=NONE
 hi Visual              ctermfg=0     ctermbg=12
 hi IncSearch           ctermfg=0     ctermbg=13    cterm=NONE
 hi Search              ctermfg=0     ctermbg=10
@@ -75,25 +75,25 @@ hi Delimiter       ctermfg=7
 hi Comment         ctermfg=8
 hi Underlined      ctermfg=4   cterm=underline
 hi Type            ctermfg=4
-hi String          ctermfg=11
-hi Keyword         ctermfg=2
+hi String          ctermfg=6
+hi Keyword         ctermfg=15
 hi Todo            ctermfg=15  ctermbg=NONE     cterm=bold,underline
 hi Function        ctermfg=4
 hi Identifier      ctermfg=7   cterm=NONE
-hi Statement       ctermfg=2   cterm=bold
+hi Statement       ctermfg=10  cterm=bold
 hi Constant        ctermfg=13
 hi Number          ctermfg=12
 hi Boolean         ctermfg=4
 hi Special         ctermfg=13
 hi Ignore          ctermfg=0
-hi PreProc         ctermfg=8   cterm=bold
+hi PreProc         ctermfg=9   cterm=bold
 hi! link Operator  Delimiter
 hi! link Error     ErrorMsg
 
 "}}}
 " HTML {{{
-hi htmlTagName              ctermfg=2
-hi htmlTag                  ctermfg=2
+hi htmlTagName              ctermfg=1
+hi htmlTag                  ctermfg=1
 hi htmlArg                  ctermfg=10
 hi htmlH1                   cterm=bold
 hi htmlBold                 cterm=bold
