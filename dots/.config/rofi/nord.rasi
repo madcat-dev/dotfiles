@@ -3,8 +3,8 @@
     background-color: #1E2430;
     text-color: #ECEFF4;
 
-    background-selected: #3B4252;
-    text-selected: #BF616A;
+    background-selected: #713F3F;
+    text-selected: #EEEEEE;
 
     text-prompt: #515D73;
 
