@@ -1,9 +1,9 @@
 #!/bin/bash
 
-_shutdown="Power off\0icon\x1fsystem-shutdown"
-_reboot="Reboot\0icon\x1fsystem-reboot"
-_logout="Logout\0icon\x1fsystem-log-out"
-_lock="Lock screen\0icon\x1fsystem-lock-screen"
+_shutdown="\tPower off\0icon\x1fsystem-shutdown"
+_reboot="\tReboot\0icon\x1fsystem-reboot"
+_logout="\tLogout\0icon\x1fsystem-log-out"
+_lock="\tLock screen\0icon\x1fsystem-lock-screen"
 
 options="${_shutdown}\n${_reboot}\n${_logout}\n${_lock}"
 
