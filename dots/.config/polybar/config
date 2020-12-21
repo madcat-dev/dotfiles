@@ -146,7 +146,7 @@ date =
 date-alt = "%Y-%m-%d "
 time = "%H:%M"
 time-alt = "%H:%M:%S"
-label = %date%%time%
+label = " %date%%time%"
 
 
 [module/pulseaudio]
