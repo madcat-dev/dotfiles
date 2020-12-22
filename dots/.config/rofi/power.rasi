@@ -16,6 +16,9 @@ configuration {
 window {
     width: 15%;
     padding: 16;
+    border-radius: 18px;
+    border: 2px;
+    border-color: #bf616a;
 }
 
 mainbox {

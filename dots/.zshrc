@@ -22,3 +22,7 @@ alias mcedit='mcedit -d'
 # enable docker BuildKit backend
 export COMPOSE_DOCKER_CLI_BUILD=1
 export DOCKER_BUILDKIT=1
+
+# dev nodes envs
+export STORAGE=$HOME/work/data
+
