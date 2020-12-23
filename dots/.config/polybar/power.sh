@@ -10,16 +10,16 @@ options="${_shutdown}\n${_reboot}\n${_logout}\n${_lock}"
 chose=$(echo -e "$options" | rofi -dmenu -theme ~/.config/rofi/power.rasi -format "s")
 
 case $chose in
-'Power off')
+"\tPower off")
     poweroff
     ;;
-'Reboot')
+"\tReboot")
     reboot
     ;;
-'Logout')
+"\tLogout")
     bspc quit
     ;;
-'Lock screen')
+"\tLock screen")
     xflock4
     ;;
 esac
