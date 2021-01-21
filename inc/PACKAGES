@@ -30,7 +30,7 @@ FONTS=(
     "ttf-iosevka-fixed-curly"
     "ttf-polybar-icons"
     "ttf-symbola"
-    "ttf-symbola-infinality"
+    #"ttf-symbola-infinality"
     "ttf-ubuntu-font-family"
 )
 

@@ -11,16 +11,8 @@ fi
 numlockx on
 setxkbmap -model pc105 -layout us,ru -option grp:win_space_toggle
 
-sxhkd &
 xsettingsd &
-light-locker &
 /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1 &
 
 ## Music server
 mocp --server
-
-## set the wallpaper
-~/.fehbg
-
-# compoze manager
-LC_ALL=C picom -b

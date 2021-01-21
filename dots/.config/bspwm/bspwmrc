@@ -33,12 +33,20 @@ bspc rule -a Conky state=floating manage=off
 ###############
 ## autostart ##
 ###############
+pkill sxhkd
+sxhkd &
+
+light-locker &
+
+## set the wallpaper
+~/.fehbg
 
 ## Applets ##
 nm-applet &
 xfce4-power-manager &
 blueman-applet &
 pamac-tray &
+/usr/lib/xfce4/notifyd/xfce4-notifyd &
 
 ## Polybar panel
 export MONITOR=$(xrandr | grep " connected " | awk '{print $1}')
@@ -48,3 +56,6 @@ polybar top &
 polybar layouts &
 polybar tray &
 
+# compoze manager
+pkill picom
+LC_ALL=C picom -b

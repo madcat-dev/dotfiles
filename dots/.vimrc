@@ -21,11 +21,14 @@ filetype off                  " required
 " set the runtime path to include Vundle and initialize
 set rtp+=~/.vim/bundle/Vundle.vim
 call vundle#begin()
-" let Vundle manage Vundle, required
-Plugin 'VundleVim/Vundle.vim'
 " The following are examples of different formats supported.
 " Keep Plugin commands between vundle#begin/end.
 " {
+    " let Vundle manage Vundle, required
+    Plugin 'VundleVim/Vundle.vim'
+
+    " enhances integration with the terminal
+    Plugin 'wincent/terminus'
 
     " Основные зависимости для поддержки плагинов
     " clang, libclang, ctags, ... 
@@ -137,12 +140,14 @@ set nopaste
 " принудительно вырубаем мыша
 set mouse=
 set ttymouse=
+set t_RV=
 " вырубим выполнение команд из открываемого файла
 set nomodeline
 
 " Автоматически обновить содержимое
 set autoread
 autocmd FocusGained * checktime
+
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " ВНЕШНИЙ ВИД
@@ -200,7 +205,6 @@ set foldmethod=syntax
 set t_vb= 
 set novisualbell
 
-
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " COLOR
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -224,7 +228,6 @@ set cursorline
 "let &colorcolumn=&textwidth
 let &colorcolumn=80
 " переопределение цветов темы
-
 
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -306,8 +309,6 @@ imap <F8> <ESC>:bn<CR>
 map  <F8> :bn<CR>
 imap <S-Right> <ESC>:bn<CR>
 map  <S-Right> :bn<CR>
-
-
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Clang-completer
