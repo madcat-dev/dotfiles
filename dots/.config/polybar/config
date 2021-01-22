@@ -70,7 +70,7 @@ cursor-scroll = ns-resize
 [bar/layouts]
 font-0 = Noto:style=Regular:size=10
 inherit = bar/default
-width = 12%
+width = 330px
 
 modules-left = bspwm
 foreground = #d8dee9
@@ -79,8 +79,8 @@ background = #00000000
 
 [bar/top]
 inherit = bar/default
-width = 74%
-offset-x = 13%
+width = 1900px
+offset-x = 330px
 
 modules-left = mocp
 modules-center = xwindow
@@ -89,8 +89,8 @@ modules-right = pulseaudio pulsemixer xkeyboard date powermenu
 
 [bar/tray]
 inherit = bar/default
-width = 12%
-offset-x = 88%
+width = 330px
+offset-x = 2230px
 
 modules-center = empty
 background = #00000000

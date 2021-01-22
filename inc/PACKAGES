@@ -38,6 +38,7 @@ THEMES=(
     "fantome-gtk"
     "papirus-icon-theme"
     "papirus-folders" # https://github.com/PapirusDevelopmentTeam/papirus-folders
+                      # papirus-folders -C yaru --theme Papirus
 )
 
 UTILS=(
