@@ -48,6 +48,7 @@ blueman-applet &
 pamac-tray &
 /usr/lib/xfce4/notifyd/xfce4-notifyd &
 
+## Start polybar with detect monitor and get size
 polybar.sh
 
 # compoze manager
