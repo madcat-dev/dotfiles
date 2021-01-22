@@ -1,9 +1,7 @@
 #!/bin/bash
+## Polybar panel starting script
 
-## Polybar panel
 export MONITOR=$(xrandr -q | grep " connected " | awk '{print $1}')
-
-
 export XRES=$(xrandr -q | grep '\*' | tr 'x' ' ' | awk '{print $1}')
 
 layout_size=330
