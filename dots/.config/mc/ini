@@ -88,7 +88,7 @@ filepos_max_saved_entries=1024
 
 [Layout]
 output_lines=0
-left_panel_size=73
+left_panel_size=80
 top_panel_size=0
 message_visible=true
 keybar_visible=true
@@ -144,7 +144,7 @@ quick_search_mode=2
 select_flags=6
 
 [FindFile]
-file_case_sens=true
+file_case_sens=false
 file_shell_pattern=true
 file_find_recurs=true
 file_skip_hidden=false

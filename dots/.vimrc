@@ -282,33 +282,21 @@ autocmd filetype snippets set nocin
 " Биндинги, команды и прочее
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
-imap <F3> <ESC>:NERDTreeToggle<CR>
-map  <F3> :NERDTreeToggle<CR>
-
-imap <F4> <ESC>:TagbarToggle<CR>
-map  <F4> :TagbarToggle<CR>
-
-imap <F5> <ESC>:call QuickFixToggle()<CR>
-map  <F5> :call QuickFixToggle()<CR>
-
-" TaskList настройки - отобразить список тасков
-imap <F6> <ESC>:TaskList<CR>     
-map  <F6> :TaskList<CR>     
+map <F3> <ESC>:NERDTreeToggle<CR>
+map <F4> <ESC>:TagbarToggle<CR>
+map <F5> <ESC>:call QuickFixToggle()<CR>
+map <F6> <ESC>:TaskList<CR>     
 
 " По нажатию Ctrl+F проверить поект на ошибки                                   
 autocmd filetype c,cpp  map <C-F> :call g:ClangUpdateQuickFix()<CR>
 autocmd filetype python map <C-F> :PymodeLint<CR>
 
 " Переключение буферов
-imap <F7> <ESC>:bp<CR>
-map  <F7> :bp<CR>
-imap <S-Left>  <ESC>:bp<CR>
-map  <S-Left>  :bp<CR>
+map <F7> <ESC>:bp<CR>
+map <S-Left>  <ESC>:bp<CR>
 
-imap <F8> <ESC>:bn<CR>
-map  <F8> :bn<CR>
-imap <S-Right> <ESC>:bn<CR>
-map  <S-Right> :bn<CR>
+map <F8> <ESC>:bn<CR>
+map <S-Right> <ESC>:bn<CR>
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Clang-completer

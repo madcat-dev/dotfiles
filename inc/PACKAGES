@@ -44,6 +44,7 @@ UTILS=(
     "xorg-xrandr"
     "xorg-xev"
     "xautomation"
+    "xdotool"
     "w3m" "mc" "gtop" "tig" "tmux"    
     "grc"                   # Yet another colouriser for beautifying your logfiles or output of commands
     "httpie"                # cURL for humans

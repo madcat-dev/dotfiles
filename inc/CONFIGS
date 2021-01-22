@@ -30,6 +30,11 @@ MAIN=(
     ".Xresources"
     ".xprofile"
     ".xsettingsd"
+
+    ".local/bin/run_if_window_matches"
+    ".local/bin/rofi_power_menu"
+    ".local/bin/mocp.sh"
+    ".local/bin/pulsemixer.sh"
 )
 
 EXTRA=(

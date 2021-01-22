@@ -184,7 +184,7 @@ format = <label>
 format-foreground = ${xrdb:color1:#ebcb8b}
 exec = echo ""
 tail = false
-click-left = ~/.config/polybar/power.sh &
+click-left = rofi_power_menu &
 
 
 [module/pulsemixer]
@@ -193,8 +193,7 @@ format = <label>
 format-foreground = ${xrdb:color1:#ebcb8b}
 exec = echo ""
 tail = false
-;click-left = urxvt -e pulsemixer
-click-left = ~/.config/polybar/pulsemixer.sh &
+click-left = pulsemixer.sh &
 
 
 [module/mocp]
@@ -203,7 +202,7 @@ label = %output:0:50:...%
 format = <label>
 format-prefix = ""
 format-foreground = ${xrdb:color7:#d8dee9}
-exec = ~/.config/polybar/mocp.sh info
+exec = mocp.sh info
 tail = true
 interval = 2.5
-click-left = ~/.config/polybar/mocp.sh &
+click-left = mocp.sh &

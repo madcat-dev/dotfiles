@@ -126,12 +126,19 @@ alt + {Left,Down,Up,Right}
 
 ############### Keyboard Function Keys ###############
 
-# Copy and paste (use 'xautomation' package)
-super + c
-    xte "keyup c" "keyup Super_L" "keydown Control_L" "key Insert" "keyup Control_L" "keydown Super_L"
+# Cut, copy and paste (use 'xautomation' package)
+super + x
+    xte "keyup x" "keyup Super_L" "keydown Control_L" "key x" "keyup Control_L" "keydown Super_L"
 
+#xte "keyup c" "keyup Super_L" "keydown Control_L" "key Insert" "keyup Control_L" "keydown Super_L"
+super + c
+    run_if_window_matches --not --class "(kitty|urxvt|xfce4-terminal)" -- xte "keyup c" "keyup Super_L" "keydown Control_L"                   "key c"                 "keyup Control_L" "keydown Super_L" ; \
+    run_if_window_matches       --class "(kitty|urxvt|xfce4-terminal)" -- xte "keyup c" "keyup Super_L" "keydown Control_L" "keydown Shift_L" "key c" "keyup Shift_L" "keyup Control_L" "keydown Super_L"
+
+#xte "keyup v" "keyup Super_L" "keydown Shift_L" "key Insert" "keyup Shift_L" "keydown Super_L"
 super + v
-    xte "keyup v" "keyup Super_L" "keydown Shift_L" "key Insert" "keyup Shift_L" "keydown Super_L"
+    run_if_window_matches --not --class "(kitty|urxvt|xfce4-terminal)" -- xte "keyup v" "keyup Super_L" "keydown Control_L"                   "key v"                 "keyup Control_L" "keydown Super_L" ; \
+    run_if_window_matches       --class "(kitty|urxvt|xfce4-terminal)" -- xte "keyup v" "keyup Super_L" "keydown Control_L" "keydown Shift_L" "key v" "keyup Shift_L" "keyup Control_L" "keydown Super_L"
 
 # Similar ctrl + r
 super + r
