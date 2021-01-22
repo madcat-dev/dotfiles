@@ -48,13 +48,7 @@ blueman-applet &
 pamac-tray &
 /usr/lib/xfce4/notifyd/xfce4-notifyd &
 
-## Polybar panel
-export MONITOR=$(xrandr | grep " connected " | awk '{print $1}')
-
-pkill polybar
-polybar top &
-polybar layouts &
-polybar tray &
+polybar.sh
 
 # compoze manager
 pkill picom

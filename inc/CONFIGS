@@ -35,6 +35,7 @@ MAIN=(
     ".local/bin/rofi_power_menu"
     ".local/bin/mocp.sh"
     ".local/bin/pulsemixer.sh"
+    ".local/bin/polybar.sh"
 )
 
 EXTRA=(
