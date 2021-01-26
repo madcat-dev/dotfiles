@@ -85,7 +85,7 @@ offset-x = ${env:LAYOUT_SIZE}
 
 modules-left = mocp
 modules-center = xwindow
-modules-right = pulseaudio pulsemixer xkeyboard date powermenu
+modules-right = pulseaudio pulsemixer xkeyboard date mainmenu winlist powermenu
 
 
 [bar/tray]
@@ -179,11 +179,29 @@ bar-volume-empty-font = 2
 bar-volume-empty-foreground = ${colors.foreground-alt}
 
 
+[module/mainmenu]
+type = custom/script
+format = <label>
+format-foreground = ${xrdb:color4:#515D73}
+exec = echo -e ""
+tail = false
+click-left = rofi -show run
+
+
+[module/winlist]
+type = custom/script
+format = <label>
+format-foreground = ${xrdb:color4:#515D73}
+exec = echo -e ""
+tail = false
+click-left = rofi -show window
+
+
 [module/powermenu]
 type = custom/script
 format = <label>
 format-foreground = ${xrdb:color1:#ebcb8b}
-exec = echo ""
+exec = echo -e ""
 tail = false
 click-left = rofi_power_menu &
 
@@ -192,7 +210,7 @@ click-left = rofi_power_menu &
 type = custom/script
 format = <label>
 format-foreground = ${xrdb:color1:#ebcb8b}
-exec = echo ""
+exec = echo -e ""
 tail = false
 click-left = pulsemixer.sh &
 
