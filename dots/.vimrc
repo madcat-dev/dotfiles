@@ -29,6 +29,8 @@ call vundle#begin()
 
     " enhances integration with the terminal
     Plugin 'wincent/terminus'
+    " отключаем мышь
+    let g:TerminusMouse=0
 
     " Основные зависимости для поддержки плагинов
     " clang, libclang, ctags, ... 
