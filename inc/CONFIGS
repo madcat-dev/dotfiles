@@ -36,6 +36,8 @@ MAIN=(
     ".local/bin/mocp.sh"
     ".local/bin/pulsemixer.sh"
     ".local/bin/polybar.sh"
+
+    "Pictures/wallpapers"
 )
 
 EXTRA=(
