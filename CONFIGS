@@ -12,7 +12,6 @@ LIST=(
     ".config/rofi"
     ".config/sxhkd"
     ".config/systemd"
-
     ".config/picom.conf"
     ".config/pulsemixer.cfg"
 

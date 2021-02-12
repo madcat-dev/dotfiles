@@ -8,17 +8,17 @@ LIBEXECDIR="/usr/lib/NetworkManager"
 
 TMP_DIR="/tmp/nm-l2tp-$(date +'%s')"
 
-sudo pacman -S xl2tpd
+PKGS=(
+    "xl2tpd"
+)
 
-if [[ ! -d $PPPD_PLUGIN_DIR ]]; then
-    echo "Error: pppd plugin dir not exists"
-    exit 1
-fi
+sudo pacman -S ${PKGS[@]}
 
-if [[ ! -d $LIBEXECDIR ]]; then
-    echo "Error: libexec dir not exists"
-    exit 1
-fi
+[[ ! -d $PPPD_PLUGIN_DIR ]] && \
+    echo "Error: pppd plugin dir not exists" && exit 1
+
+[[ ! -d $LIBEXECDIR ]] && \
+    echo "Error: libexec dir not exists" && exit 1
 
 
 git clone https://github.com/nm-l2tp/NetworkManager-l2tp.git $TMP_DIR || exit 1
@@ -32,4 +32,3 @@ cd $TMP_DIR
     --runstatedir=/run && \
 make && \
 sudo make install
-

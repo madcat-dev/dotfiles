@@ -1,17 +1,10 @@
 #!/bin/sh
 
-VERSION=2.0.4
+VERSION=${1:-'2.0.4'}
 
-BASE=$(dirname $0)
-BASE=$(dirname $BASE)
-
-if [ $1 ]; then
-    VERSION=$1
-fi
-
+GITHUB="https://github.com/skanehira/docui/releases/download"
 PLATFORM=$(uname -m)
 OS=$(uname -s)
-GITHUB="https://github.com/skanehira/docui/releases/download"
 
 URL="${GITHUB}/${VERSION}/docui_${VERSION}_${OS}_${PLATFORM}.tar.gz"
 
@@ -20,5 +13,4 @@ wget -O /tmp/docui.tar.gz $URL && \
     tar -C /tmp/docui -xzf /tmp/docui.tar.gz && \
     cp /tmp/docui/docui ~/.local/bin/
 
-rm -rf /tmp/docui
-rm -f /tmp/docui.tar.gz
+rm -rf /tmp/docui*

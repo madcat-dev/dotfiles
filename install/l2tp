@@ -1,0 +1,8 @@
+#!/bin/sh
+
+PKGS=(
+    "xl2tpd"
+    "networkmanager-l2tp"   # L2TP support for NetworkManager
+)
+
+pamac install ${PKGS[@]}

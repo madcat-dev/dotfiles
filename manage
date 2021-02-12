@@ -22,28 +22,31 @@ install() {
 
 case $1 in
 install)
-    if [[ $2 = "extra" ]]; then
-        CMD=$3
-        SRC="./install/extra"
-    else
-        CMD=$2
-        SRC="./install"
+    SRC="./install"
+    CMD=( ${@:2} )
+
+    if [[ -d $SRC/$2 ]]; then
+        CMD=( ${@:3} )
+        SRC="$SRC/$2"
     fi
 
     if [[ $CMD = "all" ]]; then
         echo "Install all packages from $SRC"
 
         for item in $(ls $SRC); do
-            if [[ ! -d $SRC/$item ]]; then
-                echo -e "  install: $item"
-            fi
+            PKG="$SRC/$item"
+
+            [[ -d $PKG ]] && continue
+            [[ -x $PKG ]] && echo -e "  install: $PKG (${CMD[@]:1})"
         done
+    else
+        [[ ! $CMD ]] && \
+            echo -e "Usage: manage install {package name|all|extra}" && \
+            ls $SRC && exit 0
 
-        exit 0
+        [[ -x $SRC/$CMD ]] && \
+            echo "Install $SRC/$CMD (${CMD[@]:1})"
     fi
-
-    echo -e "Usage: manage install {package name|all|extra}"
-    ls $SRC
     ;;
 
 _install)
@@ -104,31 +107,32 @@ status)
     source ./CONFIGS
 
     for item in ${LIST[@]}; do
-        ./utils/rcopy "${HOME}/${item}" "${DOTS}/${item}" simular
+        #./utils/rcopy "${HOME}/${item}" "${DOTS}/${item}" simular
+        ./utils/rcopy "$HOME/$item" "$DOTS/$item" simular
     done
     ;;
 
 backup)
     source ./CONFIGS
-    echo -e "-- Copy configs to ${DOTS} repository --"
+    echo -e "-- Copy configs to $DOTS repository --"
 
     for item in ${LIST[@]}; do
-        ./utils/rcopy "${HOME}/${item}" "${DOTS}/${item}"
+        ./utils/rcopy "$HOME/$item" "$DOTS/$item"
     done
     ;;
 
 restore)
     source ./CONFIGS
-    echo -e "-- Copy configs from '${DOTS}' repository --"
+    echo -e "-- Copy configs from '$DOTS' repository --"
 
     for item in ${LIST[@]}; do
-        ./utils/rcopy "${DOTS}/${item}" "${HOME}/${item}"
+        ./utils/rcopy "$DOTS/$item" "$HOME/$item"
     done
     ;;
 
 clean)
-    echo -e "\033[31m-- Clean ${DOTS} directory --\033[0m"
-    rm -rf ${DOTS}
+    echo -e "\033[31m-- Clean $DOTS directory --\033[0m"
+    rm -rf $DOTS
     ;;
 
 *)

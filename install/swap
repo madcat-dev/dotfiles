@@ -1,12 +1,13 @@
 #!/bin/sh
 
-BASE=$(dirname $0)
-BASE=$(dirname $BASE)
-
 SERVICE="/etc/systemd/swap.conf.d"
 CONFIG="zswap_enabled=0\nzram_enabled=1\nswapfc_enabled=1"
 
-sudo pacman -S systemd-swap
+PKGS=(
+    "systemd-swap"
+)
+
+sudo pacman -S ${PKGS[@]}
 
 sudo mkdir -p "${SERVICE}" > /dev/null 2>&1
 
