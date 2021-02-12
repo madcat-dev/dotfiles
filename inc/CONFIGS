@@ -1,6 +1,6 @@
 #!/bin/sh
 
-MAIN=(
+LIST=(
     ".config/bspwm"
     ".config/geany"
     ".config/gtk-3.0"
@@ -11,25 +11,10 @@ MAIN=(
     ".config/ranger"
     ".config/rofi"
     ".config/sxhkd"
+    ".config/systemd"
 
     ".config/picom.conf"
     ".config/pulsemixer.cfg"
-
-    ".local/share/gtksourceview-3.0"
-    ".local/share/xfce4/terminal"
-
-    ".moc/config"
-    ".shell"
-    ".xrdb"
-    ".kbled"
-
-    ".fonts.conf"
-    ".vimrc"
-    ".vim/colors"
-    ".vim/autoload/airline/themes"
-    ".Xresources"
-    ".xprofile"
-    ".xsettingsd"
 
     ".local/bin/run_if_window_matches"
     ".local/bin/rofi_power_menu"
@@ -37,13 +22,24 @@ MAIN=(
     ".local/bin/pulsemixer.sh"
     ".local/bin/polybar.sh"
 
+    ".local/share/gtksourceview-3.0"
+    ".local/share/xfce4/terminal"
     ".local/share/wallpapers"
     ".local/share/avatars"
-)
 
-EXTRA=(
+    ".moc/config"
+    ".shell"
+    ".xrdb"
+    ".kbled"
+
+    ".vimrc"
+    ".vim/colors"
+    ".vim/autoload/airline/themes"
+
+    ".Xresources"
+    ".xprofile"
+    ".xsettingsd"
+    ".fonts.conf"
     ".fehbg"
     ".zshrc"
-    ".config/systemd"
 )
-

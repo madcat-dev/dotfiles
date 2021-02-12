@@ -77,22 +77,19 @@ remove)
     ;;
 
 status)
-    $0 backup all simular
-    exit 0
+    source inc/CONFIGS
+
+    for item in ${LIST[@]}; do
+        ./utils/rcopy "${HOME}/${item}" "${STORAGE}/${item}" simular
+    done
     ;;
 
 backup)
     source inc/CONFIGS
     echo -e "-- Copy configs to ${STORAGE} repository --"
 
-    LIST="${MAIN[*]}"
-
-    if [[ $2 = "all" ]]; then
-        LIST="${MAIN[*]} ${EXTRA[*]}"
-    fi
-
-    for item in ${LIST}; do
-        ./utils/rcopy "${HOME}/${item}" "${STORAGE}/${item}" ${3}
+    for item in ${LIST[@]}; do
+        ./utils/rcopy "${HOME}/${item}" "${STORAGE}/${item}"
     done
     ;;
 
@@ -100,13 +97,7 @@ restore)
     source inc/CONFIGS
     echo -e "-- Copy configs from '${STORAGE}' repository --"
 
-    LIST="${MAIN[*]}"
-
-    if [[ $2 = "all" ]]; then
-        LIST="${MAIN[*]} ${EXTRA[*]}"
-    fi
-
-    for item in ${LIST}; do
+    for item in ${LIST[@]}; do
         ./utils/rcopy "${STORAGE}/${item}" "${HOME}/${item}"
     done
     ;;
