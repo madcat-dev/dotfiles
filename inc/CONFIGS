@@ -37,7 +37,8 @@ MAIN=(
     ".local/bin/pulsemixer.sh"
     ".local/bin/polybar.sh"
 
-    "Pictures/wallpapers"
+    ".local/share/wallpapers"
+    ".local/share/avatars"
 )
 
 EXTRA=(
