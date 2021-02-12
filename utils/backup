@@ -3,6 +3,7 @@
 DIR=$(dirname $0)
 
 PROFILE=${1:-$USER}
+HOSTNAME=${2:-$(hostname)}
 
 if [[ ! -d $PROFILE ]]; then
     PROFILE="/home/$PROFILE"
@@ -13,10 +14,10 @@ if [[ ! -d $PROFILE ]]; then
     fi
 fi
 
-DATE=(`echo "$(date +'%F:%H*%M*%S')" | sed 's/:/\n/g'`)
-let OFFSET="${DATE[1]}"
+DATE=( $(date +'%F %H%M%S') )
+DEST="__backup__/${DATE[0]}/$(basename $PROFILE)@$HOSTNAME:${DATE[1]}"
 
-DEST="backup/$(date +%F)/$(basename $PROFILE)@$(hostname):$OFFSET"
+echo $$ $@ $# $0 ${@} ${#}
 echo $PROFILE
 echo $DEST
 

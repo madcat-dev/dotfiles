@@ -1,0 +1,45 @@
+#!/bin/sh
+
+SRCE=${1}
+DEST=${2}
+
+if [ ! -e "$SRCE" ]; then
+    echo -e "\033[31m -  path $SRCE not exists\033[0m"
+    exit 1
+fi
+
+if [ -d "$SRCE" ]; then
+    for item in $(ls -a "$SRCE"); do
+        if [[ $item = . || $item = .. ]]; then
+            continue
+        fi
+
+        $0 "$SRCE/${item}" "$DEST/${item}" $3
+    done
+
+    exit 0
+fi
+
+if [ -e "$DEST" ]; then
+    md5src=( $(md5sum $SRCE) )
+    md5dst=( $(md5sum $DEST) )
+
+    if [ "$md5src[1]" = "$md5dst[1]" ]; then
+        echo -e " -  path $DEST not modified"
+    else
+        echo -e "\033[33m -  path $DEST was modified\033[0m"
+
+        if [[ ! $3 = "simular" ]]; then
+            cp -xarf "$SRCE" "$DEST" && \
+                echo -e "[*]\t $DEST is copied"
+        fi
+    fi
+else
+    echo -e "\033[32m -  copy: $SRCE to $DEST\033[0m"
+
+    if [[ ! $3 = "simular" ]]; then
+        mkdir -p "$(dirname $DEST)" > /dev/null 2>&1
+        cp -xarf "$SRCE" "$DEST" && \
+            echo -e "[+]\t $DEST is copied"
+    fi
+fi

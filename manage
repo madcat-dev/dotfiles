@@ -91,9 +91,8 @@ backup)
         LIST="${MAIN[*]} ${EXTRA[*]}"
     fi
 
-    for item in ${LIST}
-    do
-        ./inc/rcopy.sh "${HOME}/${item}" "${STORAGE}/${item}" ${3}
+    for item in ${LIST}; do
+        ./utils/rcopy "${HOME}/${item}" "${STORAGE}/${item}" ${3}
     done
     ;;
 
@@ -107,9 +106,8 @@ restore)
         LIST="${MAIN[*]} ${EXTRA[*]}"
     fi
 
-    for item in ${LIST}
-    do
-        ./inc/rcopy.sh "${STORAGE}/${item}" "${HOME}/${item}"
+    for item in ${LIST}; do
+        ./utils/rcopy "${STORAGE}/${item}" "${HOME}/${item}"
     done
     ;;
 
