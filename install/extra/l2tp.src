@@ -1,4 +1,10 @@
 #!/bin/sh
+#
+# NetworkManager-l2tp is a VPN plugin for NetworkManager which provides 
+# support for L2TP and L2TP/IPsec (i.e. L2TP over IPsec) connections.
+# https://github.com/nm-l2tp/NetworkManager-l2tp
+#
+
 
 PPPD_VERSION=$(pppd --version 2>&1)       
 PPPD_VERSION=$(echo "$PPPD_VERSION" | awk '{print $3}')
@@ -13,6 +19,7 @@ PKGS=(
 )
 
 sudo pacman -S ${PKGS[@]}
+
 
 [[ ! -d $PPPD_PLUGIN_DIR ]] && \
     echo "Error: pppd plugin dir not exists" && exit 1

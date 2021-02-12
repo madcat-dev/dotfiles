@@ -1,4 +1,8 @@
 #!/bin/sh
+#
+# docui - TUI Client for Docker Written in Go
+# https://github.com/skanehira/docui
+#
 
 VERSION=${1:-'2.0.4'}
 
@@ -11,6 +15,6 @@ URL="${GITHUB}/${VERSION}/docui_${VERSION}_${OS}_${PLATFORM}.tar.gz"
 wget -O /tmp/docui.tar.gz $URL && \
     mkdir -p /tmp/docui > /dev/null 2>&1 && \
     tar -C /tmp/docui -xzf /tmp/docui.tar.gz && \
-    cp /tmp/docui/docui ~/.local/bin/
+    cp /tmp/docui/docui $HOME/.local/bin/
 
 rm -rf /tmp/docui*

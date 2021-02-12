@@ -1,0 +1,19 @@
+#!/bin/sh
+
+BASE=$(realpath "$(dirname $0)/../")
+DOTS="${BASE}/dots"
+
+CONFIGS=(
+)
+
+PKGS=(
+    "base-devel"
+    "ctags"
+    "clang"
+    "python-pip"
+)
+
+echo -e "\033[32m-- Install development packages --\033[0m"
+echo -e "Packages:\n\t${PKGS[@]}"
+
+sudo pacman -S ${PKGS[@]}

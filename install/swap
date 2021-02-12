@@ -7,11 +7,13 @@ PKGS=(
     "systemd-swap"
 )
 
+echo -e "\033[32m-- Install systemd-swap package --\033[0m"
+echo -e "Packages:\n\t${PKGS[@]}"
+
 sudo pacman -S ${PKGS[@]}
 
 sudo mkdir -p "${SERVICE}" > /dev/null 2>&1
-
-sudo /bin/sh -c "echo -e \"${CONFIG}\" > ${SERVICE}/myswap.conf"
+sudo /bin/sh -c "echo -e \"${CONFIG}\" > ${SERVICE}/zswap.conf"
 
 sudo systemctl daemon-reload
 sudo systemctl enable systemd-swap

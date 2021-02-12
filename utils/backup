@@ -1,29 +1,18 @@
 #!/bin/sh
 
-DIR=$(dirname $0)
-
+BASE=$(realpath "$(dirname $0)")
 PROFILE=${1:-$USER}
 HOSTNAME=${2:-$(hostname)}
 
 if [[ ! -d $PROFILE ]]; then
     PROFILE="/home/$PROFILE"
 
-    if [[ ! -d $PROFILE ]]; then
-        echo "Not found profile"
-        exit 1
-    fi
+    [[ ! -d $PROFILE ]] && \
+        echo "Not found profile" && exit 1
 fi
 
 DATE=( $(date +'%F %H%M%S') )
-DEST="__backup__/${DATE[0]}/$(basename $PROFILE)@$HOSTNAME:${DATE[1]}"
+DEST="$BASE/__backup__/${DATE[0]}/$(basename $PROFILE)@$HOSTNAME:${DATE[1]}"
 
-echo $$ $@ $# $0 ${@} ${#}
-echo $PROFILE
-echo $DEST
-
-exit 0
-
-
-cd $DIR
 mkdir -p $DEST
 

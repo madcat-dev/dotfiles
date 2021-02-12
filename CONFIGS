@@ -2,7 +2,6 @@
 
 LIST=(
     ".config/bspwm"
-    ".config/geany"
     ".config/gtk-3.0"
     ".config/kitty"
     ".config/mc/ini"

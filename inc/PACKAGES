@@ -9,17 +9,6 @@ PREINSTALLED=(
     "gparted"
 )
 
-DEPS=(
-)
-
-DEVEL=(
-    "ctags"
-    "clang"
-    "python-pip"
-
-    "gvim"
-    "geany"                 # Fast and lightweight IDE
-)
 
 FONTS=(
     "terminus-font"
@@ -27,7 +16,6 @@ FONTS=(
     "ttf-iosevka-fixed-curly"
     "ttf-polybar-icons"
     "ttf-symbola"
-    #"ttf-symbola-infinality"
     "ttf-ubuntu-font-family"
 )
 
