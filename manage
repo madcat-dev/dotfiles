@@ -1,10 +1,9 @@
 #!/bin/sh
 
 BASE=$(dirname $0)
-STORAGE="${BASE}/dots"
+DOTS="${BASE}/dots"
 
 cd $BASE
-
 
 install() {
     LIST=${2}
@@ -23,6 +22,31 @@ install() {
 
 case $1 in
 install)
+    if [[ $2 = "extra" ]]; then
+        CMD=$3
+        SRC="./install/extra"
+    else
+        CMD=$2
+        SRC="./install"
+    fi
+
+    if [[ $CMD = "all" ]]; then
+        echo "Install all packages from $SRC"
+
+        for item in $(ls $SRC); do
+            if [[ ! -d $SRC/$item ]]; then
+                echo -e "  install: $item"
+            fi
+        done
+
+        exit 0
+    fi
+
+    echo -e "Usage: manage install {package name|all|extra}"
+    ls $SRC
+    ;;
+
+_install)
     source inc/PACKAGES
 
     case $2 in
@@ -77,34 +101,34 @@ remove)
     ;;
 
 status)
-    source inc/CONFIGS
+    source ./CONFIGS
 
     for item in ${LIST[@]}; do
-        ./utils/rcopy "${HOME}/${item}" "${STORAGE}/${item}" simular
+        ./utils/rcopy "${HOME}/${item}" "${DOTS}/${item}" simular
     done
     ;;
 
 backup)
-    source inc/CONFIGS
-    echo -e "-- Copy configs to ${STORAGE} repository --"
+    source ./CONFIGS
+    echo -e "-- Copy configs to ${DOTS} repository --"
 
     for item in ${LIST[@]}; do
-        ./utils/rcopy "${HOME}/${item}" "${STORAGE}/${item}"
+        ./utils/rcopy "${HOME}/${item}" "${DOTS}/${item}"
     done
     ;;
 
 restore)
-    source inc/CONFIGS
-    echo -e "-- Copy configs from '${STORAGE}' repository --"
+    source ./CONFIGS
+    echo -e "-- Copy configs from '${DOTS}' repository --"
 
     for item in ${LIST[@]}; do
-        ./utils/rcopy "${STORAGE}/${item}" "${HOME}/${item}"
+        ./utils/rcopy "${DOTS}/${item}" "${HOME}/${item}"
     done
     ;;
 
 clean)
-    echo -e "\033[31m-- Clean ${STORAGE} directory --\033[0m"
-    rm -rf ${STORAGE}
+    echo -e "\033[31m-- Clean ${DOTS} directory --\033[0m"
+    rm -rf ${DOTS}
     ;;
 
 *)
