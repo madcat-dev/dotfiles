@@ -20,10 +20,10 @@ install)
         echo "Install all packages from $SRC"
 
         for item in $(ls $SRC); do
-            PKG="$SRC/$item"
-
-            [[ -d $PKG ]] && continue
-            [[ -x $PKG ]] && echo -e "  install: $PKG (${CMD[@]:1})"
+            [[ -d $SRC/$item ]] && continue
+            [[ -x $SRC/$item ]] && \
+                echo -e "  install: $SRC/$item (${CMD[@]:1})" && \
+                ./$SRC/$item ${CMD[@]:1}
         done
     else
         [[ ! $CMD ]] && \
@@ -31,7 +31,8 @@ install)
             ls $SRC && exit 0
 
         [[ -x $SRC/$CMD ]] && \
-            echo "Install $SRC/$CMD (${CMD[@]:1})"
+            echo "Install $SRC/$CMD (${CMD[@]:1})" && \
+            ./$SRC/$CMD ${CMD[@]:1}
     fi
     ;;
 
@@ -39,7 +40,6 @@ status)
     source ./CONFIGS
 
     for item in ${LIST[@]}; do
-        #./utils/rcopy "${HOME}/${item}" "${DOTS}/${item}" simular
         ./utils/rcopy "$HOME/$item" "$DOTS/$item" simular
     done
     ;;
@@ -68,11 +68,7 @@ clean)
     ;;
 
 *)
-    echo -e "Usage: manage {install|remove|status|backup|restore|clean}"
-    echo -e "       manage install {dev|base|swap|freetype|vim}"
-    echo -e "       manage {backup|restore}"
+    echo -e "Usage: manage {install|status|backup|restore|clean}"
+    echo -e "       manage install {package name|all|extra} ..."
     ;;
 esac
-
-
-exit 0
