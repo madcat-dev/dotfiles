@@ -23,6 +23,7 @@ LIST=(
     ".ssh"
     "Documents"
     "Pictures"
+    "Templates"
     "work"
     ".face"
     ".gitconfig"
