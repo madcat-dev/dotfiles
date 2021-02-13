@@ -1,0 +1,16 @@
+#!/bin/sh
+#
+# Linux led controller for Logitech G213, G410, G413, 
+# G512, G513, G610, G810, G815, G910 and GPRO Keyboards
+# https://github.com/MatMoul/g810-led
+#
+
+PKGS=(
+    "g810-led-git"
+)
+
+
+echo -e "\033[32m-- Install Linux led controller for Logitech from AUR --\033[0m"
+echo -e "Packages:\n\t${PKGS[@]}"
+
+pamac install ${PKGS[@]}

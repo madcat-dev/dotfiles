@@ -1,0 +1,22 @@
+
+#!/bin/sh
+
+BASE=$(realpath "$(dirname $0)/../")
+DOTS="$BASE/dots"
+
+CONFIGS=(
+)
+
+PKGS=(
+    "picom-ibhagwan-git"    # iBhagwan's compton|picom fork (X compositor) with dual_kawase blur and rounded corners
+    "sxhkd"                 # Simple X hotkey daemon
+    "rofi"                  # A window switcher, run dialog and dmenu replacement
+    "polybar"               # A fast and easy-to-use status bar
+    "bspwm"                 # Tiling window manager based on binary space partitioning
+)
+
+
+echo -e "\033[32m-- Install BSPWM window manager and environment --\033[0m"
+echo -e "Packages:\n\t${PKGS[@]}"
+
+sudo pacman -S ${PKGS[@]}

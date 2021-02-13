@@ -1,0 +1,18 @@
+#!/bin/sh
+
+PKGS=(
+    "papirus-icon-theme"
+    "papirus-folders" # https://github.com/PapirusDevelopmentTeam/papirus-folders
+                      # papirus-folders -C yaru --theme Papirus
+)
+
+PAPIRUS_FOLDERS="yaru"
+
+
+echo -e "\033[32m-- Install Icons-themes from AUR --\033[0m"
+echo -e "Packages:\n\t${PKGS[@]}"
+
+pamac install ${PKGS[@]}
+
+# Set papirus folders icon-theme variant
+papirus-folders -C $PAPIRUS_FOLDERS --theme Papirus

@@ -7,6 +7,7 @@ PKGS=(
     "systemd-swap"
 )
 
+
 echo -e "\033[32m-- Install systemd-swap package --\033[0m"
 echo -e "Packages:\n\t${PKGS[@]}"
 

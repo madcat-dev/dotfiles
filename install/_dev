@@ -13,7 +13,8 @@ PKGS=(
     "python-pip"
 )
 
-echo -e "\033[32m-- Install development packages --\033[0m"
+
+echo -e "\033[32m-- Install base development packages --\033[0m"
 echo -e "Packages:\n\t${PKGS[@]}"
 
 sudo pacman -S ${PKGS[@]}

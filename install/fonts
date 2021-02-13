@@ -1,0 +1,16 @@
+#!/bin/sh
+
+PKGS=(
+    "terminus-font"
+    "ttf-font-awesome"
+    "ttf-iosevka-fixed-curly"
+    "ttf-polybar-icons"
+    "ttf-symbola"
+    "ttf-ubuntu-font-family"
+)
+
+
+echo -e "\033[32m-- Install fonts from AUR --\033[0m"
+echo -e "Packages:\n\t${PKGS[@]}"
+
+pamac install ${PKGS[@]}

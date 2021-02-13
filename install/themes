@@ -1,0 +1,11 @@
+#!/bin/sh
+
+PKGS=(
+    "fantome-gtk"
+)
+
+
+echo -e "\033[32m-- Install Gtk-themes from AUR --\033[0m"
+echo -e "Packages:\n\t${PKGS[@]}"
+
+pamac install ${PKGS[@]}

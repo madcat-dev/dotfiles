@@ -1,0 +1,14 @@
+#!/bin/sh
+
+PKGS=(
+    "htop"  "wget" "git" "zsh" "curl"
+    "unrar" "p7zip"
+    "exfat-utils"
+    "imagemagick"           # An image viewing/manipulation program
+    "mousepad"              # Simple text editor for Xfce
+    "gparted"
+)
+
+
+echo -e "\033[32m-- Preistalled packages --\033[0m"
+echo -e "Packages:\n\t${PKGS[@]}"

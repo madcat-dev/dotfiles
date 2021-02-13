@@ -14,10 +14,8 @@ PKGS=(
 )
 
 
-echo -e "\033[32m-- Install VIM package --\033[0m"
+echo -e "\033[32m-- Install VIM package and environment --\033[0m"
 echo -e "Packages:\n\t${PKGS[@]}"
-
-exit 0
 
 sudo pacman -S ${PKGS[@]}
 

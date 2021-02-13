@@ -1,36 +1,14 @@
 #!/bin/sh
 
-PREINSTALLED=(
-    "htop"  "wget" "git" "zsh" "curl"
-    "unrar" "p7zip"
-    "exfat-utils"
-    "imagemagick"           # An image viewing/manipulation program
-    "mousepad"              # Simple text editor for Xfce
-    "gparted"
-)
 
-
-FONTS=(
-    "terminus-font"
-    "ttf-font-awesome"
-    "ttf-iosevka-fixed-curly"
-    "ttf-polybar-icons"
-    "ttf-symbola"
-    "ttf-ubuntu-font-family"
-)
-
-THEMES=(
-    "fantome-gtk"
-    "papirus-icon-theme"
-    "papirus-folders" # https://github.com/PapirusDevelopmentTeam/papirus-folders
-                      # papirus-folders -C yaru --theme Papirus
-)
 
 UTILS=(
     "xorg-xrandr"
     "xorg-xev"
     "xautomation"
     "xdotool"
+    "xsettingsd"            # Provides settings to X11 applications via the XSETTINGS specification
+    "numlockx"              # Turns on the numlock key in X11
     "w3m" "mc" "gtop" "tig" "tmux"    
     "grc"                   # Yet another colouriser for beautifying your logfiles or output of commands
     "httpie"                # cURL for humans
@@ -63,24 +41,4 @@ MEDIA=(
     "python-mutagen"        # An audio metadata tag reader and writer (python library)
 )
 
-WM=(
-    "xsettingsd"            # Provides settings to X11 applications via the XSETTINGS specification
-    "picom-ibhagwan-git"    # iBhagwan's compton|picom fork (X compositor) with dual_kawase blur and rounded corners
-    "sxhkd"                 # Simple X hotkey daemon
-    "rofi"                  # A window switcher, run dialog and dmenu replacement
-    "polybar"               # A fast and easy-to-use status bar
-    "numlockx"              # Turns on the numlock key in X11
-    "bspwm"                 # Tiling window manager based on binary space partitioning
-)
 
-EXTRA=(
-    "g810-led-git"          # Linux led controller for Logitech G213, G410, G413, 
-                            # G512, G513, G610, G810, G815, G910 and GPRO Keyboards
-)
-
-
-REMOVE_PKGS=(
-    "midori"    # Lightweight web browser
-    "parole"    # Modern media player based on the GStreamer framework
-    "qpdfview"  # A tabbed PDF viewer using the poppler library
-)

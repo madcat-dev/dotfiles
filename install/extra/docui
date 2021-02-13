@@ -12,6 +12,10 @@ OS=$(uname -s)
 
 URL="${GITHUB}/${VERSION}/docui_${VERSION}_${OS}_${PLATFORM}.tar.gz"
 
+
+echo -e "\033[32m-- Install docui package from git --\033[0m"
+echo -e "Packages:\n\t${URL}"
+
 wget -O /tmp/docui.tar.gz $URL && \
     mkdir -p /tmp/docui > /dev/null 2>&1 && \
     tar -C /tmp/docui -xzf /tmp/docui.tar.gz && \

@@ -10,6 +10,7 @@ PKGS=(
     "networkmanager-l2tp"   # L2TP support for NetworkManager
 )
 
+
 echo -e "\033[32m-- Install NetworkManager-l2tp package from AUR --\033[0m"
 echo -e "Packages:\n\t${PKGS[@]}"
 

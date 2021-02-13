@@ -1,0 +1,13 @@
+#!/bin/sh
+
+PKGS=(
+    "midori"    # Lightweight web browser
+    "parole"    # Modern media player based on the GStreamer framework
+    "qpdfview"  # A tabbed PDF viewer using the poppler library
+)
+
+
+echo -e "\033[31m-- Remove preinstalled packages --\033[0m"
+echo -e "Packages to remove:\n\t${PKGS[@]}"
+
+pamac remove ${PKGS[@]}

@@ -14,9 +14,15 @@ LIBEXECDIR="/usr/lib/NetworkManager"
 
 TMP_DIR="/tmp/nm-l2tp-$(date +'%s')"
 
+URL="https://github.com/nm-l2tp/NetworkManager-l2tp.git"
+
 PKGS=(
     "xl2tpd"
 )
+
+
+echo -e "\033[32m-- Install NetworkManager-l2tp package from source --\033[0m"
+echo -e "Packages:\n\t${URL}"
 
 sudo pacman -S ${PKGS[@]}
 
@@ -28,7 +34,7 @@ sudo pacman -S ${PKGS[@]}
     echo "Error: libexec dir not exists" && exit 1
 
 
-git clone https://github.com/nm-l2tp/NetworkManager-l2tp.git $TMP_DIR || exit 1
+git clone $URL $TMP_DIR || exit 1
 
 cd $TMP_DIR
 

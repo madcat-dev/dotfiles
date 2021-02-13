@@ -1,7 +1,7 @@
 #!/bin/bash
 
-SRCE=$(realpath ${1})
-DEST=$(realpath ${2})
+SRCE=${1}
+DEST=${2}
 
 if [ ! -e "$SRCE" ]; then
     echo -e "\033[31m -  path $SRCE not exists\033[0m"
