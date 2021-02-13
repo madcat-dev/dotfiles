@@ -41,6 +41,10 @@ set)
     ssh-agent)
         echo -e "\033[32m-- Activate SSH-Agent service --\033[0m"
 
+        SERVICE=".config/systemd/user/ssh-agent.service"
+        
+        ./utils/rcopy "$DOTS/$SERVICE" "$HOME/$SERVICE"
+
         systemctl --user daemon-reload
         systemctl --user enable ssh-agent
         systemctl --user restart ssh-agent
@@ -53,7 +57,7 @@ set)
         ;;
 
     *)
-        echo "..."
+        echo -e "Usage: $(basename $0) set {ssh-agent|bg}"
         ;;
     esac
     ;;
