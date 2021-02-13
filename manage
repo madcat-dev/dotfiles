@@ -5,20 +5,6 @@ DOTS="${BASE}/dots"
 
 cd $BASE
 
-install() {
-    LIST=${2}
-
-    if [ ! "${LIST}" ]; then
-        echo -e "Not packages in ${1} list"
-        return 1
-    fi
-
-    echo -e "\033[32m-- Install ${1} packages --\033[0m"
-    echo -e "Packages:\n\t${LIST}"
-
-    pamac install ${LIST}
-}
-
 
 case $1 in
 install)
@@ -47,60 +33,6 @@ install)
         [[ -x $SRC/$CMD ]] && \
             echo "Install $SRC/$CMD (${CMD[@]:1})"
     fi
-    ;;
-
-_install)
-    source inc/PACKAGES
-
-    case $2 in
-    dev)
-        echo -e "\033[32m-- Install Base-devel packages --\033[0m"
-        sudo pacman -S base-devel
-        install "Devel" "${DEVEL[*]}"
-        ;;
-
-    base)
-        LIST="${DEPS[*]} ${FONTS[*]} ${THEMES[*]} ${UTILS[*]} ${MEDIA[*]} ${WM[*]}"
-        install "Base" "${LIST}"
-        ;;
-
-    extra)
-        install "Extra" "${EXTRA[*]}"
-        ;;
-
-    swap)
-        echo -e "\033[32m-- Install Systemd SWAP packages --\033[0m"
-        ./installers/swap.sh
-        ;;
-
-    freetype)
-        echo -e "\033[32m-- Copy freetype config --\033[0m"
-        sudo cp ./etc/profile.d/freetype2.sh /etc/profile.d
-        ;;
-
-    vim)
-        echo -e "\033[32m-- Install vim environment --\033[0m"
-        ./installers/vim.sh
-        ;;
-
-    *)
-        echo -e "Usage: manage install {dev|base|swap|freetype|vim}"
-        ;;
-
-    esac
-    ;;
-
-remove)
-    source inc/PACKAGES
-    echo -e "\033[33m-- Remove packages from list --\033[0m"
-
-    if [ ! ${REMOVE_PKGS[*]} ]; then
-        echo -e "Not packages in remove list"
-        exit 0
-    fi
-
-    echo -e "To remove:\n    ${REMOVE_PKGS[*]}"
-    pamac remove ${REMOVE_PKGS[*]}
     ;;
 
 status)
@@ -138,7 +70,7 @@ clean)
 *)
     echo -e "Usage: manage {install|remove|status|backup|restore|clean}"
     echo -e "       manage install {dev|base|swap|freetype|vim}"
-    echo -e "       manage {backup|restore} [all]"
+    echo -e "       manage {backup|restore}"
     ;;
 esac
 
