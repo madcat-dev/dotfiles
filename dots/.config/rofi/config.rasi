@@ -1,17 +1,70 @@
 configuration {
-	modi: "window,run,ssh,drun";
 	font: "Iosevka Fixed Curly Medium 12";
 	show-icons: false;
-	terminal: "kitty";
+	modi: "window,run,ssh,drun";
+
 	hide-scrollbar: true;
 	scrollbar-width: 0;
-	theme: "nord.rasi";
-	color-normal: "#2f343f, #d8dee8, #2f343f, #2f343f, #bf616a";
-	color-urgent: "#2f343f, #ebcb8b, #2f343f, #2f343f, #ebcb8b";
-	color-active: "#2f343f, #b48ead, #2f343f, #2f343f, #93e5cc";
-	color-window: "#2f343f, #2f343f, #2f343f";
+
+	terminal: "kitty";
+
 	display-window: "win:";
 	display-run: "run:";
 	display-ssh: "ssh:";
 	display-drun: "drun:";
+}
+
+* {
+    background-color: #1E2430;
+    text-color: #ECEFF4;
+
+    background-selected: #713F3F;
+    text-selected: #EEEEEE;
+
+    text-prompt: #515D73;
+
+    lines:   12;
+}
+
+window {
+    width: 30%;
+    padding: 16;
+    border-radius: 18px;
+    border: 2px;
+    border-color: #bf616a;
+}
+
+mainbox {
+    children: [inputbar, listview];
+}
+
+listview {
+    columns: 1;
+}
+
+element {
+    padding: 12 20;
+    orientation: vertical;
+}
+
+element selected {
+    background-color: @background-selected;
+    text-color: @text-selected;
+}
+
+inputbar {
+  background-color: @background;
+  children: [prompt, entry];
+}
+
+prompt {
+  enabled: true;
+  font: "Ubuntu Condensed 10";
+  padding: 12 0 0 12;
+  text-color: @text-prompt;
+}
+
+entry {
+  padding: 12;
+  text-color: @text-prompt;
 }

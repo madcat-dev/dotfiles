@@ -1,5 +1,35 @@
 #!/bin/sh
 
+rscopy() {
+    if [ ! -e "${1}" ]; then
+        echo -e "\033[31m -  path ${1} not exists\033[0m"
+        return
+    fi
+
+    echo -e "\033[32m -  copy: ${1} to ${2}\033[0m"
+
+    mkdir -p "$(dirname ${2})" > /dev/null 2>&1
+
+    cp -xarf "${1}" "${2}" && \
+        echo -e "[+]\t ${2} is copied"
+}
+
+LIST=(
+    ".gnupg"
+    ".local/share/TelegramDesktop"
+    ".local/share/keyrings"
+    ".mozilla"
+    ".pki"
+    ".ssh"
+    "Documents"
+    "Pictures"
+    "work"
+    ".face"
+    ".gitconfig"
+    ".gitexcludes"
+)
+
+
 BASE=$(realpath "$(dirname $0)")
 PROFILE=${1:-$USER}
 HOSTNAME=${2:-$(hostname)}
@@ -12,7 +42,9 @@ if [[ ! -d $PROFILE ]]; then
 fi
 
 DATE=( $(date +'%F %H%M%S') )
-DEST="$BASE/__backup__/${DATE[0]}/$(basename $PROFILE)@$HOSTNAME:${DATE[1]}"
+BACKUP_DIR="$BASE/__backup__/${DATE[0]}/$(basename $PROFILE)@$HOSTNAME:${DATE[1]}"
 
-mkdir -p $DEST
-
+mkdir -p $BACKUP_DIR
+for item in ${LIST[@]}; do
+    rscopy "$PROFILE/$item" "$BACKUP_DIR/$item"
+done

@@ -13,6 +13,7 @@ LIST=(
     ".config/systemd"
     ".config/picom.conf"
     ".config/pulsemixer.cfg"
+    ".config/zshrc"
 
     ".local/bin/run_if_window_matches"
     ".local/bin/rofi_power_menu"
@@ -26,7 +27,6 @@ LIST=(
     ".local/share/avatars"
 
     ".moc/config"
-    ".shell"
     ".xrdb"
     ".kbled"
 
