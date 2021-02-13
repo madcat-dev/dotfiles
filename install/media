@@ -1,0 +1,21 @@
+#!/bin/sh
+
+PKGS=(
+    "mpv"                   # Cross-platform media player
+    "feh"                   # Fast and light imlib2-based image viewer
+    "moc-pulse-svn"         # An ncurses console audio player with support for pulseaudio (SVN)
+    "scrot"                 # Simple command-line screenshot utility for X
+    "evince"                # Document viewer (
+                            #   PDF, Postscript, djvu, tiff, dvi, XPS, 
+                            #   SyncTex support with gedit, 
+                            #   comics books (cbr,cbz,cb7 and cbt)
+                            # )
+    "pulsemixer"            # CLI and curses mixer for pulseaudio
+    "python-mutagen"        # An audio metadata tag reader and writer (python library)
+)
+
+
+echo -e "\033[32m-- Install Media packages from AUR --\033[0m"
+echo -e "Packages:\n\t${PKGS[@]}"
+
+pamac install ${PKGS[@]}

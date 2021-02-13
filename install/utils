@@ -1,0 +1,28 @@
+#!/bin/sh
+
+PKGS=(
+    "xorg-xrandr"
+    "xorg-xev"
+    "xautomation"
+    "xdotool"
+    "xsettingsd"            # Provides settings to X11 applications via the XSETTINGS specification
+    "numlockx"              # Turns on the numlock key in X11
+    "mc"
+    "gtop"
+    "tig"
+    "tmux"    
+    "grc"                   # Yet another colouriser for beautifying your logfiles or output of commands
+
+    "kitty"
+    "rxvt-unicode"
+
+    "gnome-calculator"      # GNOME Scientific calculator
+    "seahorse"              # NOME application for managing PGP keys
+    "ranger"                # A simple, vim-like file manager
+)
+
+
+echo -e "\033[32m-- Install Utils packages from AUR --\033[0m"
+echo -e "Packages:\n\t${PKGS[@]}"
+
+pamac install ${PKGS[@]}
