@@ -19,4 +19,4 @@ PKGS=(
 echo -e "\033[32m-- Install BSPWM window manager and environment --\033[0m"
 echo -e "Packages:\n\t${PKGS[@]}"
 
-sudo pacman -S ${PKGS[@]}
+sudo pamac install ${PKGS[@]}
