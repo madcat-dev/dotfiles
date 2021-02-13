@@ -27,7 +27,7 @@ install)
         done
     else
         [[ ! $CMD ]] && \
-            echo -e "Usage: manage install {package name|all|extra}" && \
+            echo -e "Usage: $(basename $0) install {package name|all|extra}" && \
             ls $SRC && exit 0
 
         [[ -x $SRC/$CMD ]] && \
@@ -47,9 +47,11 @@ set)
 
         systemctl --user status ssh-agent
         ;;
+
     bg)
         feh --bg-fill $3
         ;;
+
     *)
         echo "..."
         ;;
@@ -88,7 +90,7 @@ clean)
     ;;
 
 *)
-    echo -e "Usage: manage {install|status|backup|restore|clean}"
-    echo -e "       manage install {package name|all|extra} ..."
+    echo -e "Usage: $(basename $0) {install|set|status|backup|restore|clean}"
+    echo -e "       $(basename $0) install {package name|all|extra} ..."
     ;;
 esac
