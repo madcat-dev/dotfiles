@@ -36,6 +36,26 @@ install)
     fi
     ;;
 
+set)
+    case $2 in
+    ssh-agent)
+        echo -e "\033[32m-- Activate SSH-Agent service --\033[0m"
+
+        systemctl --user daemon-reload
+        systemctl --user enable ssh-agent
+        systemctl --user restart ssh-agent
+
+        systemctl --user status ssh-agent
+        ;;
+    bg)
+        feh --bg-fill $3
+        ;;
+    *)
+        echo "..."
+        ;;
+    esac
+    ;;
+
 status)
     source ./CONFIGS
 
