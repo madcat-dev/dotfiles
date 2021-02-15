@@ -38,5 +38,6 @@ LIST=(
     ".xprofile"
     ".xsettingsd"
     ".fonts.conf"
+    ".profile"
     ".zshrc"
 )
