@@ -1,0 +1,46 @@
+#!/bin/sh
+
+MAIN=(
+    ".config/bspwm"
+    ".config/geany"
+    ".config/gtk-3.0"
+    ".config/kitty"
+    ".config/mc/ini"
+    ".config/mpv"
+    ".config/polybar"
+    ".config/ranger"
+    ".config/rofi"
+    ".config/sxhkd"
+
+    ".config/picom.conf"
+    ".config/pulsemixer.cfg"
+
+    ".local/share/gtksourceview-3.0"
+    ".local/share/xfce4/terminal"
+
+    ".moc/config"
+    ".shell"
+    ".xrdb"
+    ".kbled"
+
+    ".fonts.conf"
+    ".vimrc"
+    ".vim/colors"
+    ".vim/autoload/airline/themes"
+    ".Xresources"
+    ".xprofile"
+    ".xsettingsd"
+
+    ".local/bin/run_if_window_matches"
+    ".local/bin/rofi_power_menu"
+    ".local/bin/mocp.sh"
+    ".local/bin/pulsemixer.sh"
+    ".local/bin/polybar.sh"
+)
+
+EXTRA=(
+    ".fehbg"
+    ".zshrc"
+    ".config/systemd"
+)
+
