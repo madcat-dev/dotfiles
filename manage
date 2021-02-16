@@ -11,17 +11,12 @@ install)
     SRC="./install"
     CMD=( ${@:2} )
 
-    if [[ -d $SRC/$2 ]]; then
-        CMD=( ${@:3} )
-        SRC="$SRC/$2"
-    fi
+    [[ -d $SRC/$2 ]] && \
+        CMD=( ${@:3} ) && SRC="$SRC/$2"
 
-    echo ${CMD[@]}
-
-    if [[ $CMD = "all" ]]; then
-        echo "Install all packages from $SRC"
+    [[ $CMD = "all" ]] && \
+        echo "Install all packages from $SRC" && \
         CMD=$(ls $SRC)
-    fi
 
     [[ ! $CMD ]] && \
         echo -e "Usage: $(basename $0) install {package name|all|extra}" && \
@@ -29,9 +24,14 @@ install)
 
     for item in ${CMD[@]}; do
         [[ -d $SRC/$item ]] && continue
-        [[ -x $SRC/$item ]] && \
-            echo -e "  install: $SRC/$item" && \
-            ./$SRC/$item
+
+        if [[ -x $SRC/$item ]]; then
+            echo -e "\033[33m  install: $SRC/$item\033[0m"
+            #./$SRC/$item
+        else
+            echo -e "\033[31mError: package $item not found!\033[0m"
+            exit 1
+        fi
     done
     ;;
 
