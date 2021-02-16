@@ -16,24 +16,23 @@ install)
         SRC="$SRC/$2"
     fi
 
+    echo ${CMD[@]}
+
     if [[ $CMD = "all" ]]; then
         echo "Install all packages from $SRC"
-
-        for item in $(ls $SRC); do
-            [[ -d $SRC/$item ]] && continue
-            [[ -x $SRC/$item ]] && \
-                echo -e "  install: $SRC/$item (${CMD[@]:1})" && \
-                ./$SRC/$item ${CMD[@]:1}
-        done
-    else
-        [[ ! $CMD ]] && \
-            echo -e "Usage: $(basename $0) install {package name|all|extra}" && \
-            ls $SRC && exit 0
-
-        [[ -x $SRC/$CMD ]] && \
-            echo "Install $SRC/$CMD (${CMD[@]:1})" && \
-            ./$SRC/$CMD ${CMD[@]:1}
+        CMD=$(ls $SRC)
     fi
+
+    [[ ! $CMD ]] && \
+        echo -e "Usage: $(basename $0) install {package name|all|extra}" && \
+        ls $SRC && exit 0
+
+    for item in ${CMD[@]}; do
+        [[ -d $SRC/$item ]] && continue
+        [[ -x $SRC/$item ]] && \
+            echo -e "  install: $SRC/$item" && \
+            ./$SRC/$item
+    done
     ;;
 
 set)
