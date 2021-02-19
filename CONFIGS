@@ -2,6 +2,7 @@
 
 LIST=(
     ".config/bspwm"
+    ".config/dunst"
     ".config/gtk-3.0"
     ".config/kitty"
     ".config/mc/ini"
