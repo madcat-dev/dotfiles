@@ -47,7 +47,6 @@ nm-applet &
 xfce4-power-manager &
 blueman-applet &
 pamac-tray &
-#/usr/lib/xfce4/notifyd/xfce4-notifyd &
 dunst &
 
 ## Start polybar with detect monitor and get size
