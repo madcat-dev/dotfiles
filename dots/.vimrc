@@ -217,7 +217,7 @@ set background=dark
 "set termguicolors
 
 try
-    colorscheme noctu_red
+    colorscheme noctu
 catch /.*/
     colorscheme default
 endtry
