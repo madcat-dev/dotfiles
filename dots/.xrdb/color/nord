@@ -5,7 +5,7 @@
 
 !! special
 *.foreground:  #D8DEE9
-*.background:  #3B4252
+*.background:  #2F343F
 *.cursor:      #81A1C1
 *.highlight:   #fb3d66
 *.selection_foreground: #000000
@@ -14,8 +14,8 @@
 
 !! terminal colors+
 ! black
-*.color0:   #3B4252
-*.color8:   #4C566A
+*.color0:   #2F343F
+*.color8:   #3B4252
 
 ! red
 *.color1:   #BF616A

@@ -14,7 +14,7 @@
 !! terminal colors+
 ! black
 *.color0:   #2F343F
-*.color8:   #434852
+*.color8:   #3B4252
 
 ! red
 *.color1:   #713F3F
