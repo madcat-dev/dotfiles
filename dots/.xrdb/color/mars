@@ -3,15 +3,13 @@
 ! -----------------------------------------------------------------------------
 
 !! special
-*.foreground:  #E5E9F0
+*.foreground:  #D8DEE9
 *.background:  #2F343F
-*.cursorColor: #BF616A
-
-*.cursor:       #BF616A
-*.highlight:    #fb3d66
+*.cursor:      #BF616A
+*.highlight:   #FB3D66
 *.selection_foreground: #000000
 *.selection_background: #FFFACD
-*.url_color:    #0087BD
+*.url_color:   #0087BD
 
 !! terminal colors+
 ! black
