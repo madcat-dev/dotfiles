@@ -1,6 +1,5 @@
 ! -----------------------------------------------------------------------------
-! Nord color cheme
-! https://www.nordtheme.com/
+! Shoreline color cheme
 ! -----------------------------------------------------------------------------
 
 !! special
@@ -18,28 +17,28 @@
 *.color8:   #3B4252
 
 ! red
-*.color1:   #BF616A
-*.color9:   #BF616A
+*.color1:   #917070
+*.color9:   #C49898
 
 ! green
-*.color2:   #A3BE8C
-*.color10:  #A3BE8C
+*.color2:   #709173
+*.color10:  #98C49C
 
 ! yellow
-*.color3:   #EBCB8B
-*.color11:  #EBCB8B
+*.color3:   #919070
+*.color11:  #C4C398
 
 ! blue
-*.color4:   #81A1C1
-*.color12:  #81A1C1
+*.color4:   #707491
+*.color12:  #989DC4
 
 ! magenta
-*.color5:   #B48EAD
-*.color13:  #B48EAD
+*.color5:   #91708F
+*.color13:  #C498C2
 
 ! cyan
-*.color6:   #88C0D0
-*.color14:  #8FBCBB
+*.color6:   #709190
+*.color14:  #98C4C3
 
 ! white
 *.color7:   #E5E9F0

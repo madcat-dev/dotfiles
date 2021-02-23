@@ -6,7 +6,7 @@
 *.foreground:  #D8DEE9
 *.background:  #2F343F
 *.cursor:      #81A1C1
-*.highlight:   #fb3d66
+*.highlight:   #FB3D66
 *.selection_foreground: #000000
 *.selection_background: #FFFACD
 *.url_color:   #0087BD
