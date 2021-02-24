@@ -3,6 +3,7 @@
 PKGS=(
     "w3m"
     "httpie"                # cURL for humans
+    "sshfs"
     "firefox"
     "telegram-desktop"
     "transmission-gtk"
