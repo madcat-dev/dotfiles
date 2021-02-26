@@ -1,6 +1,6 @@
-# list of backup dot files
+# List of backuped dot files
 
-.config/bspwm  # bspwm Window anager config
+.config/bspwm
 .config/dunst
 .config/gtk-3.0
 .config/kitty
@@ -21,8 +21,6 @@
 .local/bin/pulsemixer.sh
 .local/bin/polybar.sh
 
-.local/share/gtksourceview-3.0
-.local/share/xfce4/terminal
 .local/share/wallpapers
 .local/share/avatars
 
