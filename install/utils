@@ -18,7 +18,10 @@ PKGS=(
 
     "gnome-calculator"      # GNOME Scientific calculator
     "seahorse"              # NOME application for managing PGP keys
+
     "ranger"                # A simple, vim-like file manager
+    "trash-cli"             # Command line trashcan (recycle bin) interface
+    "ncdu"                  # Disk usage analyzer with an ncurses interface
 )
 
 
