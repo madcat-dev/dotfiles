@@ -1,6 +1,6 @@
 #!/bin/sh
 
-BASE=$(dirname $0)
+export BASE=$(dirname $0)
 DOTS="${BASE}/dots"
 
 cd $BASE
@@ -36,34 +36,39 @@ install)
     ;;
 
 status)
-    source ./CONFIGS
-
-    for item in ${LIST[@]}; do
-        ./utils/rcopy "$HOME/$item" "$DOTS/$item" simular
-    done
+    while IFS=\# read -r item _; do
+        item=$(echo $item | sed 's/ *$//g') && [[ ${item} ]] && \
+            $BASE/utils/rcopy "$HOME/$item" "$DOTS/$item" simular
+    done < $BASE/CONFIGS
     ;;
 
 backup)
-    source ./CONFIGS
     echo -e "-- Copy configs to $DOTS repository --"
 
-    for item in ${LIST[@]}; do
-        ./utils/rcopy "$HOME/$item" "$DOTS/$item"
-    done
+    while IFS=\# read -r item _; do
+        item=$(echo $item | sed 's/ *$//g') && [[ ${item} ]] && \
+            $BASE/utils/rcopy "$HOME/$item" "$DOTS/$item"
+    done < $BASE/CONFIGS
     ;;
 
 restore)
-    source ./CONFIGS
     echo -e "-- Copy configs from '$DOTS' repository --"
 
-    for item in ${LIST[@]}; do
-        ./utils/rcopy "$DOTS/$item" "$HOME/$item"
-    done
+    while IFS=\# read -r item _; do
+        item=$(echo $item | sed 's/ *$//g') && [[ ${item} ]] && \
+            $BASE/utils/rcopy "$DOTS/$item" "$HOME/$item"
+    done < $BASE/CONFIGS
     ;;
 
 clean)
     echo -e "\033[31m-- Clean $DOTS directory --\033[0m"
     rm -rf $DOTS
+    ;;
+
+test)
+    while IFS=\# read -r item _; do
+        item=$(echo $item | sed 's/ *$//g') && [[ ${item} ]] && echo $item ":"
+    done < $BASE/CONFIGS
     ;;
 
 *)

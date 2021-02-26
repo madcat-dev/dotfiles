@@ -1,44 +1,42 @@
-#!/bin/sh
+# list test files
 
-LIST=(
-    ".config/bspwm"
-    ".config/dunst"
-    ".config/gtk-3.0"
-    ".config/kitty"
-    ".config/mc/ini"
-    ".config/mpv"
-    ".config/polybar"
-    ".config/ranger"
-    ".config/rofi"
-    ".config/sxhkd"
-    ".config/systemd"
-    ".config/picom.conf"
-    ".config/pulsemixer.cfg"
-    ".config/zshrc"
+.config/bspwm  # bspwm Window anager config
+.config/dunst
+.config/gtk-3.0
+.config/kitty
+.config/mc/ini
+.config/mpv
+.config/polybar
+.config/ranger
+.config/rofi
+.config/sxhkd
+.config/systemd
+.config/picom.conf
+.config/pulsemixer.cfg
+.config/zshrc
 
-    ".local/bin/run_if_window_matches"
-    ".local/bin/rofi_power_menu"
-    ".local/bin/mocp.sh"
-    ".local/bin/pulsemixer.sh"
-    ".local/bin/polybar.sh"
+.local/bin/run_if_window_matches
+.local/bin/rofi_power_menu
+.local/bin/mocp.sh
+.local/bin/pulsemixer.sh
+.local/bin/polybar.sh
 
-    ".local/share/gtksourceview-3.0"
-    ".local/share/xfce4/terminal"
-    ".local/share/wallpapers"
-    ".local/share/avatars"
+.local/share/gtksourceview-3.0
+.local/share/xfce4/terminal
+.local/share/wallpapers
+.local/share/avatars
 
-    ".moc/config"
-    ".xrdb"
-    ".kbled"
+.moc/config
+.xrdb
+.kbled
 
-    ".vimrc"
-    ".vim/colors"
-    ".vim/autoload/airline/themes"
+.vimrc
+.vim/colors
+.vim/autoload/airline/themes
 
-    ".Xresources"
-    ".xprofile"
-    ".xsettingsd"
-    ".fonts.conf"
-    ".profile"
-    ".zshrc"
-)
+.Xresources
+.xprofile
+.xsettingsd
+.fonts.conf
+.profile
+.zshrc
