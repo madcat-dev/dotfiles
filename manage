@@ -14,13 +14,13 @@ install)
     [[ -d $SRC/$2 ]] && \
         CMD=( ${@:3} ) && SRC="$SRC/$2"
 
-    [[ $CMD = "all" ]] && \
+    [[ $CMD = "*" ]] && \
         echo "Install all packages from $SRC" && \
         CMD=$(ls $SRC)
 
     [[ ! $CMD ]] && \
-        echo -e "Usage: $(basename $0) install {package name|all|extra}" && \
-        ls $SRC && exit 0
+        echo -e "Usage: $(basename $0) install {package name|extra|*}" && \
+        ls -p $SRC && exit 0
 
     for item in ${CMD[@]}; do
         [[ -d $SRC/$item ]] && continue

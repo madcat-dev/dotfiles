@@ -1,4 +1,4 @@
-# list test files
+# list of backup dot files
 
 .config/bspwm  # bspwm Window anager config
 .config/dunst
