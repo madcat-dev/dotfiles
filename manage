@@ -38,8 +38,8 @@ install)
 status)
     while IFS=\# read -r item _; do
         item=$(echo $item | sed 's/ *$//g') && [[ ${item} ]] && \
-            $BASE/utils/rcopy "$HOME/$item" "$DOTS/$item" simular
-    done < $BASE/CONFIGS
+            ./utils/rcopy "$HOME/$item" "$DOTS/$item" simular
+    done < ./CONFIGS
     ;;
 
 backup)
@@ -47,8 +47,8 @@ backup)
 
     while IFS=\# read -r item _; do
         item=$(echo $item | sed 's/ *$//g') && [[ ${item} ]] && \
-            $BASE/utils/rcopy "$HOME/$item" "$DOTS/$item"
-    done < $BASE/CONFIGS
+            ./utils/rcopy "$HOME/$item" "$DOTS/$item"
+    done < ./CONFIGS
     ;;
 
 restore)
@@ -56,19 +56,13 @@ restore)
 
     while IFS=\# read -r item _; do
         item=$(echo $item | sed 's/ *$//g') && [[ ${item} ]] && \
-            $BASE/utils/rcopy "$DOTS/$item" "$HOME/$item"
-    done < $BASE/CONFIGS
+            ./utils/rcopy "$DOTS/$item" "$HOME/$item"
+    done < ./CONFIGS
     ;;
 
 clean)
     echo -e "\033[31m-- Clean $DOTS directory --\033[0m"
     rm -rf $DOTS
-    ;;
-
-test)
-    while IFS=\# read -r item _; do
-        item=$(echo $item | sed 's/ *$//g') && [[ ${item} ]] && echo $item ":"
-    done < $BASE/CONFIGS
     ;;
 
 *)
