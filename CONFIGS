@@ -2,6 +2,7 @@
 
 .config/bspwm
 .config/dunst
+.config/gtk-2.0
 .config/gtk-3.0
 .config/kitty
 .config/mc/ini
@@ -12,6 +13,8 @@
 .config/sxhkd
 .config/systemd
 .config/xfce4/terminal
+.config/xfce4/xfconf/xfce-perchannel-xml/thunar.xml
+.config/xfce4/helpers.rc
 .config/picom.conf
 .config/pulsemixer.cfg
 .config/zshrc
@@ -38,5 +41,7 @@
 .xprofile
 .xsettingsd
 .fonts.conf
+.fehbg
+.gtkrc-2.0
 .profile
 .zshrc
