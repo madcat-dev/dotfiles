@@ -1,0 +1,9 @@
+[Scheme]
+Name=Smooth
+ColorCursor=#81A1C1
+ColorForeground=#D8DEE9
+ColorBackground=#2F343F
+TabActivityColor=#88C0D0
+ColorPalette=#2F343F;#917070;#709173;#919070;#707491;#91708F;#709190;#E5E9F0;#3B4252;#C49898;#98C49C;#C4C398;#989DC4;#C498C2;#98C4C3;#ECEFF4;
+ColorBold=#D8DEE9
+ColorBoldUseDefault=FALSE
