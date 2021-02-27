@@ -11,6 +11,7 @@
 .config/rofi
 .config/sxhkd
 .config/systemd
+.config/xfce4/terminal
 .config/picom.conf
 .config/pulsemixer.cfg
 .config/zshrc
