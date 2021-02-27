@@ -23,6 +23,7 @@
 
 .local/share/wallpapers
 .local/share/avatars
+.local/share/xfce4
 
 .moc/config
 .xrdb
