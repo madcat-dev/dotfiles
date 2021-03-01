@@ -38,7 +38,7 @@ install)
 status)
     while IFS=\# read -r item _; do
         item=$(echo $item | sed 's/ *$//g') && [[ ${item} ]] && \
-            ./utils/rcopy "$HOME/$item" "$DOTS/$item" simular
+            ./lib/rcopy "$HOME/$item" "$DOTS/$item" simular
     done < ./CONFIGS
     ;;
 
@@ -47,7 +47,7 @@ backup)
 
     while IFS=\# read -r item _; do
         item=$(echo $item | sed 's/ *$//g') && [[ ${item} ]] && \
-            ./utils/rcopy "$HOME/$item" "$DOTS/$item"
+            ./lib/rcopy "$HOME/$item" "$DOTS/$item"
     done < ./CONFIGS
     ;;
 
@@ -56,7 +56,7 @@ restore)
 
     while IFS=\# read -r item _; do
         item=$(echo $item | sed 's/ *$//g') && [[ ${item} ]] && \
-            ./utils/rcopy "$DOTS/$item" "$HOME/$item"
+            ./lib/rcopy "$DOTS/$item" "$HOME/$item"
     done < ./CONFIGS
     ;;
 
