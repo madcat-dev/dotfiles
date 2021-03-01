@@ -1,12 +1,15 @@
 #!/bin/sh
 
-export BASE=$(dirname $0)
+export BASE=$(realpath `dirname $0`)
 DOTS="${BASE}/dots"
 
 cd $BASE
 
 
 case $1 in
+pkg)
+    ;;
+
 install)
     SRC="./install"
     CMD=( ${@:2} )
@@ -27,7 +30,7 @@ install)
 
         if [[ -x $SRC/$item ]]; then
             echo -e "\033[33m  install: $SRC/$item\033[0m"
-            #./$SRC/$item
+            ./$SRC/$item
         else
             echo -e "\033[31mError: package $item not found!\033[0m"
             exit 1
