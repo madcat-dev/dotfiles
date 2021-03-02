@@ -13,7 +13,6 @@ PKGS=(
     "tmux"    
     "grc"                   # Yet another colouriser for beautifying your logfiles or output of commands
 
-    "kitty"
     "rxvt-unicode"
 
     "gnome-calculator"      # GNOME Scientific calculator

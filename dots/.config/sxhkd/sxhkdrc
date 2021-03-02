@@ -4,7 +4,7 @@
 
 # terminal emulator
 super + Return
-	kitty
+	xfce4-terminal
 
 # program launcher
 super + d
@@ -129,22 +129,6 @@ alt + {Left,Down,Up,Right}
 
 ############### Keyboard Function Keys ###############
 
-# Cut, copy and paste (use 'xautomation' package)
-super + x
-    xte "keyup x" "keyup Super_L" "keydown Control_L" "key x" "keyup Control_L" "keydown Super_L"
-
-super + c
-    run_if_window_matches --not --class "(kitty|urxvt|xfce4-terminal)" -- xte "keyup c" "keyup Super_L" "keydown Control_L" "key c"      "keyup Control_L" "keydown Super_L" ; \
-    run_if_window_matches       --class "(kitty|urxvt|xfce4-terminal)" -- xte "keyup c" "keyup Super_L" "keydown Control_L" "key Insert" "keyup Control_L" "keydown Super_L"
-
-super + v
-    run_if_window_matches --not --class "(kitty|urxvt|xfce4-terminal)" -- xte "keyup v" "keyup Super_L" "keydown Control_L" "key v"      "keyup Control_L" "keydown Super_L" ; \
-    run_if_window_matches       --class "(kitty|urxvt|xfce4-terminal)" -- xte "keyup v" "keyup Super_L" "keydown Shift_L"   "key Insert" "keyup Shift_L" "keydown Super_L"
-
-# Similar ctrl + r
-super + r
-    xte "keyup r" "keyup Super_L" "keydown Control_L" "key r" "keyup Control_L" "keydown Super_L"
-
 # Volume:
 XF86Audio{RaiseVolume,LowerVolume,Mute}
     amixer {-q set Master 5%+, -q set Master 5%-, set Master toggle}
@@ -167,4 +151,21 @@ alt + Print
 # Take a screenshot with interactively choose a window or rectangle
 shift + Print
     sleep 1 && scrot -s 'scrot_%Y-%m-%d-%S_$wx$h.png' -e 'mv $f ~/Desktop/'
+
+
+# Cut, copy and paste (use 'xautomation' package)
+super + x
+    xte "keyup x" "keyup Super_L" "keydown Control_L" "key x" "keyup Control_L" "keydown Super_L"
+
+super + c
+    run_if_window_matches --not --class "(kitty|urxvt|xfce4-terminal)" -- xte "keyup c" "keyup Super_L" "keydown Control_L" "key c"      "keyup Control_L" "keydown Super_L" ; \
+    run_if_window_matches       --class "(kitty|urxvt|xfce4-terminal)" -- xte "keyup c" "keyup Super_L" "keydown Control_L" "key Insert" "keyup Control_L" "keydown Super_L"
+
+super + v
+    run_if_window_matches --not --class "(kitty|urxvt|xfce4-terminal)" -- xte "keyup v" "keyup Super_L" "keydown Control_L" "key v"      "keyup Control_L" "keydown Super_L" ; \
+    run_if_window_matches       --class "(kitty|urxvt|xfce4-terminal)" -- xte "keyup v" "keyup Super_L" "keydown Shift_L"   "key Insert" "keyup Shift_L" "keydown Super_L"
+
+# Similar ctrl + r
+super + r
+    xte "keyup r" "keyup Super_L" "keydown Control_L" "key r" "keyup Control_L" "keydown Super_L"
 
