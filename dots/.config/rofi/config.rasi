@@ -6,7 +6,7 @@ configuration {
 	hide-scrollbar: true;
 	scrollbar-width: 0;
 
-	terminal: "kitty";
+	terminal: "xfce4-terminal";
 
 	display-window: "win:";
 	display-run: "run:";
