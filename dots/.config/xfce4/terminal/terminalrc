@@ -26,7 +26,7 @@ MiscCopyOnSelect=FALSE
 MiscShowRelaunchDialog=TRUE
 MiscRewrapOnResize=TRUE
 MiscUseShiftArrowsToScroll=FALSE
-MiscSlimTabs=TRUE
+MiscSlimTabs=FALSE
 MiscNewTabAdjacent=FALSE
 MiscSearchDialogOpacity=100
 MiscShowUnsafePasteDialog=TRUE
@@ -47,4 +47,6 @@ ColorSelectionUseDefault=FALSE
 ColorSelection=#000000
 ColorSelectionBackground=#FFFACD
 ColorCursorUseDefault=FALSE
+TitleInitial=%w
+TitleMode=TERMINAL_TITLE_REPLACE
 
