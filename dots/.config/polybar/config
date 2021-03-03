@@ -66,37 +66,19 @@ wm-restack = bspwm
 cursor-click = pointer
 cursor-scroll = ns-resize
 
-
-[bar/layouts]
-font-0 = Noto:style=Regular:size=10
+[bar/main]
 inherit = bar/default
 offset-x = 0px
-width = ${env:LAYOUT_SIZE}
+width = 100%
 
-modules-left = bspwm
 foreground = ${colors.foreground}
 background = ${colors.background}
 
-
-[bar/top]
-inherit = bar/default
-width = ${env:TOP_SIZE}
-offset-x = ${env:LAYOUT_SIZE}
-
-modules-left = mocp
+modules-left = bspwm mocp
 modules-center = xwindow
 modules-right = pulseaudio pulsemixer xkeyboard date mainmenu winlist powermenu
 
-
-[bar/tray]
-inherit = bar/default
-width = ${env:TRAY_SIZE}
-offset-x = ${env:TRAY_OFFSET}
-
-modules-center = empty
-background = ${colors.background}
-
-tray-position = center
+tray-position = right
 tray-padding = 10
 tray-background = ${colors.background}
 
@@ -124,18 +106,18 @@ type = internal/bspwm
 
 label-focused = %name%
 label-focused-foreground = ${xrdb:color1}
-label-focused-padding = 2
+label-focused-padding = 1
 
 label-occupied = %name%
-label-occupied-padding = 2
+label-occupied-padding = 1
 
 label-urgent = %name%!
 label-urgent-background = ${colors.alert}
-label-urgent-padding = 2
+label-urgent-padding = 1
 
 label-empty = %name%
 label-empty-foreground = ${xrdb:color6}
-label-empty-padding = 2
+label-empty-padding = 1
 
 
 [module/date]

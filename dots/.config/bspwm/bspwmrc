@@ -34,7 +34,7 @@ bspc rule -a Conky state=floating manage=off
 ###############
 ## autostart ##
 ###############
-pkill sxhkd
+killall -u $USER sxhkd
 sxhkd &
 
 light-locker &
@@ -50,8 +50,10 @@ pamac-tray &
 dunst &
 
 ## Start polybar with detect monitor and get size
-polybar.sh
+export MONITOR=$(xrandr -q | grep " connected " | awk '{print $1}')
+killall -u $USER polybar
+polybar main &
 
 # compoze manager
-pkill picom
+killall -u $USER picom
 LC_ALL=C picom -b

@@ -23,7 +23,6 @@
 .local/bin/rofi_power_menu
 .local/bin/mocp.sh
 .local/bin/pulsemixer.sh
-.local/bin/polybar.sh
 
 .local/share/wallpapers
 .local/share/avatars
