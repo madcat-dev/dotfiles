@@ -16,7 +16,6 @@ MiscTabCloseMiddleClick=FALSE
 MiscTabPosition=GTK_POS_BOTTOM
 MiscHighlightUrls=TRUE
 ScrollingLines=999999
-BackgroundMode=TERMINAL_BACKGROUND_TRANSPARENT
 BackgroundDarkness=1,000000
 ScrollingOnOutput=FALSE
 MiscBellUrgent=FALSE
@@ -49,4 +48,5 @@ ColorSelectionBackground=#FFFACD
 ColorCursorUseDefault=FALSE
 TitleInitial=%w
 TitleMode=TERMINAL_TITLE_REPLACE
+TabActivityTimeout=0
 
