@@ -1,0 +1,89 @@
+#!/bin/sh
+
+export BASE=$(realpath `dirname $0`/../)
+export PKGS="$BASE/packets"
+
+USAGE="Usage:\n\t$(basename $0) install|info pkg1[, pkg2, ...]"
+
+
+CMD=( ${@:2} )
+[[ ! $CMD ]] && \
+    CMD='/'
+
+case $1 in
+install)
+    INSTALL=true
+    ;;
+info)
+    ;;
+*)
+    echo -e "Usage:\n\t$(basename $0) install|info pkg1[, pkg2, ...]" && \
+        exit 0
+    ;;
+esac
+
+for item in ${CMD[@]}; do
+    [[ -d $PKGS/$item ]] && \
+        echo -e "Packet from '$item':\n\t\033[36m"`ls -p $PKGS/$item`"\033[0m\n" && \
+        continue
+
+    [[ ! -x $PKGS/$item ]] && \
+        echo -e "\033[31mError: packet '$item' not found!\033[0m" && \
+        exit 1
+
+    # init default package variables and methods
+    TITLE=""
+    DESCRIPTION=""
+    PACKAGES=()
+    CONFIGS=()
+    pre_install() { echo "skip pre-install handler"  > /dev/null; }
+    pre_config()  { echo "skip pre-config handler"   > /dev/null; }
+    install()     { echo "skip post-install handler" > /dev/null; }
+    to_install=()
+
+    source $PKGS/$item
+
+    echo -e "\033[33m-- Packet '$item' --\033[0m"
+    echo -e "\033[33m   ${TITLE}\033[0m"
+
+    [[ ${DESCRIPTION} ]] && \
+        echo -e "${DESCRIPTION}"
+    
+    [[ ${PACKAGES} ]] && \
+        echo -e "Packages list:"
+
+    for pkg in ${PACKAGES[@]}; do
+        installed=( $(LC_ALL=C pamac info $pkg | grep "Install Reason") )
+        echo -e "\t$(printf '%-20s' $pkg): \033[33m${installed[@]:3}\033[0m"
+
+        [[ ! $installed ]] && \
+            to_install+=( $pkg )
+    done
+
+    [[ ! $INSTALL ]] && \
+        echo "" && continue
+
+    # exec pre-install handler
+    pre_install || exit 1
+
+    if [[ ${to_install} ]]; then 
+        echo -e "Install packages:\n\t\033[36m${to_install[@]}\033[0m"
+        #pamac install ${to_install[@]}
+    fi
+
+    # exec pre-config handler
+    pre_config || exit 1
+
+    if [[ ${CONFIGS} ]]; then
+        echo -e "Copy config files:"
+
+        for item in ${CONFIGS[@]}; do
+            $BASE/lib/syncopy "$BASE/backup/$item" "$HOME/$item" simular
+        done
+    fi
+
+    # exec post-install handler
+    install || exit 1
+
+    echo -e "\033[32m[+] install '$item' is complete\033[0m\n"
+done

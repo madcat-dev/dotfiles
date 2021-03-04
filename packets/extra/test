@@ -3,10 +3,12 @@
 TITLE="Test package"
 
 CONFIGS=(
+    .vimrc
+    .vim/colors
+    .vim/autoload/airline/themes
 )
 
-PKGS=(
-    "base-devel"
+PACKAGES=(
     "ctags"
     "clang"
     "python-pip"
