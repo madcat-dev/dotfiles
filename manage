@@ -8,6 +8,7 @@ cd $BASE
 
 case $1 in
 inst)
+    SRC="./install"
     ;;
 
 install)
