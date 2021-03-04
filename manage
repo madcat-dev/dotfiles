@@ -1,12 +1,7 @@
 #!/bin/sh
 
 export BASE=$(realpath `dirname $0`)
-DOTS="${BASE}/dots"
-
 cd $BASE
-
-info() {
-}
 
 case $1 in
 inst)
@@ -40,7 +35,6 @@ info)
 
             PKGS=()
             CONFIGS=()
-            post_install
 
             source $SRC/$item
 
@@ -49,7 +43,7 @@ info)
 
             echo -e "Configs:\n\t${CONFIGS[@]}"
 
-            post_install
+            declare -f "post_install" > /dev/null && post_install
         fi
     done
     ;;
@@ -85,31 +79,31 @@ install)
 status)
     while IFS=\# read -r item _; do
         item=$(echo $item | sed 's/ *$//g') && [[ ${item} ]] && \
-            ./lib/syncopy "$HOME/$item" "$DOTS/$item" simular
+            ./lib/syncopy "$HOME/$item" "$BASE/backup/$item" simular
     done < ./CONFIGS
     ;;
 
 backup)
-    echo -e "-- Copy configs to $DOTS repository --"
+    echo -e "-- Copy configs to $BASE/backup repository --"
 
     while IFS=\# read -r item _; do
         item=$(echo $item | sed 's/ *$//g') && [[ ${item} ]] && \
-            ./lib/syncopy "$HOME/$item" "$DOTS/$item"
+            ./lib/syncopy "$HOME/$item" "$BASE/backup/$item"
     done < ./CONFIGS
     ;;
 
 restore)
-    echo -e "-- Copy configs from '$DOTS' repository --"
+    echo -e "-- Copy configs from $BASE/backup repository --"
 
     while IFS=\# read -r item _; do
         item=$(echo $item | sed 's/ *$//g') && [[ ${item} ]] && \
-            ./lib/syncopy "$DOTS/$item" "$HOME/$item"
+            ./lib/syncopy "$BASE/backup/$item" "$HOME/$item"
     done < ./CONFIGS
     ;;
 
 clean)
-    echo -e "\033[31m-- Clean $DOTS directory --\033[0m"
-    rm -rf $DOTS
+    echo -e "\033[31m-- Clean $BASE/backup directory --\033[0m"
+    rm -rf $BASE/backup
     ;;
 
 *)

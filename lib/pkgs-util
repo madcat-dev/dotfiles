@@ -1,0 +1,5 @@
+#!/bin/sh
+
+export BASE=$(realpath `dirname $0`/../)
+
+echo $BASE
