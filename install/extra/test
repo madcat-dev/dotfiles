@@ -1,5 +1,19 @@
 #!/bin/sh
 
-echo "------"
+TITLE="Test package"
 
-echo $BASE
+CONFIGS=(
+)
+
+PKGS=(
+    "base-devel"
+    "ctags"
+    "clang"
+    "python-pip"
+    "libpqxx"
+)
+
+post_install() {
+    echo "Post install script"
+}
+

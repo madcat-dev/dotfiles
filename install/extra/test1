@@ -1,0 +1,13 @@
+#!/bin/sh
+
+TITLE="Test package 1"
+
+CONFIGS=(
+)
+
+PKGS=(
+    "base-devel"
+    "ctags"
+)
+
+
