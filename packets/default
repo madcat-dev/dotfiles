@@ -1,0 +1,32 @@
+#!/bin/sh
+
+TITLE="Main title of packet"
+
+DESCRIPTION="
+    Text description from packet
+"
+
+DEPENDENCIES=(
+    # List of packet dependencies (any packets)
+)
+
+CONFIGS=(
+    # List of configs files
+)
+
+PACKAGES=(
+    # List of packages to be installed
+)
+
+pre_install() {
+    echo "Script executed before the package installation process"
+}
+
+pre_config() {
+    echo "Script executed before the process of transferring configuration files"
+}
+
+post_install() {
+    echo "Script executed at the end of the installation process"
+}
+

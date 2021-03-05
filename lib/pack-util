@@ -4,9 +4,13 @@ export BASE=$(realpath `dirname $0`/../)
 export PKGS="$BASE/packets"
 
 USAGE="Usage:\n\t$(basename $0) install|info pkg1[, pkg2, ...]"
+mkdir -p $BASE/var > /dev/null 2>&1
 
 
 CMD=( ${@:2} )
+[[ $2 == "--force" ]] && \
+    FORCE="--force" && CMD=( ${@:3} )
+
 [[ ! $CMD ]] && \
     CMD='/'
 
@@ -36,16 +40,28 @@ for item in ${CMD[@]}; do
         exit 1
     fi
 
+    if [[ $INSTALL ]]; then
+        # Check installed packet
+        [[ -e $BASE/var/$item ]] && \
+            echo -e "\033[34m-- Packet '$item' already installed\033[0m"
+
+            [[ ! ${FORCE} ]] && continue
+            echo -e "\033[33m-- Forced installation!\033[0m"
+    fi
+
     # init default package variables and methods
     TITLE=""
     DESCRIPTION=""
+    DEPENDENCIES=()
     PACKAGES=()
     CONFIGS=()
-    pre_install() { echo -e "\033[33m\t- skip\033[0m"; }
-    pre_config()  { echo -e "\033[33m\t- skip\033[0m"; }
-    install()     { echo -e "\033[33m\t- skip\033[0m"; }
-    to_install=()
+    pre_install()  { echo -e "\033[33m\t- skip\033[0m"; }
+    pre_config()   { echo -e "\033[33m\t- skip\033[0m"; }
+    post_install() { echo -e "\033[33m\t- skip\033[0m"; }
 
+    to_install=() # list of packages to be installed 
+
+    # Load packet
     source $PKGS/$item
 
     echo -e "\033[33m$(perl -E 'say "-" x 60')\033[0m"
@@ -54,24 +70,28 @@ for item in ${CMD[@]}; do
 
     [[ ${DESCRIPTION} ]] && \
         echo -e "${DESCRIPTION}"
+
+    # Resolve dependencies
     
-    [[ ${PACKAGES} ]] && \
+    # Resolve packages to install
+    if [[ ${PACKAGES} ]]; then
         echo -e "Packages list:"
 
-    for pkg in ${PACKAGES[@]}; do
-        installed=( $(LC_ALL=C pamac info $pkg | grep "Install Reason") )
-        echo -e "\t$(printf '%-20s' $pkg): \033[33m${installed[@]:3}\033[0m"
+        for pkg in ${PACKAGES[@]}; do
+            installed=( $(LC_ALL=C pamac info $pkg | grep "Install Reason") )
+            echo -e "\t$(printf '%-20s' $pkg): \033[33m${installed[@]:3}\033[0m"
 
-        [[ ! $installed ]] && \
-            to_install+=( $pkg )
-    done
+            [[ ! $installed ]] && \
+                to_install+=( $pkg )
+        done
+    fi
 
     [[ ! $INSTALL ]] && \
         echo "" && continue
 
     # exec pre-install handler
-    echo -e "Run pre-install script:" && \
-        pre_install || exit 1
+    echo -e "Run pre-install script:"
+    pre_install || exit 1
 
     if [[ ${to_install} ]]; then 
         echo -e "Install packages:\n\t\033[36m${to_install[@]}\033[0m"
@@ -79,20 +99,23 @@ for item in ${CMD[@]}; do
     fi
 
     # exec pre-config handler
-    echo -e "Run pre-configure script:" && \
-        pre_config || exit 1
+    echo -e "Run pre-configure script:"
+    pre_config || exit 1
 
     if [[ ${CONFIGS} ]]; then
         echo -e "Copy config files:"
 
-        for item in ${CONFIGS[@]}; do
-            $BASE/lib/syncopy "$BASE/backup/$item" "$HOME/$item" simular
+        for cfg in ${CONFIGS[@]}; do
+            $BASE/lib/syncopy "$BASE/backup/$cfg" "$HOME/$cfg" simular
         done
     fi
 
     # exec post-install handler
-    echo -e "Run post-install script:" && \
-        install || exit 1
+    echo -e "Run post-install script:"
+    post_install || exit 1
 
+    # Mark installed packet
+    mkdir -p $(dirname $BASE/var/$item) > /dev/null 2>&1
+    echo "Packet '$item' installed: $(date)" > $BASE/var/$item
     echo -e "\033[32m[+] install '$item' is complete\033[0m\n"
 done
