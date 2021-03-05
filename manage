@@ -4,76 +4,14 @@ export BASE=$(realpath `dirname $0`)
 cd $BASE
 
 case $1 in
-inst)
-    SRC="./install"
+install)
     CMD=( ${@:2} )
-    
-    [[ ! $CMD ]] && \
-        echo -e "Usage: $(basename $0) install ..." && \
-        exit 0
-
-    for item in ${CMD[@]}; do
-        echo -e "$item -> $SRC/$item"
-    done
+    $BASE/lib/pack-util install ${CMD[@]}
     ;;
 
 info)
-    SRC="$BASE/install"
     CMD=( ${@:2} )
-    
-    [[ ! $CMD ]] && \
-        echo -e "Usage: $(basename $0) info ..." && \
-        CMD=( 'extra/test' 'extra/test1' )
-
-    for item in ${CMD[@]}; do
-        echo "-->>> $SRC/$item"
-        if [[ -d $SRC/$item ]]; then
-            echo "    - packages group"
-            ls -p $SRC/$item
-        else
-            echo "    - package $item"
-
-            PKGS=()
-            CONFIGS=()
-
-            source $SRC/$item
-
-            echo -e "\033[32m-- Info from '${TITLE:-$item}' --\033[0m"
-            echo -e "Packages:\n\t${PKGS[@]}"
-
-            echo -e "Configs:\n\t${CONFIGS[@]}"
-
-            declare -f "post_install" > /dev/null && post_install
-        fi
-    done
-    ;;
-
-install)
-    SRC="./install"
-    CMD=( ${@:2} )
-
-    [[ -d $SRC/$2 ]] && \
-        CMD=( ${@:3} ) && SRC="$SRC/$2"
-
-    [[ $CMD = "*" ]] && \
-        echo "Install all packages from $SRC" && \
-        CMD=$(ls $SRC)
-
-    [[ ! $CMD ]] && \
-        echo -e "Usage: $(basename $0) install {package name|extra|*}" && \
-        ls -p $SRC && exit 0
-
-    for item in ${CMD[@]}; do
-        [[ -d $SRC/$item ]] && continue
-
-        if [[ -x $SRC/$item ]]; then
-            echo -e "\033[33m  install: $SRC/$item\033[0m"
-            ./$SRC/$item
-        else
-            echo -e "\033[31mError: package $item not found!\033[0m"
-            exit 1
-        fi
-    done
+    $BASE/lib/pack-util info ${CMD[@]}
     ;;
 
 status)

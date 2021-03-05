@@ -41,16 +41,6 @@ for item in ${CMD[@]}; do
         exit 1
     fi
 
-    if [[ ${INSTALL} ]]; then
-        # Check installed packet
-        if [[ -e $BASE/var/$item ]]; then
-            echo -e "\033[34m-- Packet '$item' already installed\033[0m"
-
-            [[ ! ${FORCE} ]] && continue
-            echo -e "\033[33m-- Forced installation!\033[0m"
-        fi
-    fi
-
     # init default package variables and methods
     TITLE=""
     DESCRIPTION=""
@@ -68,6 +58,18 @@ for item in ${CMD[@]}; do
 
     echo -e "\033[33m$(perl -E 'say "-" x 60')\033[0m"
     echo -e "\033[33m-- Packet $item - ${TITLE:-...}\033[0m"
+
+    # Check installed packet
+    if [[ -e $BASE/var/$item ]]; then
+        echo -e "\033[34m-- Packet '$item' already installed\033[0m"
+
+        if [[ ${INSTALL} ]]; then
+            [[ ! ${FORCE} ]] && \
+                continue
+            echo -e "\033[33m-- Forced installation!\033[0m"
+        fi
+    fi
+
     echo -e "\033[33m$(perl -E 'say "-" x 60')\033[0m"
 
     [[ ${DESCRIPTION} ]] && \
