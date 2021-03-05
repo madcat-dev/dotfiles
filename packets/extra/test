@@ -15,7 +15,7 @@ PACKAGES=(
     "libpqxx"
 )
 
-post_install() {
+install() {
     echo "Post install script"
 }
 

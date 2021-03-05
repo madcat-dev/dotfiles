@@ -36,9 +36,9 @@ for item in ${CMD[@]}; do
     DESCRIPTION=""
     PACKAGES=()
     CONFIGS=()
-    pre_install() { echo "skip pre-install handler"  > /dev/null; }
-    pre_config()  { echo "skip pre-config handler"   > /dev/null; }
-    install()     { echo "skip post-install handler" > /dev/null; }
+    pre_install() { echo "pre-install handler"  > /dev/null; }
+    pre_config()  { echo "pre-config handler"   > /dev/null; }
+    install()     { echo "post-install handler" > /dev/null; }
     to_install=()
 
     source $PKGS/$item
