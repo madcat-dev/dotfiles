@@ -1,7 +1,6 @@
 #!/bin/sh
 
-BASE=$(realpath "$(dirname $0)/../")
-DOTS="$BASE/dots"
+TITLE="VIM and environment"
 
 CONFIGS=(
     ".vimrc"
@@ -9,25 +8,21 @@ CONFIGS=(
     ".vim/autoload/airline/themes"
 )
 
-PKGS=(
+PACKAGES=(
     "gvim"
 )
 
+pre_config() {
+    echo ""
+    #rm -rf $HOME/.vim/
+}
 
-echo -e "\033[32m-- Install VIM package and environment --\033[0m"
-echo -e "Packages:\n\t${PKGS[@]}"
+install() {
+    echo ""
+    #mkdir -p $HOME/.vim/bundle/
+    ## Install vundle plugin manager from git...
+    #git clone https://github.com/VundleVim/Vundle.vim.git \
+        #$HOME/.vim/bundle/Vundle.vim
 
-sudo pacman -S ${PKGS[@]}
-
-rm -rf $HOME/.vim/
-
-for item in ${CONFIGS[@]}; do
-    $BASE/utils/rcopy "$DOTS/$item" "$HOME/$item"
-done
-
-mkdir -p $HOME/.vim/bundle/
-# Install vundle plugin manager from git...
-git clone https://github.com/VundleVim/Vundle.vim.git \
-    $HOME/.vim/bundle/Vundle.vim
-
-vim --not-a-term +PluginInstall +qall
+    #vim --not-a-term +PluginInstall +qall
+}
