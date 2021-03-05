@@ -11,6 +11,7 @@ CMD=( ${@:2} )
 [[ $2 == "--force" ]] && \
     FORCE="--force" && CMD=( ${@:3} )
 
+
 [[ ! $CMD ]] && \
     CMD='/'
 
@@ -27,6 +28,7 @@ info)
 esac
 
 for item in ${CMD[@]}; do
+    echo ${CMD[@]}
     [[ -d $PKGS/$item ]] && \
         echo -e "Packet from '$item':\n\t\033[36m"`ls -p $PKGS/$item`"\033[0m\n" && \
         continue
@@ -36,17 +38,18 @@ for item in ${CMD[@]}; do
         echo -e "*** Error: packet '$item' not found! ***"
         echo -e "***\033[0m"
 
-        [[ ! $INSTALL ]] && continue
+        [[ ! ${INSTALL} ]] && continue
         exit 1
     fi
 
-    if [[ $INSTALL ]]; then
+    if [[ ${INSTALL} ]]; then
         # Check installed packet
-        [[ -e $BASE/var/$item ]] && \
+        if [[ -e $BASE/var/$item ]]; then
             echo -e "\033[34m-- Packet '$item' already installed\033[0m"
 
             [[ ! ${FORCE} ]] && continue
             echo -e "\033[33m-- Forced installation!\033[0m"
+        fi
     fi
 
     # init default package variables and methods
@@ -86,7 +89,7 @@ for item in ${CMD[@]}; do
         done
     fi
 
-    [[ ! $INSTALL ]] && \
+    [[ ! ${INSTALL} ]] && \
         echo "" && continue
 
     # exec pre-install handler

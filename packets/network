@@ -1,6 +1,10 @@
 #!/bin/sh
 
-PKGS=(
+TITLE="Network packages"
+
+PACKAGES=(
+    "wget"
+    "curl"
     "w3m"
     "httpie"                # cURL for humans
     "sshfs"
@@ -9,8 +13,4 @@ PKGS=(
     "transmission-gtk"
 )
 
-
-echo -e "\033[32m-- Install Network packages from AUR --\033[0m"
-echo -e "Packages:\n\t${PKGS[@]}"
-
-pamac install ${PKGS[@]}
+echo "net"

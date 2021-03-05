@@ -1,12 +1,17 @@
 #!/bin/sh
 
-PKGS=(
+TITLE="Utils packages"
+
+PACKAGES=(
     "xorg-xrandr"
     "xorg-xev"
     "xautomation"
     "xdotool"
     "xsettingsd"            # Provides settings to X11 applications via the XSETTINGS specification
     "numlockx"              # Turns on the numlock key in X11
+    "exfat-utils"
+    "htop" "zsh"
+    "unrar" "p7zip"
     "mc"
     "gtop"
     "tig"
@@ -21,10 +26,7 @@ PKGS=(
     "ranger"                # A simple, vim-like file manager
     "trash-cli"             # Command line trashcan (recycle bin) interface
     "ncdu"                  # Disk usage analyzer with an ncurses interface
+    "imagemagick"           # An image viewing/manipulation program
+    "mousepad"              # Simple text editor for Xfce
+    "gparted"
 )
-
-
-echo -e "\033[32m-- Install Utils packages from AUR --\033[0m"
-echo -e "Packages:\n\t${PKGS[@]}"
-
-pamac install ${PKGS[@]}
