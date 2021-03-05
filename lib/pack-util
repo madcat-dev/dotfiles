@@ -28,7 +28,6 @@ info)
 esac
 
 for item in ${CMD[@]}; do
-    echo ${CMD[@]}
     [[ -d $PKGS/$item ]] && \
         echo -e "Packet from '$item':\n\t\033[36m"`ls -p $PKGS/$item`"\033[0m\n" && \
         continue
