@@ -12,5 +12,3 @@ PACKAGES=(
     "telegram-desktop"
     "transmission-gtk"
 )
-
-echo "net"
