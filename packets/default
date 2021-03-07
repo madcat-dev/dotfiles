@@ -26,7 +26,7 @@ pre_config() {
     echo "Script executed before the process of transferring configuration files"
 }
 
-post_install() {
-    echo "Script executed at the end of the installation process"
+install() {
+    echo "Script executed at the end of the packages installation process"
 }
 

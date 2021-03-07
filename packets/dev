@@ -1,16 +1,15 @@
 #!/bin/sh
 
-TITLE="Base development packages"
+TITLE="Development packages"
 
-PACKAGES=(
-    "git"
-    "ctags"
-    "clang"
-    "python-pip"
-    "libpqxx"
+DEPENDENCIES=(
+    base-dev
 )
 
-pre_install() {
-    echo -e "\033[33m  - Install base development meta-package\033[0m"
-    sudo pacman -S base-devel
-}
+PACKAGES=(
+    git
+    ctags
+    clang
+    python-pip
+    libpqxx
+)

@@ -47,9 +47,9 @@ for item in ${CMD[@]}; do
     DEPENDENCIES=()
     PACKAGES=()
     CONFIGS=()
-    pre_install()  { echo -e "\033[33m\t- skip\033[0m"; }
-    pre_config()   { echo -e "\033[33m\t- skip\033[0m"; }
-    post_install() { echo -e "\033[33m\t- skip\033[0m"; }
+    pre_install() { echo -e "\033[33m  - skip\033[0m"; }
+    pre_config()  { echo -e "\033[33m  - skip\033[0m"; }
+    install()     { echo -e "\033[33m  - skip\033[0m"; }
 
     to_install=() # list of packages to be installed 
 
@@ -66,7 +66,7 @@ for item in ${CMD[@]}; do
         if [[ ${INSTALL} ]]; then
             [[ ! ${FORCE} ]] && \
                 continue
-            echo -e "\033[33m-- Forced installation!\033[0m"
+            echo -e "\033[33m-- Force installation!\033[0m"
         fi
     fi
 
@@ -76,14 +76,39 @@ for item in ${CMD[@]}; do
         echo -e "${DESCRIPTION}"
 
     # Resolve dependencies
+    if [[ $DEPENDENCIES ]]; then
+        echo -e "Dependencies:"
+        echo -e "\t\033[36m${DEPENDENCIES[*]}\033[0m"
+
+        for dep in ${DEPENDENCIES[@]}; do
+            [[ -e $BASE/var/$dep ]] && \
+                echo -e "\t- packet '$dep' already installed" && \
+                continue
+             
+            [[ ! -e $PKGS/$dep ]] && \
+                echo -e "\033[31m\t- Error: packet '$dep' not found!\033[0m" && \
+                exit 1
+
+            echo -e "\n\033[34m### \n### Install '$dep' dependence packet\n###\033[0m\n"
+
+            $0 install $dep
+
+            echo -e "\n\033[34m!!! \n!!! Continue installation '$item' packet\n!!!\033[0m\n"
+        done
+    fi
     
     # Resolve packages to install
     if [[ ${PACKAGES} ]]; then
         echo -e "Packages list:"
 
         for pkg in ${PACKAGES[@]}; do
-            installed=( $(LC_ALL=C pamac info $pkg | grep "Install Reason") )
-            echo -e "\t$(printf '%-20s' $pkg): \033[33m${installed[@]:3}\033[0m"
+            installed=( $(LC_ALL=C pamac info $pkg | egrep '^Install Reason') )
+            installed=${installed[@]:3}
+
+            repository=( $(LC_ALL=C pamac info $pkg | egrep '^Repository') )
+            repository=${repository[@]:2}
+
+            echo -e "\t$(printf '%-20s' $pkg [${repository}]): \033[33m${installed}\033[0m"
 
             [[ ! $installed ]] && \
                 to_install+=( $pkg )
@@ -116,10 +141,19 @@ for item in ${CMD[@]}; do
 
     # exec post-install handler
     echo -e "Run post-install script:"
-    post_install || exit 1
+    install || exit 1
 
     # Mark installed packet
     mkdir -p $(dirname $BASE/var/$item) > /dev/null 2>&1
-    echo "Packet '$item' installed: $(date)" > $BASE/var/$item
+    rm -f $BASE/var/$item
+    touch $BASE/var/$item
+
+    echo "finish!!!!"
+    echo ${to_install[@]}
+    for pkg in ${to_install[@]}; do
+        echo "${pkg}"
+        echo "${pkg}" >> $BASE/var/$item
+    done
+
     echo -e "\033[32m[+] install '$item' is complete\033[0m\n"
 done

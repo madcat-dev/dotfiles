@@ -1,0 +1,8 @@
+#!/bin/sh
+
+TITLE="Base development packages"
+
+install() {
+    echo -e "\033[33m  - Install base development meta-package\033[0m"
+    #sudo pacman -S base-devel
+}
