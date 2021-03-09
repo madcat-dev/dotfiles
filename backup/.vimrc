@@ -92,6 +92,11 @@ call vundle#begin()
     " --- Solidity ---
     Plugin 'tomlion/vim-solidity'
 
+    " --- Go ---
+    Plugin 'fatih/vim-go'
+    let g:go_fmt_command = 'goimports'  " Run goimports along gofmt on each save     
+    let g:go_auto_type_info = 1         " Automatically get signature/type info for object under cursor
+
     " --- Others ---
     Plugin 'tmhedberg/matchit'          " переход по тегам <> </>
     Plugin 'matze/vim-move'             " перемещение блоков <C-j> или <C-k>

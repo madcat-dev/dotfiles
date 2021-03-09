@@ -135,7 +135,7 @@ for item in ${CMD[@]}; do
         echo -e "Copy config files:"
 
         for cfg in ${CONFIGS[@]}; do
-            $BASE/lib/syncopy "$BASE/backup/$cfg" "$HOME/$cfg" simular
+            $BASE/bin/syncopy "$BASE/backup/$cfg" "$HOME/$cfg" simular
         done
     fi
 
