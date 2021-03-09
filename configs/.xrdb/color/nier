@@ -1,0 +1,46 @@
+! -----------------------------------------------------------------------------
+! Shoreline color cheme
+! -----------------------------------------------------------------------------
+
+!! special
+*.foreground:  #D8DEE9
+*.background:  #2F343F
+*.cursor:      #81A1C1
+*.highlight:   #FB3D66
+*.selection_foreground: #000000
+*.selection_background: #FFFACD
+*.url_color:   #0087BD
+
+!! terminal colors+
+! black
+*.color0:   #2F343F
+*.color8:   #3B4252
+
+! red
+*.color1:   #C47C72
+*.color9:   #C47C72
+
+! green
+*.color2:   #8B756D
+*.color10:  #8B756D
+
+! yellow
+*.color3:   #9D857A
+*.color11:  #9D857A
+
+! blue
+*.color4:   #7C7C82
+*.color12:  #7C7C82
+
+! magenta
+*.color5:   #817F84
+*.color13:  #817F84
+
+! cyan
+*.color6:   #9D9697
+*.color14:  #9D9697
+
+! white
+*.color7:   #DED3CD
+*.color15:  #DED3CD
+
