@@ -39,8 +39,9 @@ clean)
     ;;
 
 *)
-    echo -e "Usage: $(basename $0) {install|status|backup|restore|clean}"
-    echo -e "       $(basename $0) install {package name|all|extra} ..."
+    echo -e "Usage: "
+    echo -e "\t$(basename $0) status|backup|restore|clean"
+    echo -e "\t$(basename $0) install|info [--force, --fake] {package name|package path} ..."
     ;;
 
 esac
