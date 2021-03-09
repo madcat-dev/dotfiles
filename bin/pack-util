@@ -7,25 +7,34 @@ USAGE="Usage:\n\t$(basename $0) install|info pkg1[, pkg2, ...]"
 mkdir -p $BASE/var > /dev/null 2>&1
 
 
-CMD=( ${@:2} )
-[[ $2 == "--force" ]] && \
-    FORCE="--force" && CMD=( ${@:3} )
+CMD=()
 
+for cmd in ${@}; do 
+    case $cmd in 
+    install)
+        INSTALL=true
+        ;;
+
+    info)
+        ;;
+
+    --force)
+        FORCE="--force"
+        ;;
+
+    *)
+        CMD+=( $cmd )
+        ;;
+    esac
+done
+
+
+[[ ! $CMD ]] && \
+    echo -e "Usage:\n\t$(basename $0) install|info pkg1[, pkg2, ...]\n"
 
 [[ ! $CMD ]] && \
     CMD='/'
 
-case $1 in
-install)
-    INSTALL=true
-    ;;
-info)
-    ;;
-*)
-    echo -e "Usage:\n\t$(basename $0) install|info pkg1[, pkg2, ...]" && \
-        exit 0
-    ;;
-esac
 
 for item in ${CMD[@]}; do
     [[ -d $PKGS/$item ]] && \
