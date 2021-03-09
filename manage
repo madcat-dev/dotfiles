@@ -4,20 +4,14 @@ export BASE=$(realpath `dirname $0`)
 cd $BASE
 
 case $1 in
-install)
-    CMD=( ${@:2} )
-    $BASE/lib/pack-util install ${CMD[@]}
-    ;;
-
-info)
-    CMD=( ${@:2} )
-    $BASE/lib/pack-util info ${CMD[@]}
+install|info)
+    ./bin/pack-util $@
     ;;
 
 status)
     while IFS=\# read -r item _; do
         item=$(echo $item | sed 's/ *$//g') && [[ ${item} ]] && \
-            ./lib/syncopy "$HOME/$item" "$BASE/backup/$item" simular
+            ./bin/syncopy "$HOME/$item" "$BASE/backup/$item" simular
     done < ./CONFIGS
     ;;
 
@@ -26,7 +20,7 @@ backup)
 
     while IFS=\# read -r item _; do
         item=$(echo $item | sed 's/ *$//g') && [[ ${item} ]] && \
-            ./lib/syncopy "$HOME/$item" "$BASE/backup/$item"
+            ./bin/syncopy "$HOME/$item" "$BASE/backup/$item"
     done < ./CONFIGS
     ;;
 
@@ -35,7 +29,7 @@ restore)
 
     while IFS=\# read -r item _; do
         item=$(echo $item | sed 's/ *$//g') && [[ ${item} ]] && \
-            ./lib/syncopy "$BASE/backup/$item" "$HOME/$item"
+            ./bin/syncopy "$BASE/backup/$item" "$HOME/$item"
     done < ./CONFIGS
     ;;
 
