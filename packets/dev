@@ -3,13 +3,13 @@
 TITLE="Development packages"
 
 DEPENDENCIES=(
-    base-dev
+    "base-dev"
 )
 
 PACKAGES=(
-    git
-    ctags
-    clang
-    python-pip
-    libpqxx
+    "git"
+    "ctags"
+    "clang"
+    "python-pip"
+    "libpqxx"
 )

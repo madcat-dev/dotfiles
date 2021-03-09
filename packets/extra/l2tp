@@ -5,13 +5,9 @@
 # https://github.com/nm-l2tp/NetworkManager-l2tp
 #
 
-PKGS=(
+TITLE="NetworkManager-l2tp package from AUR"
+
+PACKAGES=(
     "xl2tpd"
     "networkmanager-l2tp"   # L2TP support for NetworkManager
 )
-
-
-echo -e "\033[32m-- Install NetworkManager-l2tp package from AUR --\033[0m"
-echo -e "Packages:\n\t${PKGS[@]}"
-
-pamac install ${PKGS[@]}

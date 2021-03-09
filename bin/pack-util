@@ -155,6 +155,7 @@ for item in ${CMD[@]}; do
         pre_install || exit 1
     fi
 
+    # Install packages
     if [[ ${to_install} ]]; then 
         echo -e "Install packages:\n\t\033[36m${to_install[@]}\033[0m"
         [[ ! ${FAKE} ]] && \
@@ -167,6 +168,7 @@ for item in ${CMD[@]}; do
         pre_config || exit 1
     fi
 
+    # copy configurations
     if [[ ${CONFIGS} ]]; then
         echo -e "Copy config files:"
 
@@ -186,8 +188,8 @@ for item in ${CMD[@]}; do
     rm -f $BASE/var/$item
     touch $BASE/var/$item
 
-    # Store installed packages
     for pkg in ${PACKAGES[@]}; do
+        # Store installed packages
         echo "${pkg}" >> $BASE/var/$item
     done
 

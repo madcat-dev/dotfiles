@@ -1,17 +1,15 @@
 #!/bin/sh
 
-BASE=$(realpath "$(dirname $0)/../../")
-DOTS="$BASE/dots"
+TITLE="Activate SSH-Agent service"
 
-SERVICE=".config/systemd/user/ssh-agent.service"
+CONFIGS=(
+    ".config/systemd/user/ssh-agent.service"
+)
 
+install() {
+    systemctl --user daemon-reload
+    systemctl --user enable ssh-agent
+    systemctl --user restart ssh-agent
 
-echo -e "\033[32m-- Activate SSH-Agent service --\033[0m"
-
-$BASE/utils/rcopy "$DOTS/$SERVICE" "$HOME/$SERVICE"
-
-systemctl --user daemon-reload
-systemctl --user enable ssh-agent
-systemctl --user restart ssh-agent
-
-systemctl --user status ssh-agent
+    systemctl --user status ssh-agent
+}

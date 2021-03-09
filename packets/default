@@ -10,12 +10,12 @@ DEPENDENCIES=(
     # List of packet dependencies (any packets)
 )
 
-CONFIGS=(
-    # List of configs files
-)
-
 PACKAGES=(
     # List of packages to be installed
+)
+
+CONFIGS=(
+    # List of configs files
 )
 
 pre_install() {

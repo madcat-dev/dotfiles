@@ -10,8 +10,10 @@ PACKAGES=(
     "xsettingsd"            # Provides settings to X11 applications via the XSETTINGS specification
     "numlockx"              # Turns on the numlock key in X11
     "exfat-utils"
-    "htop" "zsh"
-    "unrar" "p7zip"
+    "htop"
+    "zsh"
+    "unrar"
+    "p7zip"
     "mc"
     "gtop"
     "tig"
