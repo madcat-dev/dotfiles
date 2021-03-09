@@ -30,9 +30,7 @@ done
 
 
 [[ ! $CMD ]] && \
-    echo -e "Usage:\n\t$(basename $0) install|info pkg1[, pkg2, ...]\n"
-
-[[ ! $CMD ]] && \
+    echo -e "Usage:\n\t$(basename $0) install|info pkg1[, pkg2, ...]\n" && \
     CMD='/'
 
 
