@@ -1,0 +1,13 @@
+[Scheme]
+Name=Nier
+ColorCursorUseDefault=FALSE
+ColorCursor=#81A1C1
+ColorForeground=#D8DEE9
+ColorBackground=#2F343F
+TabActivityColor=#30476A
+ColorPalette=#2F343F;#C47C72;#8B756D;#9D857A;#7C7C82;#817F84;#9D9697;#DED3CD;#3B4252;#C47C72;#8B756D;#9D857A;#7C7C82;#817F84;#9D9697;#DED3CD
+ColorBold=#D8DEE9
+ColorBoldUseDefault=FALSE
+ColorSelectionUseDefault=FALSE
+ColorSelection=#000000
+ColorSelectionBackground=#FFFACD
