@@ -11,31 +11,31 @@ install|info)
 status)
     while IFS=\# read -r item _; do
         item=$(echo $item | sed 's/ *$//g') && [[ ${item} ]] && \
-            ./bin/syncopy "$HOME/$item" "$BASE/backup/$item" simular
+            ./bin/syncopy "$HOME/$item" "$BASE/configs/$item" --fake
     done < ./CONFIGS
     ;;
 
 backup)
-    echo -e "-- Copy configs to $BASE/backup repository --"
+    echo -e "-- Copy configs to $BASE/configs repository --"
 
     while IFS=\# read -r item _; do
         item=$(echo $item | sed 's/ *$//g') && [[ ${item} ]] && \
-            ./bin/syncopy "$HOME/$item" "$BASE/backup/$item"
+            ./bin/syncopy "$HOME/$item" "$BASE/configs/$item"
     done < ./CONFIGS
     ;;
 
 restore)
-    echo -e "-- Copy configs from $BASE/backup repository --"
+    echo -e "-- Copy configs from $BASE/configs repository --"
 
     while IFS=\# read -r item _; do
         item=$(echo $item | sed 's/ *$//g') && [[ ${item} ]] && \
-            ./bin/syncopy "$BASE/backup/$item" "$HOME/$item"
+            ./bin/syncopy "$BASE/configs/$item" "$HOME/$item"
     done < ./CONFIGS
     ;;
 
 clean)
-    echo -e "\033[31m-- Clean $BASE/backup directory --\033[0m"
-    rm -rf $BASE/backup
+    echo -e "\033[31m-- Clean $BASE/configs directory --\033[0m"
+    rm -rf $BASE/configs
     ;;
 
 *)

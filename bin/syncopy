@@ -26,14 +26,14 @@ if [ -e "$DEST" ]; then
     else
         echo -e "\033[33m -  path $DEST was modified\033[0m"
 
-        [[ ! $3 = "simular" ]] && \
+        [[ ! $3 = "--fake" ]] && \
             cp -xarf "$SRCE" "$DEST" && \
             echo -e "[*]\t $DEST is copied"
     fi
 else
     echo -e "\033[32m -  copy: $SRCE to $DEST\033[0m"
 
-    if [[ ! $3 = "simular" ]]; then
+    if [[ ! $3 = "--fake" ]]; then
         mkdir -p "$(dirname $DEST)" > /dev/null 2>&1
 
         cp -xarf "$SRCE" "$DEST" && \

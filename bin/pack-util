@@ -22,6 +22,10 @@ for cmd in ${@}; do
         FORCE="--force"
         ;;
 
+    --fake)
+        FAKE="--fake"
+        ;;
+
     *)
         CMD+=( $cmd )
         ;;
@@ -122,43 +126,66 @@ for item in ${CMD[@]}; do
         done
     fi
 
+    # Information for previous installed packages
+    echo -e "Removed packages:"
+    while IFS=\# read -r spkg _; do
+        INSTALLED=""
+
+        spkg=$(echo $spkg | sed 's/ *$//g')
+        [[ ! $spkg ]] && continue
+
+        for pkg in ${PACKAGES[@]}; do
+            [[ $pkg == $spkg ]] && INSTALLED=true && break
+        done
+
+        [[ ! ${INSTALLED} ]] && \
+            echo -e "\033[31m\t** Package '$spkg' has been removed...\033[0m"
+
+    done < $BASE/var/$item
+
+
     [[ ! ${INSTALL} ]] && \
         echo "" && continue
 
     # exec pre-install handler
     echo -e "Run pre-install script:"
-    pre_install || exit 1
+    if [[ ! ${FAKE} ]]; then
+        pre_install || exit 1
+    fi
 
     if [[ ${to_install} ]]; then 
         echo -e "Install packages:\n\t\033[36m${to_install[@]}\033[0m"
-        #pamac install ${to_install[@]}
+        [[ ! ${FAKE} ]] && \
+            pamac install ${to_install[@]}
     fi
 
     # exec pre-config handler
     echo -e "Run pre-configure script:"
-    pre_config || exit 1
+    if [[ ! ${FAKE} ]]; then
+        pre_config || exit 1
+    fi
 
     if [[ ${CONFIGS} ]]; then
         echo -e "Copy config files:"
 
         for cfg in ${CONFIGS[@]}; do
-            $BASE/bin/syncopy "$BASE/backup/$cfg" "$HOME/$cfg" simular
+            $BASE/bin/syncopy "$BASE/configs/$cfg" "$HOME/$cfg" ${FAKE}
         done
     fi
 
     # exec post-install handler
     echo -e "Run post-install script:"
-    install || exit 1
+    if [[ ! ${FAKE} ]]; then
+        install || exit 1
+    fi
 
     # Mark installed packet
     mkdir -p $(dirname $BASE/var/$item) > /dev/null 2>&1
     rm -f $BASE/var/$item
     touch $BASE/var/$item
 
-    echo "finish!!!!"
-    echo ${to_install[@]}
-    for pkg in ${to_install[@]}; do
-        echo "${pkg}"
+    # Store installed packages
+    for pkg in ${PACKAGES[@]}; do
         echo "${pkg}" >> $BASE/var/$item
     done
 

@@ -13,16 +13,16 @@ PACKAGES=(
 )
 
 pre_config() {
-    echo ""
-    #rm -rf $HOME/.vim/
+    echo -e "\t- Remove previous configuration..."
+    rm -rf $HOME/.vim/
 }
 
 install() {
-    echo ""
-    #mkdir -p $HOME/.vim/bundle/
-    ## Install vundle plugin manager from git...
-    #git clone https://github.com/VundleVim/Vundle.vim.git \
-        #$HOME/.vim/bundle/Vundle.vim
+    echo -e "\t- Install Vundle plugin manager from git..."
+    mkdir -p $HOME/.vim/bundle/
+    git clone https://github.com/VundleVim/Vundle.vim.git \
+        $HOME/.vim/bundle/Vundle.vim
 
-    #vim --not-a-term +PluginInstall +qall
+    echo -e "\t- Install vim plugins..."
+    vim --not-a-term +PluginInstall +qall
 }
