@@ -1,7 +1,6 @@
 #!/bin/sh
 
-BASE=$(realpath "$(dirname $0)/../")
-DOTS="$BASE/dots"
+TITLE="BSPWM"
 
 PACKAGES=(
     "picom-ibhagwan-git"    # iBhagwan's compton|picom fork (X compositor) with dual_kawase blur and rounded corners
@@ -10,4 +9,7 @@ PACKAGES=(
     "polybar"               # A fast and easy-to-use status bar
     "dunst"                 # Customizable and lightweight notification-daemon
     "bspwm"                 # Tiling window manager based on binary space partitioning
+)
+
+CONFIGS=(
 )

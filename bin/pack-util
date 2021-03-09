@@ -127,21 +127,23 @@ for item in ${CMD[@]}; do
     fi
 
     # Information for previous installed packages
-    echo -e "Removed packages:"
-    while IFS=\# read -r spkg _; do
-        INSTALLED=""
+    if [[ -e $BASE/var/$item ]]; then
+        echo -e "Removed packages:"
+        while IFS=\# read -r spkg _; do
+            INSTALLED=""
 
-        spkg=$(echo $spkg | sed 's/ *$//g')
-        [[ ! $spkg ]] && continue
+            spkg=$(echo $spkg | sed 's/ *$//g')
+            [[ ! $spkg ]] && continue
 
-        for pkg in ${PACKAGES[@]}; do
-            [[ $pkg == $spkg ]] && INSTALLED=true && break
-        done
+            for pkg in ${PACKAGES[@]}; do
+                [[ $pkg == $spkg ]] && INSTALLED=true && break
+            done
 
-        [[ ! ${INSTALLED} ]] && \
-            echo -e "\033[31m\t** Package '$spkg' has been removed...\033[0m"
+            [[ ! ${INSTALLED} ]] && \
+                echo -e "\033[31m\t** Package '$spkg' has been removed...\033[0m"
 
-    done < $BASE/var/$item
+        done < $BASE/var/$item
+    fi
 
 
     [[ ! ${INSTALL} ]] && \

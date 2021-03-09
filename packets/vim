@@ -2,14 +2,14 @@
 
 TITLE="VIM and environment"
 
+PACKAGES=(
+    "gvim"
+)
+
 CONFIGS=(
     ".vimrc"
     ".vim/colors"
     ".vim/autoload/airline/themes"
-)
-
-PACKAGES=(
-    "gvim"
 )
 
 pre_config() {
