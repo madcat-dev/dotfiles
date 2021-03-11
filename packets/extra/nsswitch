@@ -1,0 +1,3 @@
+#!/bin/sh
+
+TITLE="Network Manager Service not running after login"

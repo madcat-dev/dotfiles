@@ -18,6 +18,11 @@ for cmd in ${@}; do
     info)
         ;;
 
+    faq)
+        FAQ=true
+        export PKGS="$BASE/faq"
+        ;;
+
     --force)
         FORCE="--force"
         ;;
@@ -32,9 +37,10 @@ for cmd in ${@}; do
     esac
 done
 
-
 [[ ! $CMD ]] && \
-    echo -e "Usage:\n\t$(basename $0) install|info pkg1[, pkg2, ...]\n" && \
+    echo -e "Usage:\n\t$(basename $0) install|info [--force, --fake] pkg1[, pkg2, ...]" && \
+    echo -e "\t$(basename $0) faq packet" && \
+    echo -e "" && \
     CMD='/'
 
 
@@ -85,6 +91,8 @@ for item in ${CMD[@]}; do
 
     [[ ${DESCRIPTION} ]] && \
         echo -e "${DESCRIPTION}"
+
+    [[ ${FAQ} ]] && exit 0
 
     # Resolve dependencies
     if [[ $DEPENDENCIES ]]; then

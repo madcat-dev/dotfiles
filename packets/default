@@ -3,7 +3,9 @@
 TITLE="Main title of packet"
 
 DESCRIPTION="
-    Text description from packet
+    Text description from packet line 1
+    Text description from packet line 2
+    Text description from packet line 3
 "
 
 DEPENDENCIES=(

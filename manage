@@ -4,7 +4,7 @@ export BASE=$(realpath `dirname $0`)
 cd $BASE
 
 case $1 in
-install|info)
+install|info|faq)
     ./bin/pack-util $@
     ;;
 
@@ -41,7 +41,7 @@ clean)
 *)
     echo -e "Usage: "
     echo -e "\t$(basename $0) status|backup|restore|clean"
-    echo -e "\t$(basename $0) install|info [--force, --fake] {package name|package path} ..."
+    echo -e "\t$(basename $0) install|info|faq [--force, --fake] {package name|package path} ..."
     ;;
 
 esac
