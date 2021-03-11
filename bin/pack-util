@@ -137,6 +137,8 @@ for item in ${CMD[@]}; do
     # Information for previous installed packages
     if [[ -e $BASE/var/$item ]]; then
         echo -e "Removed packages:"
+        REMOVED=()
+
         while IFS=\# read -r spkg _; do
             INSTALLED=""
 
@@ -148,9 +150,10 @@ for item in ${CMD[@]}; do
             done
 
             [[ ! ${INSTALLED} ]] && \
-                echo -e "\033[31m\t** Package '$spkg' has been removed...\033[0m"
-
+                REMOVED+=( $spkg )
         done < $BASE/var/$item
+
+        echo -e "\033[31m\t${REMOVED[@]}\033[0m"
     fi
 
 
