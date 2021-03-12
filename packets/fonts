@@ -8,5 +8,4 @@ PACKAGES=(
     "ttf-iosevka-fixed-curly"
     "ttf-polybar-icons"
     "ttf-symbola"
-    "ttf-ubuntu-font-family"
 )
